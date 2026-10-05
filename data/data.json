@@ -1,0 +1,1669 @@
+{
+  "meta": {
+    "grade": 1,
+    "version": "1.0.0",
+    "clubName": "QSTEMora Club (QSC)",
+    "location": "STEM Qena School, Egypt"
+  },
+  "subjects": [
+    {
+      "id": "geology",
+      "name": "Geology",
+      "category": "scientific",
+      "semesters": ["1", "2"],
+      "branches": [],
+      "lessonLabel": "L.O",
+      "description": "Earth systems, plate tectonics, mineralogy, stratigraphy, and geological processes."
+    },
+    {
+      "id": "math",
+      "name": "Math",
+      "category": "scientific",
+      "semesters": ["1", "2"],
+      "branches": [],
+      "lessonLabel": "L.O",
+      "description": "Differential and integral calculus, linear algebra, analytical geometry, and probability."
+    },
+    {
+      "id": "chemistry",
+      "name": "Chemistry",
+      "category": "scientific",
+      "semesters": ["1", "2"],
+      "branches": [],
+      "lessonLabel": "L.O",
+      "description": "Thermodynamics, chemical kinetics, atomic theory, equilibrium, and electrochemistry."
+    },
+    {
+      "id": "biology",
+      "name": "Biology",
+      "category": "scientific",
+      "semesters": ["1", "2"],
+      "branches": [],
+      "lessonLabel": "L.O",
+      "description": "Cellular respiration, molecular genetics, biotechnology, and physiological systems."
+    },
+    {
+      "id": "mechanics",
+      "name": "Mechanics",
+      "category": "scientific",
+      "semesters": ["1", "2"],
+      "branches": [],
+      "lessonLabel": "L.O",
+      "description": "Newtonian dynamics, 2D/3D statics, rotational equilibrium, and kinematics."
+    },
+    {
+      "id": "physics",
+      "name": "Physics",
+      "category": "scientific",
+      "semesters": ["1", "2"],
+      "branches": [],
+      "lessonLabel": "L.O",
+      "description": "Electromagnetism, wave optics, modern quantum physics, and electric circuits."
+    },
+    {
+      "id": "cs",
+      "name": "CS",
+      "category": "scientific",
+      "semesters": ["1", "2"],
+      "branches": [],
+      "lessonLabel": "L.O",
+      "description": "Algorithms, Python programming, data structures, and computational thinking."
+    },
+    {
+      "id": "francaise",
+      "name": "Française",
+      "category": "literary",
+      "semesters": ["1", "2"],
+      "branches": [],
+      "lessonLabel": "L.O",
+      "description": "French grammar rules, DELF practice, and reading comprehension."
+    },
+    {
+      "id": "deutsch",
+      "name": "Deutsch",
+      "category": "literary",
+      "semesters": ["1", "2"],
+      "branches": [],
+      "lessonLabel": "L.O",
+      "description": "German grammar cases, vocabulary building, and Goethe A1-B1 preparation."
+    },
+    {
+      "id": "arabic",
+      "name": "Arabic",
+      "category": "literary",
+      "semesters": ["1", "2"],
+      "branches": [],
+      "lessonLabel": "L.O",
+      "description": "Classical Arabic grammar (Nahw & Sarf), Rhetoric (Balagha), and literature."
+    },
+    {
+      "id": "religion",
+      "name": "Religion",
+      "category": "literary",
+      "semesters": ["1", "2"],
+      "branches": [
+        { "id": "islam", "name": "Islam" },
+        { "id": "christian", "name": "Christian" }
+      ],
+      "lessonLabel": "L.O",
+      "description": "Islamic and Christian religious studies, spiritual values, and moral ethics."
+    },
+    {
+      "id": "socialstudies",
+      "name": "Social Studies",
+      "category": "literary",
+      "semesters": ["1", "2"],
+      "branches": [],
+      "lessonLabel": "L.O",
+      "description": "Egyptian modern history, geography of natural resources, and civics."
+    },
+    {
+      "id": "english",
+      "name": "English",
+      "category": "literary",
+      "semesters": ["1", "2"],
+      "branches": [],
+      "lessonLabel": "L.O",
+      "description": "Academic writing, scientific reading comprehension, critical analysis, and vocabulary."
+    },
+    {
+      "id": "capstone",
+      "name": "Capstone",
+      "category": "other",
+      "semesters": ["1", "2"],
+      "branches": [],
+      "lessonLabel": "L.O",
+      "description": "Grand Challenges of Egypt design process, engineering design journal, and prototyping."
+    },
+    {
+      "id": "opportunities",
+      "name": "Opportunities",
+      "category": "other",
+      "semesters": ["1", "2"],
+      "branches": [],
+      "lessonLabel": "Lesson",
+      "description": "ISEF, Science Olympiads, scholarships, quad charts, and competition guidelines."
+    },
+    {
+      "id": "arduino",
+      "name": "Arduino",
+      "category": "other",
+      "semesters": ["1", "2"],
+      "branches": [],
+      "lessonLabel": "Lesson",
+      "description": "Embedded C/C++, sensor interfacing, PWM control, circuit wiring, and robotics."
+    }
+  ],
+  "lessons": [
+    {
+      "id": "CH.1.01",
+      "subject": "chemistry",
+      "branch": null,
+      "semester": "1",
+      "weeks": "01-02",
+      "title": "Atomic Structure & Periodic Trends",
+      "description": "Electronic configurations, effective nuclear charge, ionization energy, and electronegativity.",
+      "videos": [
+        {
+          "title": "CH.1.01 Comprehensive Explanation & Atomic Models",
+          "url": "https://drive.google.com/file/d/sample-ch101-vid1/view",
+          "duration": "28 mins",
+          "speaker": "Senior '26 Chemistry Lead"
+        },
+        {
+          "title": "Solving Periodic Trends Reference Proofs & Exercises",
+          "url": "https://drive.google.com/file/d/sample-ch101-vid2/view",
+          "duration": "22 mins",
+          "speaker": "Mohanad Naeem"
+        }
+      ],
+      "files": [
+        {
+          "title": "CH.1.01 Master Presentation Slide Deck",
+          "url": "https://drive.google.com/file/d/sample-ch101-ppt/view",
+          "format": "PPTX",
+          "size": "16 MB"
+        },
+        {
+          "title": "Periodic Table Summary Sheet & Trend Rules",
+          "url": "https://drive.google.com/file/d/sample-ch101-pdf/view",
+          "format": "PDF",
+          "size": "3.5 MB"
+        }
+      ],
+      "testBanks": [
+        {
+          "title": "CH.1.01 Standard Multiple Choice Test (35 Qs)",
+          "url": "https://drive.google.com/file/d/sample-ch101-tb1/view",
+          "questionsCount": 35,
+          "difficulty": "Medium"
+        },
+        {
+          "title": "Advanced University Reference Problem Set with Model Answers",
+          "url": "https://drive.google.com/file/d/sample-ch101-tb2/view",
+          "questionsCount": 20,
+          "difficulty": "Hard"
+        }
+      ]
+    },
+    {
+      "id": "CH.1.02",
+      "subject": "chemistry",
+      "branch": null,
+      "semester": "1",
+      "weeks": "03-04",
+      "title": "Chemical Bonding & Molecular Geometry",
+      "description": "Ionic, covalent, and metallic bonds, Lewis structures, VSEPR theory, and hybridization.",
+      "videos": [
+        {
+          "title": "VSEPR Geometry & Hybridization 3D Models Walkthrough",
+          "url": "https://drive.google.com/file/d/sample-ch102-vid/view",
+          "duration": "32 mins",
+          "speaker": "Chemistry Academic Team"
+        }
+      ],
+      "files": [
+        {
+          "title": "CH.1.02 Molecular Geometry PPT Deck",
+          "url": "https://drive.google.com/file/d/sample-ch102-ppt/view",
+          "format": "PPTX",
+          "size": "18 MB"
+        }
+      ],
+      "testBanks": [
+        {
+          "title": "Molecular Shapes & Bond Angles Question Bank",
+          "url": "https://drive.google.com/file/d/sample-ch102-tb/view",
+          "questionsCount": 30,
+          "difficulty": "Medium"
+        }
+      ]
+    },
+    {
+      "id": "CH.1.03",
+      "subject": "chemistry",
+      "branch": null,
+      "semester": "1",
+      "weeks": "05-06",
+      "title": "Stoichiometry & Limiting Reactants",
+      "description": "Mole conversions, empirical and molecular formulas, percentage yield, and solution stoichiometry.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "CH.1.04",
+      "subject": "chemistry",
+      "branch": null,
+      "semester": "1",
+      "weeks": "07-08",
+      "title": "Develop operational definitions of chemical elements",
+      "description": "Investigating historical definitions, spectroscopic analysis, and classification schemes.",
+      "videos": [
+        {
+          "title": "CH.1.04 Operational Definitions of Elements — Core Lecture",
+          "url": "https://drive.google.com/file/d/sample-ch104-vid1/view",
+          "duration": "30 mins",
+          "speaker": "Senior '26 Chemistry Team"
+        }
+      ],
+      "files": [
+        {
+          "title": "CH.1.04 Chemistry Master Presentation",
+          "url": "https://drive.google.com/file/d/sample-ch104-ppt/view",
+          "format": "PPTX",
+          "size": "14 MB"
+        },
+        {
+          "title": "CH.1.04 Quick Review & Study Guide",
+          "url": "https://drive.google.com/file/d/sample-ch104-pdf/view",
+          "format": "PDF",
+          "size": "4 MB"
+        }
+      ],
+      "testBanks": [
+        {
+          "title": "CH.1.04 Model Practice Test Bank",
+          "url": "https://drive.google.com/file/d/sample-ch104-tb/view",
+          "questionsCount": 25,
+          "difficulty": "Medium"
+        }
+      ]
+    },
+    {
+      "id": "CH.1.05",
+      "subject": "chemistry",
+      "branch": null,
+      "semester": "1",
+      "weeks": "09-10",
+      "title": "Thermochemistry & Enthalpy of Reactions",
+      "description": "Calorimetry, Hess's Law, standard enthalpies of formation, and bond energies.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "CH.1.06",
+      "subject": "chemistry",
+      "branch": null,
+      "semester": "2",
+      "weeks": "01-03",
+      "title": "Chemical Kinetics & Reaction Rates",
+      "description": "Rate laws, orders of reaction, collision theory, and Arrhenius activation energy.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "CH.1.07",
+      "subject": "chemistry",
+      "branch": null,
+      "semester": "2",
+      "weeks": "04-06",
+      "title": "Chemical Equilibrium & Le Chatelier's Principle",
+      "description": "Equilibrium constant Kc/Kp, reaction quotient Q, and dynamic equilibrium shifts.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "CH.1.08",
+      "subject": "chemistry",
+      "branch": null,
+      "semester": "2",
+      "weeks": "07-09",
+      "title": "Acids, Bases & pH Calculations",
+      "description": "Brønsted-Lowry & Lewis definitions, strong vs weak acids, Ka/Kb, and buffer solutions.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "PH.1.01",
+      "subject": "physics",
+      "branch": null,
+      "semester": "1",
+      "weeks": "01-02",
+      "title": "Units, Physical Quantities & Error Analysis",
+      "description": "SI units, dimensional analysis, scalar vs vector quantities, and measurement uncertainties.",
+      "videos": [
+        {
+          "title": "Dimensional Analysis & Significant Figures Tutorial",
+          "url": "ZZZZZ",
+          "duration": "24 mins",
+          "speaker": "Ziad Ahmed"
+        }
+      ],
+      "files": [
+        {
+          "title": "PH.1.01 Measurement & Units Presentation",
+          "url": "https://drive.google.com/file/d/sample-ph101-ppt/view",
+          "format": "PPTX",
+          "size": "15 MB"
+        }
+      ],
+      "testBanks": [
+        {
+          "title": "Error Analysis & Vectors Problem Set (40 Qs)",
+          "url": "https://drive.google.com/file/d/sample-ph101-tb/view",
+          "questionsCount": 40,
+          "difficulty": "Medium"
+        }
+      ]
+    },
+    {
+      "id": "PH.1.02",
+      "subject": "physics",
+      "branch": null,
+      "semester": "1",
+      "weeks": "03-04",
+      "title": "1D & 2D Kinematics & Projectile Motion",
+      "description": "Uniform acceleration equations, free fall, projectile trajectories, and relative velocity.",
+      "videos": [
+        {
+          "title": "Projectile Motion Derivations & Range Optimization",
+          "url": "https://drive.google.com/file/d/sample-ph102-vid/view",
+          "duration": "35 mins",
+          "speaker": "Dr. Adel Abdelrahman"
+        }
+      ],
+      "files": [
+        {
+          "title": "PH.1.02 Kinematics Master Slide Deck",
+          "url": "https://drive.google.com/file/d/sample-ph102-ppt/view",
+          "format": "PPTX",
+          "size": "20 MB"
+        },
+        {
+          "title": "Kinematic Equations Formula Sheet",
+          "url": "https://drive.google.com/file/d/sample-ph102-pdf/view",
+          "format": "PDF",
+          "size": "3 MB"
+        }
+      ],
+      "testBanks": [
+        {
+          "title": "Projectile Motion Reference Problem Set",
+          "url": "https://drive.google.com/file/d/sample-ph102-tb/view",
+          "questionsCount": 45,
+          "difficulty": "Hard"
+        }
+      ]
+    },
+    {
+      "id": "PH.1.03",
+      "subject": "physics",
+      "branch": null,
+      "semester": "1",
+      "weeks": "05-06",
+      "title": "Newton's Laws of Motion & Friction",
+      "description": "Inertia, F=ma, action-reaction pairs, free-body diagrams, and inclined plane dynamics.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "PH.1.04",
+      "subject": "physics",
+      "branch": null,
+      "semester": "1",
+      "weeks": "07-08",
+      "title": "Work, Energy & Conservation Principles",
+      "description": "Work-energy theorem, kinetic vs potential energy, conservative forces, and mechanical power.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "PH.1.05",
+      "subject": "physics",
+      "branch": null,
+      "semester": "1",
+      "weeks": "09-10",
+      "title": "Linear Momentum & Collisions",
+      "description": "Impulse-momentum theorem, elastic vs inelastic collisions, and center of mass motion.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "PH.1.06",
+      "subject": "physics",
+      "branch": null,
+      "semester": "2",
+      "weeks": "01-03",
+      "title": "Electric Field & Coulomb's Law",
+      "description": "Point charges, continuous charge distributions, electric field lines, and Gauss's Law intro.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "PH.1.07",
+      "subject": "physics",
+      "branch": null,
+      "semester": "2",
+      "weeks": "04-06",
+      "title": "Electric Potential & Capacitance",
+      "description": "Potential difference, equipotential surfaces, parallel plate capacitors, and dielectric materials.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "PH.1.08",
+      "subject": "physics",
+      "branch": null,
+      "semester": "2",
+      "weeks": "07-09",
+      "title": "DC Circuits & Kirchhoff's Laws",
+      "description": "Ohm's law, series/parallel resistor combinations, Kirchhoff's current and voltage junction rules.",
+      "videos": [
+        {
+          "title": "Kirchhoff's Laws & Node Voltage Analysis",
+          "url": "https://drive.google.com/file/d/sample-ph108-vid/view",
+          "duration": "30 mins",
+          "speaker": "Physics Academic Lead"
+        }
+      ],
+      "files": [
+        {
+          "title": "DC Circuits Master Presentation",
+          "url": "https://drive.google.com/file/d/sample-ph108-ppt/view",
+          "format": "PPTX",
+          "size": "17 MB"
+        }
+      ],
+      "testBanks": [
+        {
+          "title": "Complex Circuits & Loop Rule Question Bank",
+          "url": "https://drive.google.com/file/d/sample-ph108-tb/view",
+          "questionsCount": 35,
+          "difficulty": "Hard"
+        }
+      ]
+    },
+    {
+      "id": "BI.1.01",
+      "subject": "biology",
+      "branch": null,
+      "semester": "1",
+      "weeks": "01-02",
+      "title": "Biological Macromolecules & Chemical Basis of Life",
+      "description": "Carbohydrates, lipids, proteins, nucleic acids, enzyme catalysis, and dehydration synthesis.",
+      "videos": [
+        {
+          "title": "Enzymes & Biochemical Pathways 3D Animation",
+          "url": "https://drive.google.com/file/d/sample-bi101-vid/view",
+          "duration": "26 mins",
+          "speaker": "Kareem Mahmoud"
+        }
+      ],
+      "files": [
+        {
+          "title": "BI.1.01 Macromolecules Presentation",
+          "url": "https://drive.google.com/file/d/sample-bi101-ppt/view",
+          "format": "PPTX",
+          "size": "21 MB"
+        }
+      ],
+      "testBanks": [
+        {
+          "title": "Biochemistry & Enzymes Practice Test",
+          "url": "https://drive.google.com/file/d/sample-bi101-tb/view",
+          "questionsCount": 30,
+          "difficulty": "Medium"
+        }
+      ]
+    },
+    {
+      "id": "BI.1.02",
+      "subject": "biology",
+      "branch": null,
+      "semester": "1",
+      "weeks": "03-04",
+      "title": "Cell Structure, Organelles & Membrane Transport",
+      "description": "Prokaryotic vs eukaryotic cells, organelle functions, phospholipid bilayer, and active/passive transport.",
+      "videos": [
+        {
+          "title": "Membrane Transport & Osmosis Demonstration",
+          "url": "https://drive.google.com/file/d/sample-bi102-vid/view",
+          "duration": "25 mins",
+          "speaker": "Senior '26 Biology Lead"
+        }
+      ],
+      "files": [
+        {
+          "title": "BI.1.02 Cell Biology Slide Deck",
+          "url": "https://drive.google.com/file/d/sample-bi102-ppt/view",
+          "format": "PPTX",
+          "size": "24 MB"
+        }
+      ],
+      "testBanks": [
+        {
+          "title": "Cell Biology Multiple Choice Bank (40 Qs)",
+          "url": "https://drive.google.com/file/d/sample-bi102-tb/view",
+          "questionsCount": 40,
+          "difficulty": "Medium"
+        }
+      ]
+    },
+    {
+      "id": "BI.1.03",
+      "subject": "biology",
+      "branch": null,
+      "semester": "1",
+      "weeks": "05-06",
+      "title": "Cellular Respiration & Glycolysis",
+      "description": "Anaerobic vs aerobic pathways, Krebs citric acid cycle, electron transport chain, and ATP synthase.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "BI.1.04",
+      "subject": "biology",
+      "branch": null,
+      "semester": "1",
+      "weeks": "07-08",
+      "title": "Photosynthesis & Light Reactions",
+      "description": "Chloroplast anatomy, photosystems I & II, photophosphorylation, and the Calvin cycle.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "BI.1.05",
+      "subject": "biology",
+      "branch": null,
+      "semester": "2",
+      "weeks": "01-03",
+      "title": "Cell Division: Mitosis & Meiosis",
+      "description": "Cell cycle checkpoints, chromosome replication, crossing over, and genetic variation.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "BI.1.06",
+      "subject": "biology",
+      "branch": null,
+      "semester": "2",
+      "weeks": "04-06",
+      "title": "Mendelian Genetics & Inheritance Patterns",
+      "description": "Monohybrid/dihybrid crosses, Punnett squares, sex-linked traits, and pedigree analysis.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "BI.1.07",
+      "subject": "biology",
+      "branch": null,
+      "semester": "2",
+      "weeks": "07-09",
+      "title": "Molecular Genetics: DNA & RNA",
+      "description": "DNA replication fork, transcription, translation, and point mutations.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "MA.1.01",
+      "subject": "math",
+      "branch": null,
+      "semester": "1",
+      "weeks": "01-02",
+      "title": "Functions, Domain & Range, Transformations",
+      "description": "Polynomial, rational, radical functions, composite functions, and graph transformations.",
+      "videos": [
+        {
+          "title": "Advanced Function Transformations & Symmetry",
+          "url": "https://drive.google.com/file/d/sample-ma101-vid/view",
+          "duration": "28 mins",
+          "speaker": "Mohanad Naeem"
+        }
+      ],
+      "files": [
+        {
+          "title": "MA.1.01 Functions & Graphs Presentation",
+          "url": "https://drive.google.com/file/d/sample-ma101-ppt/view",
+          "format": "PPTX",
+          "size": "14 MB"
+        }
+      ],
+      "testBanks": [
+        {
+          "title": "Functions & Domains Question Bank (30 Qs)",
+          "url": "https://drive.google.com/file/d/sample-ma101-tb/view",
+          "questionsCount": 30,
+          "difficulty": "Medium"
+        }
+      ]
+    },
+    {
+      "id": "MA.1.02",
+      "subject": "math",
+      "branch": null,
+      "semester": "1",
+      "weeks": "03-04",
+      "title": "Limits & Continuity",
+      "description": "Algebraic limits, limits at infinity, squeeze theorem, and one-sided continuity.",
+      "videos": [
+        {
+          "title": "Mastering Limits & Indeterminate Forms",
+          "url": "https://drive.google.com/file/d/sample-ma102-vid/view",
+          "duration": "32 mins",
+          "speaker": "Math Academic Team"
+        }
+      ],
+      "files": [
+        {
+          "title": "MA.1.02 Limits Master Notes & PPT",
+          "url": "https://drive.google.com/file/d/sample-ma102-ppt/view",
+          "format": "PPTX",
+          "size": "15 MB"
+        }
+      ],
+      "testBanks": [
+        {
+          "title": "Limits & Continuity Reference Problem Set",
+          "url": "https://drive.google.com/file/d/sample-ma102-tb/view",
+          "questionsCount": 45,
+          "difficulty": "Hard"
+        }
+      ]
+    },
+    {
+      "id": "MA.1.03",
+      "subject": "math",
+      "branch": null,
+      "semester": "1",
+      "weeks": "05-06",
+      "title": "Differential Calculus: Definition & Rules",
+      "description": "Derivative as rate of change, power, product, quotient, and chain rules.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "MA.1.04",
+      "subject": "math",
+      "branch": null,
+      "semester": "1",
+      "weeks": "07-08",
+      "title": "Related Rates & Optimization Problems",
+      "description": "Implicit differentiation, related rates modeling, and global extrema optimization.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "MA.1.05",
+      "subject": "math",
+      "branch": null,
+      "semester": "2",
+      "weeks": "01-03",
+      "title": "Matrices, Determinants & Linear Systems",
+      "description": "Matrix operations, determinants, Cramer's rule, inverse matrices, and Gaussian elimination.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "MA.1.06",
+      "subject": "math",
+      "branch": null,
+      "semester": "2",
+      "weeks": "04-06",
+      "title": "Analytical Trigonometry & Identities",
+      "description": "Angle addition formulas, double angles, law of sines/cosines, and trigonometric equations.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "MA.1.07",
+      "subject": "math",
+      "branch": null,
+      "semester": "2",
+      "weeks": "07-09",
+      "title": "Introduction to Integral Calculus",
+      "description": "Antiderivatives, Riemann sums, Fundamental Theorem of Calculus, and u-substitution.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "ME.1.01",
+      "subject": "mechanics",
+      "branch": null,
+      "semester": "1",
+      "weeks": "01-03",
+      "title": "Force Vectors & Resolution in 2D",
+      "description": "Vector components, resultant force, concurrent coplanar forces, and equilibrium conditions.",
+      "videos": [
+        {
+          "title": "2D Force Vectors & Free Body Diagrams",
+          "url": "https://drive.google.com/file/d/sample-me101-vid/view",
+          "duration": "29 mins",
+          "speaker": "Senior '26 Mechanics Lead"
+        }
+      ],
+      "files": [
+        {
+          "title": "ME.1.01 Statics Presentation",
+          "url": "https://drive.google.com/file/d/sample-me101-ppt/view",
+          "format": "PPTX",
+          "size": "17 MB"
+        }
+      ],
+      "testBanks": [
+        {
+          "title": "Coplanar Forces & Equilibrium Question Bank",
+          "url": "https://drive.google.com/file/d/sample-me101-tb/view",
+          "questionsCount": 35,
+          "difficulty": "Medium"
+        }
+      ]
+    },
+    {
+      "id": "ME.1.02",
+      "subject": "mechanics",
+      "branch": null,
+      "semester": "1",
+      "weeks": "04-06",
+      "title": "Moments, Couples & Varignon's Theorem",
+      "description": "Moment of a force about a point, couples, equivalent force-couple systems, and beam reactions.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "ME.1.03",
+      "subject": "mechanics",
+      "branch": null,
+      "semester": "1",
+      "weeks": "07-09",
+      "title": "General Equilibrium of Rigid Bodies & Trusses",
+      "description": "Supports, reactions, equations of equilibrium, and method of joints for plane trusses.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "ME.1.04",
+      "subject": "mechanics",
+      "branch": null,
+      "semester": "2",
+      "weeks": "01-04",
+      "title": "Center of Gravity & Centroids",
+      "description": "Centroids of composite areas, center of mass derivations, and Pappus-Guldinus theorems.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "ME.1.05",
+      "subject": "mechanics",
+      "branch": null,
+      "semester": "2",
+      "weeks": "05-09",
+      "title": "Friction on Rough Horizontal & Inclined Planes",
+      "description": "Coefficients of static and kinetic friction, angle of friction, and impending motion analysis.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "ES.1.01",
+      "subject": "geology",
+      "branch": null,
+      "semester": "1",
+      "weeks": "01-03",
+      "title": "Earth Systems & Geosphere Spheres",
+      "description": "Atmosphere, hydrosphere, lithosphere, biosphere interactions, and Earth's layered internal structure.",
+      "videos": [
+        {
+          "title": "Earth's Internal Layers & Seismic Discontinuities",
+          "url": "https://drive.google.com/file/d/sample-es101-vid/view",
+          "duration": "25 mins",
+          "speaker": "Geology Academic Team"
+        }
+      ],
+      "files": [
+        {
+          "title": "ES.1.01 Earth Systems Presentation",
+          "url": "https://drive.google.com/file/d/sample-es101-ppt/view",
+          "format": "PPTX",
+          "size": "19 MB"
+        }
+      ],
+      "testBanks": [
+        {
+          "title": "Earth Systems & Layers Question Bank (30 Qs)",
+          "url": "https://drive.google.com/file/d/sample-es101-tb/view",
+          "questionsCount": 30,
+          "difficulty": "Medium"
+        }
+      ]
+    },
+    {
+      "id": "ES.1.02",
+      "subject": "geology",
+      "branch": null,
+      "semester": "1",
+      "weeks": "04-06",
+      "title": "Plate Tectonics & Continental Drift",
+      "description": "Divergent, convergent, and transform boundaries, seafloor spreading, and Egyptian rift systems.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "ES.1.03",
+      "subject": "geology",
+      "branch": null,
+      "semester": "1",
+      "weeks": "07-09",
+      "title": "Mineralogy & Crystal Systems",
+      "description": "Physical properties of minerals, Mohs hardness, cleavage, silicates, and crystal lattice forms.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "ES.1.04",
+      "subject": "geology",
+      "branch": null,
+      "semester": "2",
+      "weeks": "01-04",
+      "title": "Rock Cycle & Igneous Petrology",
+      "description": "Magma crystallization, Bowen's reaction series, intrusive vs extrusive volcanic structures.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "ES.1.05",
+      "subject": "geology",
+      "branch": null,
+      "semester": "2",
+      "weeks": "05-09",
+      "title": "Sedimentary & Metamorphic Processes in Egypt",
+      "description": "Weathering, erosion, lithification, metamorphic grades, and Nile Basin stratigraphy.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "CS.1.01",
+      "subject": "cs",
+      "branch": null,
+      "semester": "1",
+      "weeks": "01-03",
+      "title": "Computational Thinking & Algorithm Design",
+      "description": "Decomposition, pattern recognition, abstraction, flowcharts, and pseudocode logic.",
+      "videos": [
+        {
+          "title": "Problem Solving & Flowchart Design Crash Course",
+          "url": "https://drive.google.com/file/d/sample-cs101-vid/view",
+          "duration": "27 mins",
+          "speaker": "Mostafa Tarek"
+        }
+      ],
+      "files": [
+        {
+          "title": "CS.1.01 Algorithm Design Presentation",
+          "url": "https://drive.google.com/file/d/sample-cs101-ppt/view",
+          "format": "PPTX",
+          "size": "12 MB"
+        }
+      ],
+      "testBanks": [
+        {
+          "title": "Algorithms & Logic Puzzles Bank (35 Qs)",
+          "url": "https://drive.google.com/file/d/sample-cs101-tb/view",
+          "questionsCount": 35,
+          "difficulty": "Medium"
+        }
+      ]
+    },
+    {
+      "id": "CS.1.02",
+      "subject": "cs",
+      "branch": null,
+      "semester": "1",
+      "weeks": "04-06",
+      "title": "Python Syntax, Data Types & Control Structures",
+      "description": "Variables, strings, integers, floats, conditionals (if-else), and iteration (for, while loops).",
+      "videos": [
+        {
+          "title": "Python Fundamentals: Loops & Conditionals in Action",
+          "url": "https://drive.google.com/file/d/sample-cs102-vid/view",
+          "duration": "33 mins",
+          "speaker": "CS Lead"
+        }
+      ],
+      "files": [
+        {
+          "title": "Python Quick Syntax Cheat Sheet",
+          "url": "https://drive.google.com/file/d/sample-cs102-pdf/view",
+          "format": "PDF",
+          "size": "4 MB"
+        }
+      ],
+      "testBanks": [
+        {
+          "title": "Python Coding Exercises & Output Tracing",
+          "url": "https://drive.google.com/file/d/sample-cs102-tb/view",
+          "questionsCount": 30,
+          "difficulty": "Medium"
+        }
+      ]
+    },
+    {
+      "id": "CS.1.03",
+      "subject": "cs",
+      "branch": null,
+      "semester": "1",
+      "weeks": "07-09",
+      "title": "Functions, Modularity & Scope in Python",
+      "description": "User-defined functions, parameters, return values, recursion, and built-in Python modules.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "CS.1.04",
+      "subject": "cs",
+      "branch": null,
+      "semester": "2",
+      "weeks": "01-04",
+      "title": "Data Structures: Lists, Tuples, Sets, Dictionaries",
+      "description": "Indexing, slicing, nested data structures, list comprehensions, and dictionary key-value mapping.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "CS.1.05",
+      "subject": "cs",
+      "branch": null,
+      "semester": "2",
+      "weeks": "05-09",
+      "title": "File I/O & Introduction to Object-Oriented Programming (OOP)",
+      "description": "Reading/writing text files, classes, objects, attributes, methods, and basic inheritance.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "AR.1.01",
+      "subject": "arabic",
+      "branch": null,
+      "semester": "1",
+      "weeks": "01-03",
+      "title": "قواعد النحو: كان وأخواتها وكاد وأخواتها",
+      "description": "الأفعال الناسخة الناقصة والتامة، شروط عمل كاد وأخواتها، وتطبيقات إعرابية.",
+      "videos": [
+        {
+          "title": "شرح كاد وأخواتها والأفعال الناسخة بالخرائط الذهنية",
+          "url": "https://drive.google.com/file/d/sample-ar101-vid/view",
+          "duration": "25 mins",
+          "speaker": "Ahmed Khaled"
+        }
+      ],
+      "files": [
+        {
+          "title": "مذكرة النحو التطبيقي - الفصل الدراسي الأول",
+          "url": "https://drive.google.com/file/d/sample-ar101-pdf/view",
+          "format": "PDF",
+          "size": "6 MB"
+        }
+      ],
+      "testBanks": [
+        {
+          "title": "قطع نحوية شاملة وبنك تدريبات (40 سؤال)",
+          "url": "https://drive.google.com/file/d/sample-ar101-tb/view",
+          "questionsCount": 40,
+          "difficulty": "Medium"
+        }
+      ]
+    },
+    {
+      "id": "AR.1.02",
+      "subject": "arabic",
+      "branch": null,
+      "semester": "1",
+      "weeks": "04-06",
+      "title": "علم البلاغة: التشبيه والاستعارة وأسرار الجمال",
+      "description": "أنواع التشبيه، الاستعارة التصريحية والمكنية، وسر جمال الصورة البيانية.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "AR.1.03",
+      "subject": "arabic",
+      "branch": null,
+      "semester": "1",
+      "weeks": "07-09",
+      "title": "الأدب العربي في العصر الجاهلي وصدر الإسلام",
+      "description": "المعلقات، سمات الشعر والخطابة والوصايا في البيئة العربية.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "AR.1.04",
+      "subject": "arabic",
+      "branch": null,
+      "semester": "2",
+      "weeks": "01-04",
+      "title": "المشتقات العاملة: اسم الفاعل واسم المفعول وصيغ المبالغة",
+      "description": "صياغة المشتقات وعملها عمل الفعل وتطبيقات البكالوريا.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "EN.1.01",
+      "subject": "english",
+      "branch": null,
+      "semester": "1",
+      "weeks": "01-03",
+      "title": "Scientific Reading Comprehension & Context Clues",
+      "description": "Identifying main ideas, making inferences, analyzing scientific arguments, and vocabulary in context.",
+      "videos": [
+        {
+          "title": "Scientific Academic Reading & Question Answering Strategies",
+          "url": "https://drive.google.com/file/d/sample-en101-vid/view",
+          "duration": "26 mins",
+          "speaker": "English Academic Lead"
+        }
+      ],
+      "files": [
+        {
+          "title": "EN.1.01 Scientific Reading Skills PPT",
+          "url": "https://drive.google.com/file/d/sample-en101-ppt/view",
+          "format": "PPTX",
+          "size": "10 MB"
+        }
+      ],
+      "testBanks": [
+        {
+          "title": "Academic Reading Passages & Vocabulary Test Bank",
+          "url": "https://drive.google.com/file/d/sample-en101-tb/view",
+          "questionsCount": 35,
+          "difficulty": "Medium"
+        }
+      ]
+    },
+    {
+      "id": "EN.1.02",
+      "subject": "english",
+      "branch": null,
+      "semester": "1",
+      "weeks": "04-06",
+      "title": "Academic Writing & Research Article Structure",
+      "description": "Writing thesis statements, paragraph coherence, transitions, and APA citations.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "EN.1.03",
+      "subject": "english",
+      "branch": null,
+      "semester": "1",
+      "weeks": "07-09",
+      "title": "Grammar: Conditionals, Modals & Passive Voice",
+      "description": "Scientific passive voice conventions, conditionals 0-3, and modal deductions.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "FR.1.01",
+      "subject": "francaise",
+      "branch": null,
+      "semester": "1",
+      "weeks": "01-04",
+      "title": "Salutations, Présentation & Articles Définis/Indéfinis",
+      "description": "Se présenter, le genre des noms, les verbes du premier groupe (er), et être/avoir.",
+      "videos": [
+        {
+          "title": "Cours de Français : Conjugaison & Présentation",
+          "url": "https://drive.google.com/file/d/sample-fr101-vid/view",
+          "duration": "22 mins",
+          "speaker": "French Language Lead"
+        }
+      ],
+      "files": [
+        {
+          "title": "Fiche de Révision Grammaire Française A1",
+          "url": "https://drive.google.com/file/d/sample-fr101-pdf/view",
+          "format": "PDF",
+          "size": "4.5 MB"
+        }
+      ],
+      "testBanks": [
+        {
+          "title": "Banque de Questions DELF A1/A2 (30 Questions)",
+          "url": "https://drive.google.com/file/d/sample-fr101-tb/view",
+          "questionsCount": 30,
+          "difficulty": "Medium"
+        }
+      ]
+    },
+    {
+      "id": "FR.1.02",
+      "subject": "francaise",
+      "branch": null,
+      "semester": "1",
+      "weeks": "05-09",
+      "title": "Grammaire: Les Adjectifs Possessifs & La Négation",
+      "description": "Adjectifs possessifs, forme négative simple (ne... pas), et description physique.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "DE.1.01",
+      "subject": "deutsch",
+      "branch": null,
+      "semester": "1",
+      "weeks": "01-04",
+      "title": "Begrüßung, Alphabet & Nominativ Artikel (der, die, das)",
+      "description": "Sich vorstellen, regelmäßige Verben konjugieren, Zahlen, und Begrüßungen.",
+      "videos": [
+        {
+          "title": "Deutsche Grammatik: Artikel & Verben Konjugation",
+          "url": "https://drive.google.com/file/d/sample-de101-vid/view",
+          "duration": "24 mins",
+          "speaker": "German Language Lead"
+        }
+      ],
+      "files": [
+        {
+          "title": "Deutsch A1 Grammatik Übersicht & Wortschatz",
+          "url": "https://drive.google.com/file/d/sample-de101-pdf/view",
+          "format": "PDF",
+          "size": "4 MB"
+        }
+      ],
+      "testBanks": [
+        {
+          "title": "Goethe A1 Übungsaufgaben & Testfragen",
+          "url": "https://drive.google.com/file/d/sample-de101-tb/view",
+          "questionsCount": 30,
+          "difficulty": "Medium"
+        }
+      ]
+    },
+    {
+      "id": "DE.1.02",
+      "subject": "deutsch",
+      "branch": null,
+      "semester": "1",
+      "weeks": "05-09",
+      "title": "Akkusativ Fall & Unregelmäßige Verben",
+      "description": "Bestimmte und unbestimmte Artikel im Akkusativ, haben und sein.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "IS.1.01",
+      "subject": "religion",
+      "branch": "islam",
+      "semester": "1",
+      "weeks": "01-04",
+      "title": "سورة الحجرات وتدبر الآيات الكريمة",
+      "description": "القيم الإيمانية والأخلاقية، أحكام التلاوة والتجويد، والنهي عن التنابز والغيبة.",
+      "videos": [
+        {
+          "title": "شرح وتفسير سورة الحجرات وتطبيقاتها التربوية",
+          "url": "https://drive.google.com/file/d/sample-is101-vid/view",
+          "duration": "25 mins",
+          "speaker": "معلمو التربية الإسلامية"
+        }
+      ],
+      "files": [
+        {
+          "title": "مذكرة التربية الإسلامية الشاملة - سورة الحجرات",
+          "url": "https://drive.google.com/file/d/sample-is101-pdf/view",
+          "format": "PDF",
+          "size": "5.5 MB"
+        }
+      ],
+      "testBanks": [
+        {
+          "title": "بنك أسئلة التربية الإسلامية (40 سؤالاً)",
+          "url": "https://drive.google.com/file/d/sample-is101-tb/view",
+          "questionsCount": 40,
+          "difficulty": "Medium"
+        }
+      ]
+    },
+    {
+      "id": "IS.1.02",
+      "subject": "religion",
+      "branch": "islam",
+      "semester": "1",
+      "weeks": "05-09",
+      "title": "السيرة النبوية وبناء مجتمع المدينة المنورة",
+      "description": "المؤاخاة بين المهاجرين والأنصار، وثيقة المدينة، وحرية الاعتقاد.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "CR.1.01",
+      "subject": "religion",
+      "branch": "christian",
+      "semester": "1",
+      "weeks": "01-04",
+      "title": "القيم الروحية والفضائل الإنسانية في الإنجيل",
+      "description": "دراسة المحبة والتسامح وبناء الشخصية المتزنة في المجتمع.",
+      "videos": [
+        {
+          "title": "شرح دروس التربية الدينية المسيحية - الوحدة الأولى",
+          "url": "https://drive.google.com/file/d/sample-cr101-vid/view",
+          "duration": "24 mins",
+          "speaker": "معلمو التربية المسيحية"
+        }
+      ],
+      "files": [
+        {
+          "title": "ملخص التربية الدينية المسيحية الشامل",
+          "url": "https://drive.google.com/file/d/sample-cr101-pdf/view",
+          "format": "PDF",
+          "size": "5 MB"
+        }
+      ],
+      "testBanks": [
+        {
+          "title": "بنك أسئلة الامتحانات السابقة في التربية المسيحية",
+          "url": "https://drive.google.com/file/d/sample-cr101-tb/view",
+          "questionsCount": 35,
+          "difficulty": "Medium"
+        }
+      ]
+    },
+    {
+      "id": "CR.1.02",
+      "subject": "religion",
+      "branch": "christian",
+      "semester": "1",
+      "weeks": "05-09",
+      "title": "تاريخ الكنيسة والشخصيات البارزة في مصر",
+      "description": "تاريخ الآباء والقديسين والمجتمع القبطي ودورهم الوطني.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "SS.1.01",
+      "subject": "socialstudies",
+      "branch": null,
+      "semester": "1",
+      "weeks": "01-04",
+      "title": "جغرافية مصر الاقتصادية والموارد المائية",
+      "description": "دراسة حوض نهر النيل، اتفاقيات المياه، ومصادر الطاقة المتجددة في مصر.",
+      "videos": [
+        {
+          "title": "شرح جغرافية مصر ومصادر الطاقة وحوض النيل",
+          "url": "https://drive.google.com/file/d/sample-ss101-vid/view",
+          "duration": "24 mins",
+          "speaker": "معلمو الدراسات الاجتماعية"
+        }
+      ],
+      "files": [
+        {
+          "title": "ملخص الجغرافيا الاقتصادية لمصر",
+          "url": "https://drive.google.com/file/d/sample-ss101-pdf/view",
+          "format": "PDF",
+          "size": "5 MB"
+        }
+      ],
+      "testBanks": [
+        {
+          "title": "بنك أسئلة الدراسات الاجتماعية (40 سؤالاً)",
+          "url": "https://drive.google.com/file/d/sample-ss101-tb/view",
+          "questionsCount": 40,
+          "difficulty": "Medium"
+        }
+      ]
+    },
+    {
+      "id": "SS.1.02",
+      "subject": "socialstudies",
+      "branch": null,
+      "semester": "1",
+      "weeks": "05-09",
+      "title": "تاريخ مصر الحديث وبناء الدولة الوطنية",
+      "description": "محمد علي وبناء الجيش والتعليم، والحركات الوطنية المصرية حتى العصر الحديث.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "CAP.1.01",
+      "subject": "capstone",
+      "branch": null,
+      "semester": "1",
+      "weeks": "01-04",
+      "title": "Grand Challenges of Egypt Problem Framing",
+      "description": "Aligning research questions with national challenges (Water Scarcity, Energy, Pollution, Health).",
+      "videos": [
+        {
+          "title": "How to Frame an Impactful STEM Capstone Project",
+          "url": "https://drive.google.com/file/d/sample-cap101-vid/view",
+          "duration": "35 mins",
+          "speaker": "Mahmoud Samy"
+        }
+      ],
+      "files": [
+        {
+          "title": "Capstone Engineering Design Journal Template & Scoring Rubric",
+          "url": "https://drive.google.com/file/d/sample-cap101-pdf/view",
+          "format": "PDF",
+          "size": "8 MB"
+        }
+      ],
+      "testBanks": [
+        {
+          "title": "Capstone Jury Defense Sample Questions & Rubrics",
+          "url": "https://drive.google.com/file/d/sample-cap101-tb/view",
+          "questionsCount": 25,
+          "difficulty": "Medium"
+        }
+      ]
+    },
+    {
+      "id": "CAP.1.02",
+      "subject": "capstone",
+      "branch": null,
+      "semester": "1",
+      "weeks": "05-09",
+      "title": "Engineering Design Process (EDP) & Prototyping",
+      "description": "Iterative design steps, materials selection, prototyping tests, and error variance analysis.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "OPP.1.01",
+      "subject": "opportunities",
+      "branch": null,
+      "semester": "1",
+      "weeks": "All",
+      "title": "ISEF Science Fair Guidelines & SRC Approval",
+      "description": "Scientific abstract writing, SRC/IRB forms, Quad Chart design, and poster printing tips.",
+      "videos": [
+        {
+          "title": "ISEF Application & Presentation Masterclass",
+          "url": "https://drive.google.com/file/d/sample-opp101-vid/view",
+          "duration": "40 mins",
+          "speaker": "Alumni & Senior '26 Mentors"
+        }
+      ],
+      "files": [
+        {
+          "title": "Official ISEF SRC Forms Guide & Quad Chart Template",
+          "url": "https://drive.google.com/file/d/sample-opp101-pdf/view",
+          "format": "PDF",
+          "size": "10 MB"
+        }
+      ],
+      "testBanks": [
+        {
+          "title": "Mock Interview Questions for International STEM Competitions",
+          "url": "https://drive.google.com/file/d/sample-opp101-tb/view",
+          "questionsCount": 30,
+          "difficulty": "Medium"
+        }
+      ]
+    },
+    {
+      "id": "OPP.1.02",
+      "subject": "opportunities",
+      "branch": null,
+      "semester": "1",
+      "weeks": "All",
+      "title": "International Science Olympiads (Physics, Chem, Math, IBO)",
+      "description": "National selection stages, preparation resources, syllabus breakdown, and past papers.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    },
+    {
+      "id": "ARD.1.01",
+      "subject": "arduino",
+      "branch": null,
+      "semester": "1",
+      "weeks": "01-04",
+      "title": "Digital/Analog I/O & Sensor Interfacing",
+      "description": "Wiring ultrasonic, DHT11 temperature sensors, PIR motion detectors, and PWM motor drivers.",
+      "videos": [
+        {
+          "title": "Arduino Sensor Wiring & Code Walkthrough Tutorial",
+          "url": "https://drive.google.com/file/d/sample-ard101-vid/view",
+          "duration": "28 mins",
+          "speaker": "Mostafa Tarek"
+        }
+      ],
+      "files": [
+        {
+          "title": "Arduino Breadboard Circuit Diagrams & .ino Code Pack",
+          "url": "https://drive.google.com/file/d/sample-ard101-pdf/view",
+          "format": "PDF",
+          "size": "9 MB"
+        }
+      ],
+      "testBanks": [
+        {
+          "title": "Embedded C Logic & Pin Diagram Quiz",
+          "url": "https://drive.google.com/file/d/sample-ard101-tb/view",
+          "questionsCount": 30,
+          "difficulty": "Medium"
+        }
+      ]
+    },
+    {
+      "id": "ARD.1.02",
+      "subject": "arduino",
+      "branch": null,
+      "semester": "1",
+      "weeks": "05-09",
+      "title": "Motors, Relays & Wireless Telemetry",
+      "description": "H-Bridges, servo motors, Bluetooth HC-05 communication, and IoT Capstone circuits.",
+      "videos": [],
+      "files": [],
+      "testBanks": []
+    }
+  ],
+  "about": {
+    "title": "About Us",
+    "subtitle": "Innovative Way To Learn",
+    "tagline": "The student always comes first",
+    "fullStory": "Welcome to the website of Qena Student Club (QSC) — built for STEM students across Egypt. This club was founded in STEM Qena by Senior '26 students Youssef Said and Mohanad Naeem. From the deserts of Qena, we began our journey, connecting members and mentors across all Egyptian governorates. The materials are curated by top Senior '26 students and revised by experienced STEM teachers across Qena. QSTEMora provides structured, centralized access to learning outcomes (LOs), verified presentation slides, video lectures, and reference question banks. Our policy is simple: 'The student always comes first.'",
+    "stats": [
+      { "label": "STEM Governorates", "value": "27" },
+      { "label": "Curated Reference Questions", "value": "2,500+" },
+      { "label": "Verified PPT Slide Decks", "value": "120+" },
+      { "label": "Senior '26 & '28 Mentors", "value": "45+" }
+    ]
+  },
+  "teamMembers": [
+    {
+      "id": 1,
+      "name": "Youssef Said",
+      "role": "Founder & Executive Director",
+      "bio": "STEM Qena Senior '26. Visionary behind QSC and the QSTEMora digital learning platform.",
+      "tag": "Founder",
+      "governorate": "Qena"
+    },
+    {
+      "id": 2,
+      "name": "Mohanad Naeem",
+      "role": "Co-Founder & Academic Head",
+      "bio": "STEM Qena Senior '26. Architect of QSC curriculum maps, reference banks, and faculty liaison.",
+      "tag": "Founder",
+      "governorate": "Qena"
+    },
+    {
+      "id": 3,
+      "name": "Ziad Ahmed",
+      "role": "Lead Physics & Mechanics Curator",
+      "bio": "National Physics Olympiad finalist. Specializes in advanced Newtonian mechanics and kinematics.",
+      "tag": "Academic Lead",
+      "governorate": "Cairo"
+    },
+    {
+      "id": 4,
+      "name": "Kareem Mahmoud",
+      "role": "Chemistry & Biology Specialist",
+      "bio": "Senior '26 researcher. Authored 30+ comprehensive STEM chemistry problem sheets.",
+      "tag": "Academic Lead",
+      "governorate": "Alexandria"
+    },
+    {
+      "id": 5,
+      "name": "Omar Hassan",
+      "role": "Head of Presentation & Design",
+      "bio": "Master presentation designer crafting visual slides and diagrams for high-level comprehension.",
+      "tag": "Design Lead",
+      "governorate": "Assiut"
+    },
+    {
+      "id": 6,
+      "name": "Mostafa Tarek",
+      "role": "CS & Arduino Hardware Lead",
+      "bio": "Robotics and IoT developer guiding STEM students through Capstone electronics.",
+      "tag": "Tech Lead",
+      "governorate": "Giza"
+    },
+    {
+      "id": 7,
+      "name": "Ahmed Khaled",
+      "role": "Languages & Humanities Lead",
+      "bio": "Trilingual scholar coordinating French, German, and classical Arabic modules.",
+      "tag": "Humanities Lead",
+      "governorate": "Mansoura"
+    },
+    {
+      "id": 8,
+      "name": "Mahmoud Samy",
+      "role": "Capstone Mentor & ISEF Advisor",
+      "bio": "Guided 12+ student teams to ISEF regional awards and Capstone grand honors.",
+      "tag": "Research Mentor",
+      "governorate": "Sohag"
+    },
+    {
+      "id": 9,
+      "name": "Dr. Adel Abdelrahman",
+      "role": "Senior Academic Advisor & Teacher",
+      "bio": "Veteran STEM Qena physics educator reviewing and approving all curriculum materials.",
+      "tag": "Faculty Advisor",
+      "governorate": "Qena"
+    }
+  ],
+  "partners": [
+    {
+      "id": 1,
+      "name": "STEM Qena School",
+      "role": "Founding Institutional Partner",
+      "info": "The cradle of QSC, providing mentorship, teacher evaluations, and testing grounds.",
+      "location": "Qena Governorate",
+      "partnerType": "Academic Institution"
+    },
+    {
+      "id": 2,
+      "name": "Egyptian STEM Schools Network",
+      "role": "Nationwide Student Alliance",
+      "info": "Connecting 19+ STEM schools across Egypt for knowledge sharing and joint mock exams.",
+      "location": "Pan-Egypt",
+      "partnerType": "Student Network"
+    },
+    {
+      "id": 3,
+      "name": "Science & Tech Innovators Hub",
+      "role": "Innovation & FabLab Partner",
+      "info": "Sponsoring Capstone prototyping kits and Arduino components for student projects.",
+      "location": "Cairo",
+      "partnerType": "Tech Accelerator"
+    },
+    {
+      "id": 4,
+      "name": "Egypt Youth Olympiad Forum",
+      "role": "Competition & Mentorship Partner",
+      "info": "Hosting regional preparatory camps for Physics, Chemistry, and Math Olympiads.",
+      "location": "Giza",
+      "partnerType": "Competition Board"
+    },
+    {
+      "id": 5,
+      "name": "STEM Egypt Alumni Council",
+      "role": "Alumni & University Guidance",
+      "info": "Providing mentorship on Ivy League, European, and Egyptian university applications.",
+      "location": "International",
+      "partnerType": "Alumni Association"
+    },
+    {
+      "id": 6,
+      "name": "Upper Egypt Student Union",
+      "role": "Regional Outreach Sponsor",
+      "info": "Facilitating STEM awareness sessions and workshops across Upper Egypt governorates.",
+      "location": "Luxor & Aswan",
+      "partnerType": "Youth Organization"
+    },
+    {
+      "id": 7,
+      "name": "PowerPoint & Visual Design Guild",
+      "role": "Creative Media Sponsor",
+      "info": "Ensuring every study deck and explanation video meets the highest graphical standards.",
+      "location": "Alexandria",
+      "partnerType": "Creative Studio"
+    },
+    {
+      "id": 8,
+      "name": "RoboSTEM Hardware Labs",
+      "role": "Electronics & Sensor Supply",
+      "info": "Supplying vetted microcontrollers, sensors, and datasheets for junior & senior years.",
+      "location": "Mansoura",
+      "partnerType": "Hardware Partner"
+    },
+    {
+      "id": 9,
+      "name": "Egypt Academic Reference Initiative",
+      "role": "Open Science & Textbook Alliance",
+      "info": "Curating challenging university-level reference problems with step-by-step solutions.",
+      "location": "Cairo",
+      "partnerType": "Educational Initiative"
+    }
+  ]
+}

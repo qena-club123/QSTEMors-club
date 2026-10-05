@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<!-- ============================ BEGINNER GUIDE ============================
+  This is the SUBJECTS CATALOG page (the grid of all subjects).
+  Each subject is a static <a class="subject-card"> inside #subjectsCatalogGrid. To add, edit,
+  or remove a subject, copy/paste/delete one of those card blocks — no JavaScript needed.
+
+  The <script> at the bottom powers the three filters at the top of the page:
+    • Category pills (All / Scientific / Literary / Other)  -> .category-filter-btn
+    • Semester dropdown                                     -> #catalogSemesterSelect
+    • Search box                                            -> #catalogSearchInput
+  It works by reading each card's data-category / data-semester / data-name attributes and
+  toggling the native "hidden" attribute. Cards carry those data-* attributes for this reason.
+======================================================================== -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subjects Catalog — QSTEMora Club</title>
+  
+  <!-- Google Fonts: Poppins & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandDark: '#0A1926',
+            brandDarker: '#07131F',
+            brandCard: '#0E2238',
+            brandGold: '#F5BC6B',
+            brandTeal: '#48A9A6',
+            brandCyan: '#38B2AC',
+          },
+          fontFamily: {
+            sans: ['Poppins', 'Outfit', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-[#071A26] text-white min-h-screen flex flex-col selection:bg-[#F5BC6B] selection:text-[#071A26]">
+
+  <!-- Top Navigation Bar -->
+  <header class="sticky top-0 z-40 bg-[#071A26]/95 backdrop-blur-md border-b border-[#0F2F47] transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo & Brand Title -->
+        <a href="index.html" class="flex items-center gap-3 group">
+          <img src="assets/images/logo.jpg" alt="QSTEMora Club Logo" class="w-11 h-11 rounded-full object-cover shadow-[0_0_12px_rgba(245,188,107,0.4)] border border-[#F5BC6B]/40 group-hover:scale-105 transition-transform duration-300" />
+          <div class="flex items-center font-bold text-xl md:text-2xl tracking-tight">
+            <span class="text-[#38B2AC]">QSTEM</span><span class="text-[#F5BC6B]">ora</span>
+            <span class="text-[#2ECC71] ml-1.5 font-medium text-lg">club</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="index.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B]" data-page="home">
+            Home
+          </a>
+          <a href="subjects.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B] flex items-center gap-1.5" data-page="subjects">
+            <svg class="w-4 h-4 text-[#38B2AC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+            Subjects
+          </a>
+          <a href="about.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B]" data-page="about">
+            About
+          </a>
+          <a href="team.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B]" data-page="team">
+            Team members
+          </a>
+          <a href="partners.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B]" data-page="partners">
+            Partners
+          </a>
+        </nav>
+
+        <!-- Right CTA Button -->
+        <div class="hidden md:flex items-center">
+          <button class="btn-gold btn-join-trigger text-sm uppercase font-bold tracking-wider px-7 py-2.5">
+            JOIN
+          </button>
+        </div>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <div class="flex md:hidden">
+          <button id="mobileMenuBtn" class="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-[#0E293E] focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobileMenu" class="hidden md:hidden bg-[#051520] border-b border-[#0F2F47] px-4 pt-2 pb-6 space-y-3">
+      <a href="index.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="home">Home</a>
+      <a href="subjects.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="subjects">Subjects</a>
+      <a href="about.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="about">About</a>
+      <a href="team.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="team">Team members</a>
+      <a href="partners.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="partners">Partners</a>
+      <div class="pt-2">
+        <button class="btn-gold btn-join-trigger w-full text-center py-2.5">JOIN</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main View Container -->
+  <main class="flex-grow py-12 px-4 max-w-7xl mx-auto w-full">
+    
+    <!-- Top Catalog Bar -->
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+      <div>
+        <div class="letter-spaced-title text-sm mb-1">C U R R I C U L U M &nbsp; M A T R I X</div>
+        <h1 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight letter-spaced-title">
+          S u b j e c t s
+        </h1>
+      </div>
+
+      <!-- Semester Selector -->
+      <div class="relative">
+        <select id="catalogSemesterSelect" class="bg-[#F5BC6B] text-[#071A26] font-bold py-2.5 px-6 pr-10 rounded-full appearance-none cursor-pointer focus:outline-none shadow-md">
+          <option value="all">Semester (All) ▾</option>
+          <option value="1">Semester 1 ▾</option>
+          <option value="2">Semester 2 ▾</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Catalog Body Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Main Subjects Grid (16 Subjects) -->
+      <div class="lg:col-span-9 order-2 lg:order-1">
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-6" id="subjectsCatalogGrid">
+        <!-- Subject card: Geology (scientific) -->
+        <a href="subject.html?s=geology" class="subject-card group" data-category="scientific" data-semesters="1,2" data-name="geology" data-desc="earth systems, plate tectonics, mineralogy, stratigraphy, and geological processes." hidden>
+          <div class="transform group-hover:scale-110 transition-transform duration-300">
+            <svg viewBox="0 0 120 120" class="w-16 h-16 md:w-20 md:h-20 mx-auto">
+        <defs>
+          <linearGradient id="volcanoGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#E74C3C" />
+            <stop offset="40%" stop-color="#D35400" />
+            <stop offset="100%" stop-color="#5D4037" />
+          </linearGradient>
+        </defs>
+        <ellipse cx="60" cy="100" rx="45" ry="12" fill="#3E2723" />
+        <polygon points="60,35 25,95 95,95" fill="url(#volcanoGrad)" />
+        <polygon points="60,35 48,95 72,95" fill="#E67E22" />
+        <path d="M50 35 Q60 15 70 35 Q65 42 60 38 Q55 42 50 35 Z" fill="#F1C40F" />
+        <circle cx="60" cy="20" r="4" fill="#E74C3C" />
+        <circle cx="50" cy="15" r="3" fill="#F39C12" />
+        <circle cx="70" cy="17" r="3.5" fill="#F1C40F" />
+      </svg>
+          </div>
+          <div class="subject-title">Geology</div>
+          <div class="text-xs text-slate-400 mt-1 capitalize">scientific • Sem 1 &amp; 2</div>
+        </a>
+        <!-- Subject card: Math (scientific) -->
+        <a href="subject.html?s=math" class="subject-card group" data-category="scientific" data-semesters="1,2" data-name="math" data-desc="differential and integral calculus, linear algebra, analytical geometry, and probability." hidden>
+          <div class="transform group-hover:scale-110 transition-transform duration-300">
+            <svg viewBox="0 0 120 120" class="w-16 h-16 md:w-20 md:h-20 mx-auto">
+        <rect x="30" y="25" width="60" height="70" rx="8" fill="#ECEFF1" stroke="#37474F" stroke-width="3" />
+        <rect x="38" y="33" width="44" height="18" rx="3" fill="#80CBC4" stroke="#004D40" stroke-width="1.5" />
+        <text x="60" y="47" font-family="monospace" font-weight="bold" font-size="11" fill="#004D40" text-anchor="middle">8 x ∞ = π</text>
+        <circle cx="45" cy="60" r="4" fill="#37474F" />
+        <circle cx="60" cy="60" r="4" fill="#37474F" />
+        <circle cx="75" cy="60" r="4" fill="#FF7043" />
+        <circle cx="45" cy="72" r="4" fill="#37474F" />
+        <circle cx="60" cy="72" r="4" fill="#37474F" />
+        <circle cx="75" cy="72" r="4" fill="#42A5F5" />
+        <circle cx="45" cy="84" r="4" fill="#37474F" />
+        <circle cx="60" cy="84" r="4" fill="#66BB6A" />
+        <circle cx="75" cy="84" r="4" fill="#FFA726" />
+        <text x="18" y="35" font-weight="bold" font-size="14" fill="#F7B731">∑</text>
+        <text x="96" y="40" font-weight="bold" font-size="14" fill="#48DBFB">√</text>
+        <text x="16" y="85" font-weight="bold" font-size="16" fill="#FF6B6B">∫</text>
+      </svg>
+          </div>
+          <div class="subject-title">Math</div>
+          <div class="text-xs text-slate-400 mt-1 capitalize">scientific • Sem 1 &amp; 2</div>
+        </a>
+        <!-- Subject card: Chemistry (scientific) -->
+        <a href="subject.html?s=chemistry" class="subject-card group" data-category="scientific" data-semesters="1,2" data-name="chemistry" data-desc="thermodynamics, chemical kinetics, atomic theory, equilibrium, and electrochemistry." hidden>
+          <div class="transform group-hover:scale-110 transition-transform duration-300">
+            <svg viewBox="0 0 120 120" class="w-16 h-16 md:w-20 md:h-20 mx-auto">
+        <defs>
+          <linearGradient id="chemPotion" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#2ECC71" />
+            <stop offset="100%" stop-color="#16A085" />
+          </linearGradient>
+        </defs>
+        <path d="M54 25 L66 25 L66 45 L90 85 C94 92 88 100 80 100 L40 100 C32 100 26 92 30 85 L54 45 Z" fill="#112233" stroke="#FFF" stroke-width="3" />
+        <path d="M35 88 C45 84 55 92 65 86 C75 80 82 86 85 88 L80 98 L40 98 Z" fill="url(#chemPotion)" />
+        <circle cx="50" cy="75" r="4" fill="#58D68D" opacity="0.8" />
+        <circle cx="65" cy="65" r="5" fill="#58D68D" opacity="0.8" />
+        <path d="M52 25 Q60 5 72 18 Q85 10 92 25 Q95 40 85 45" fill="none" stroke="#2ECC71" stroke-width="3.5" stroke-linecap="round" opacity="0.9" />
+        <circle cx="75" cy="18" r="3" fill="#F1C40F" />
+      </svg>
+          </div>
+          <div class="subject-title">Chemistry</div>
+          <div class="text-xs text-slate-400 mt-1 capitalize">scientific • Sem 1 &amp; 2</div>
+        </a>
+        <!-- Subject card: Biology (scientific) -->
+        <a href="subject.html?s=biology" class="subject-card group" data-category="scientific" data-semesters="1,2" data-name="biology" data-desc="cellular respiration, molecular genetics, biotechnology, and physiological systems." hidden>
+          <div class="transform group-hover:scale-110 transition-transform duration-300">
+            <svg viewBox="0 0 120 120" class="w-16 h-16 md:w-20 md:h-20 mx-auto">
+        <circle cx="60" cy="60" r="48" fill="#162A3E" stroke="#38B2AC" stroke-width="1.5" />
+        <rect x="35" y="90" width="50" height="8" rx="4" fill="#78909C" />
+        <rect x="56" y="70" width="8" height="22" fill="#546E7A" />
+        <path d="M60 70 C75 70 82 55 78 40 L70 42 C74 52 68 62 60 62 Z" fill="#90A4AE" />
+        <rect x="42" y="68" width="30" height="4" fill="#CFD8DC" />
+        <rect x="46" y="32" width="10" height="28" transform="rotate(-25 46 32)" fill="#37474F" rx="2" />
+        <circle cx="88" cy="35" r="7" fill="#E91E63" />
+        <circle cx="98" cy="48" r="5" fill="#9C27B0" />
+      </svg>
+          </div>
+          <div class="subject-title">Biology</div>
+          <div class="text-xs text-slate-400 mt-1 capitalize">scientific • Sem 1 &amp; 2</div>
+        </a>
+        <!-- Subject card: Mechanics (scientific) -->
+        <a href="subject.html?s=mechanics" class="subject-card group" data-category="scientific" data-semesters="1,2" data-name="mechanics" data-desc="newtonian dynamics, 2d/3d statics, rotational equilibrium, and kinematics." hidden>
+          <div class="transform group-hover:scale-110 transition-transform duration-300">
+            <svg viewBox="0 0 120 120" class="w-16 h-16 md:w-20 md:h-20 mx-auto">
+        <line x1="25" y1="22" x2="95" y2="22" stroke="#ECEFF1" stroke-width="4" stroke-linecap="round" />
+        <circle cx="60" cy="42" r="16" fill="#455A64" stroke="#F7B731" stroke-width="3" />
+        <circle cx="60" cy="42" r="5" fill="#ECEFF1" />
+        <line x1="60" y1="22" x2="60" y2="37" stroke="#90A4AE" stroke-width="3" />
+        <line x1="44" y1="42" x2="44" y2="80" stroke="#FFEAA7" stroke-width="2.5" />
+        <line x1="76" y1="42" x2="76" y2="65" stroke="#FFEAA7" stroke-width="2.5" />
+        <rect x="34" y="80" width="20" height="20" rx="3" fill="#E74C3C" stroke="#C0392B" stroke-width="2" />
+        <text x="44" y="94" font-family="sans-serif" font-weight="bold" font-size="10" fill="#FFF" text-anchor="middle">m</text>
+        <path d="M70 65 L70 85 C70 92 82 92 82 85 L82 65" fill="none" stroke="#3498DB" stroke-width="6" stroke-linecap="round" />
+      </svg>
+          </div>
+          <div class="subject-title">Mechanics</div>
+          <div class="text-xs text-slate-400 mt-1 capitalize">scientific • Sem 1 &amp; 2</div>
+        </a>
+        <!-- Subject card: Physics (scientific) -->
+        <a href="subject.html?s=physics" class="subject-card group" data-category="scientific" data-semesters="1,2" data-name="physics" data-desc="electromagnetism, wave optics, modern quantum physics, and electric circuits." hidden>
+          <div class="transform group-hover:scale-110 transition-transform duration-300">
+            <svg viewBox="0 0 120 120" class="w-16 h-16 md:w-20 md:h-20 mx-auto">
+        <circle cx="60" cy="60" r="48" fill="#1A2D42" stroke="#F5A623" stroke-width="1.5" />
+        <path d="M35 55 C25 40 35 25 48 28 C52 18 70 18 75 28 C88 24 95 38 85 55 C95 65 85 80 78 80 C60 85 45 82 35 55 Z" fill="#ECEFF1" />
+        <ellipse cx="60" cy="58" rx="18" ry="20" fill="#FFE0B2" />
+        <ellipse cx="60" cy="60" rx="42" ry="14" fill="none" stroke="#48DBFB" stroke-width="1.5" transform="rotate(30 60 60)" stroke-dasharray="3,3" />
+        <ellipse cx="60" cy="60" rx="42" ry="14" fill="none" stroke="#FF9F43" stroke-width="1.5" transform="rotate(-30 60 60)" stroke-dasharray="3,3" />
+      </svg>
+          </div>
+          <div class="subject-title">Physics</div>
+          <div class="text-xs text-slate-400 mt-1 capitalize">scientific • Sem 1 &amp; 2</div>
+        </a>
+        <!-- Subject card: CS (scientific) -->
+        <a href="subject.html?s=cs" class="subject-card group" data-category="scientific" data-semesters="1,2" data-name="cs" data-desc="algorithms, python programming, data structures, and computational thinking." hidden>
+          <div class="transform group-hover:scale-110 transition-transform duration-300">
+            <svg viewBox="0 0 120 120" class="w-16 h-16 md:w-20 md:h-20 mx-auto">
+        <circle cx="60" cy="60" r="42" fill="none" stroke="#00ADB5" stroke-width="4" stroke-dasharray="14,8" />
+        <rect x="32" y="32" width="56" height="40" rx="5" fill="#1A1A2E" stroke="#00FFF5" stroke-width="2.5" />
+        <rect x="56" y="72" width="8" height="12" fill="#393E46" />
+        <rect x="44" y="84" width="32" height="4" rx="2" fill="#00ADB5" />
+        <text x="38" y="46" font-family="monospace" font-size="8" fill="#00FFF5">&gt; python</text>
+        <text x="38" y="56" font-family="monospace" font-size="8" fill="#39FF14">&gt; def()</text>
+        <text x="44" y="66" font-family="monospace" font-size="8" fill="#F7B731">return ✨</text>
+      </svg>
+          </div>
+          <div class="subject-title">CS</div>
+          <div class="text-xs text-slate-400 mt-1 capitalize">scientific • Sem 1 &amp; 2</div>
+        </a>
+        <!-- Subject card: Française (literary) -->
+        <a href="subject.html?s=francaise" class="subject-card group" data-category="literary" data-semesters="1,2" data-name="française" data-desc="french grammar rules, delf practice, and reading comprehension." hidden>
+          <div class="transform group-hover:scale-110 transition-transform duration-300">
+            <svg viewBox="0 0 120 120" class="w-16 h-16 md:w-20 md:h-20 mx-auto">
+        <ellipse cx="60" cy="65" rx="16" ry="38" fill="#E0A96D" stroke="#8C531B" stroke-width="2" transform="rotate(15 60 65)" />
+        <line x1="52" y1="45" x2="62" y2="48" stroke="#8C531B" stroke-width="2" />
+        <line x1="55" y1="62" x2="65" y2="65" stroke="#8C531B" stroke-width="2" />
+        <path d="M40 38 C40 22 75 20 80 34 C82 38 40 42 40 38 Z" fill="#2C3E50" />
+        <g transform="translate(82, 50)">
+          <rect x="0" y="0" width="2" height="35" fill="#7F8C8D" />
+          <rect x="2" y="0" width="6" height="14" fill="#002395" />
+          <rect x="8" y="0" width="6" height="14" fill="#FFFFFF" />
+          <rect x="14" y="0" width="6" height="14" fill="#ED2939" />
+        </g>
+      </svg>
+          </div>
+          <div class="subject-title">Française</div>
+          <div class="text-xs text-slate-400 mt-1 capitalize">literary • Sem 1 &amp; 2</div>
+        </a>
+        <!-- Subject card: Deutsch (literary) -->
+        <a href="subject.html?s=deutsch" class="subject-card group" data-category="literary" data-semesters="1,2" data-name="deutsch" data-desc="german grammar cases, vocabulary building, and goethe a1-b1 preparation." hidden>
+          <div class="transform group-hover:scale-110 transition-transform duration-300">
+            <svg viewBox="0 0 120 120" class="w-16 h-16 md:w-20 md:h-20 mx-auto">
+        <ellipse cx="50" cy="65" rx="18" ry="14" fill="#FFFFFF" stroke="#2C3E50" stroke-width="2" />
+        <ellipse cx="60" cy="70" rx="12" ry="10" fill="#FFFFFF" stroke="#2C3E50" stroke-width="2" />
+        <g transform="translate(76, 35)">
+          <rect x="0" y="0" width="3" height="55" fill="#7F8C8D" rx="1" />
+          <rect x="3" y="0" width="28" height="7" fill="#000000" />
+          <rect x="3" y="7" width="28" height="7" fill="#DD0000" />
+          <rect x="3" y="14" width="28" height="7" fill="#FFCC00" />
+        </g>
+      </svg>
+          </div>
+          <div class="subject-title">Deutsch</div>
+          <div class="text-xs text-slate-400 mt-1 capitalize">literary • Sem 1 &amp; 2</div>
+        </a>
+        <!-- Subject card: Arabic (literary) -->
+        <a href="subject.html?s=arabic" class="subject-card group" data-category="literary" data-semesters="1,2" data-name="arabic" data-desc="classical arabic grammar (nahw &amp; sarf), rhetoric (balagha), and literature." hidden>
+          <div class="transform group-hover:scale-110 transition-transform duration-300">
+            <svg viewBox="0 0 120 120" class="w-16 h-16 md:w-20 md:h-20 mx-auto">
+        <circle cx="60" cy="60" r="48" fill="#112233" stroke="#D4AF37" stroke-width="1.5" />
+        <path d="M30 50 C30 25 90 25 90 50 L96 95 L84 95 L75 75 L45 75 L36 95 L24 95 Z" fill="#FFFFFF" stroke="#ECEFF1" stroke-width="1.5" />
+        <ellipse cx="60" cy="40" rx="26" ry="6" fill="none" stroke="#212121" stroke-width="4.5" />
+        <ellipse cx="60" cy="58" rx="15" ry="16" fill="#F5CBA7" />
+        <path d="M52 66 Q60 62 68 66 Q64 74 60 74 Q56 74 52 66 Z" fill="#424242" />
+      </svg>
+          </div>
+          <div class="subject-title">Arabic</div>
+          <div class="text-xs text-slate-400 mt-1 capitalize">literary • Sem 1 &amp; 2</div>
+        </a>
+        <!-- Subject card: Religion (literary) -->
+        <a href="subject.html?s=religion" class="subject-card group" data-category="literary" data-semesters="1,2" data-name="religion" data-desc="islamic and christian religious studies, spiritual values, and moral ethics." hidden>
+          <div class="transform group-hover:scale-110 transition-transform duration-300">
+            <svg viewBox="0 0 120 120" class="w-16 h-16 md:w-20 md:h-20 mx-auto">
+        <circle cx="60" cy="60" r="48" fill="#0A2F1D" stroke="#D4AF37" stroke-width="1.5" />
+        <path d="M35 90 L35 55 Q35 30 60 20 Q85 30 85 55 L85 90 Z" fill="#134E2E" stroke="#D4AF37" stroke-width="2" />
+        <path d="M64 28 A 8 8 0 0 0 54 40 A 10 10 0 1 1 64 28 Z" fill="#F7B731" />
+        <polygon points="68,36 70,40 74,40 71,43 72,47 68,44 64,47 65,43 62,40 66,40" fill="#F7B731" />
+      </svg>
+          </div>
+          <div class="subject-title">Religion</div>
+          <div class="text-xs text-slate-400 mt-1 capitalize">literary • Sem 1 &amp; 2</div>
+        </a>
+        <!-- Subject card: Social Studies (literary) -->
+        <a href="subject.html?s=socialstudies" class="subject-card group" data-category="literary" data-semesters="1,2" data-name="social studies" data-desc="egyptian modern history, geography of natural resources, and civics." hidden>
+          <div class="transform group-hover:scale-110 transition-transform duration-300">
+            <svg viewBox="0 0 120 120" class="w-16 h-16 md:w-20 md:h-20 mx-auto">
+        <circle cx="48" cy="55" r="22" fill="#2980B9" stroke="#ECF0F1" stroke-width="2" />
+        <path d="M36 50 Q44 42 54 48 Q60 56 50 64 Q40 68 34 60 Z" fill="#27AE60" />
+        <path d="M48 30 A 25 25 0 0 1 48 80" fill="none" stroke="#F39C12" stroke-width="3" />
+        <path d="M65 40 C75 36 90 44 95 40 L90 85 C85 90 70 82 62 86 Z" fill="#F5DEB3" stroke="#D2B48C" stroke-width="2" />
+      </svg>
+          </div>
+          <div class="subject-title">Social Studies</div>
+          <div class="text-xs text-slate-400 mt-1 capitalize">literary • Sem 1 &amp; 2</div>
+        </a>
+        <!-- Subject card: English (literary) -->
+        <a href="subject.html?s=english" class="subject-card group" data-category="literary" data-semesters="1,2" data-name="english" data-desc="academic writing, scientific reading comprehension, critical analysis, and vocabulary." hidden>
+          <div class="transform group-hover:scale-110 transition-transform duration-300">
+            <svg viewBox="0 0 120 120" class="w-16 h-16 md:w-20 md:h-20 mx-auto">
+        <circle cx="60" cy="60" r="48" fill="#1A2433" stroke="#E74C3C" stroke-width="1.5" />
+        <rect x="30" y="32" width="60" height="56" rx="6" fill="#FFFFFF" stroke="#333" stroke-width="2" />
+        <path d="M30 45 L60 65 L90 45" fill="none" stroke="#C0392B" stroke-width="3" stroke-linecap="round" />
+        <text x="60" y="75" font-family="'Poppins', sans-serif" font-weight="900" font-size="16" fill="#1E3A8A" text-anchor="middle">EN</text>
+        <circle cx="95" cy="35" r="10" fill="#E74C3C" stroke="#FFF" stroke-width="2" />
+        <text x="95" y="39" font-family="sans-serif" font-weight="bold" font-size="11" fill="#FFF" text-anchor="middle">A</text>
+      </svg>
+          </div>
+          <div class="subject-title">English</div>
+          <div class="text-xs text-slate-400 mt-1 capitalize">literary • Sem 1 &amp; 2</div>
+        </a>
+        <!-- Subject card: Capstone (other) -->
+        <a href="subject.html?s=capstone" class="subject-card group" data-category="other" data-semesters="1,2" data-name="capstone" data-desc="grand challenges of egypt design process, engineering design journal, and prototyping." hidden>
+          <div class="transform group-hover:scale-110 transition-transform duration-300">
+            <svg viewBox="0 0 120 120" class="w-16 h-16 md:w-20 md:h-20 mx-auto">
+        <path d="M50 35 C50 25 70 25 70 35 C70 43 64 47 64 54 L56 54 C56 47 50 43 50 35 Z" fill="#F1C40F" stroke="#F39C12" stroke-width="2" />
+        <rect x="56" y="55" width="8" height="4" fill="#BDC3C7" />
+        <circle cx="40" cy="80" r="10" fill="#1E3A8A" />
+        <path d="M25 106 C25 93 55 93 55 106 Z" fill="#1E3A8A" />
+        <circle cx="80" cy="80" r="10" fill="#0D9488" />
+        <path d="M65 106 C65 93 95 93 95 106 Z" fill="#0D9488" />
+      </svg>
+          </div>
+          <div class="subject-title">Capstone</div>
+          <div class="text-xs text-slate-400 mt-1 capitalize">other • Sem 1 &amp; 2</div>
+        </a>
+        <!-- Subject card: Opportunities (other) -->
+        <a href="subject.html?s=opportunities" class="subject-card group" data-category="other" data-semesters="1,2" data-name="opportunities" data-desc="isef, science olympiads, scholarships, quad charts, and competition guidelines." hidden>
+          <div class="transform group-hover:scale-110 transition-transform duration-300">
+            <svg viewBox="0 0 120 120" class="w-16 h-16 md:w-20 md:h-20 mx-auto">
+        <circle cx="60" cy="60" r="44" fill="#0E2439" stroke="#E74C3C" stroke-width="2" />
+        <circle cx="60" cy="60" r="30" fill="none" stroke="#E74C3C" stroke-width="2" stroke-dasharray="4,4" />
+        <circle cx="60" cy="60" r="15" fill="#E74C3C" />
+        <circle cx="60" cy="60" r="6" fill="#FFF" />
+        <path d="M60 40 L60 15 L52 25 M60 15 L68 25" stroke="#FF5252" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M60 80 L60 105 L52 95 M60 105 L68 95" stroke="#FF5252" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M40 60 L15 60 L25 52 M15 60 L25 68" stroke="#FF5252" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M80 60 L105 60 L95 52 M105 60 L95 68" stroke="#FF5252" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+          </div>
+          <div class="subject-title">Opportunities</div>
+          <div class="text-xs text-slate-400 mt-1 capitalize">other • Sem 1 &amp; 2</div>
+        </a>
+        <!-- Subject card: Arduino (other) -->
+        <a href="subject.html?s=arduino" class="subject-card group" data-category="other" data-semesters="1,2" data-name="arduino" data-desc="embedded c/c++, sensor interfacing, pwm control, circuit wiring, and robotics." hidden>
+          <div class="transform group-hover:scale-110 transition-transform duration-300">
+            <svg viewBox="0 0 120 120" class="w-16 h-16 md:w-20 md:h-20 mx-auto">
+        <rect x="22" y="30" width="76" height="60" rx="6" fill="#00979C" stroke="#006468" stroke-width="2.5" />
+        <rect x="16" y="38" width="10" height="14" fill="#B0BEC5" stroke="#37474F" stroke-width="1" />
+        <rect x="16" y="65" width="12" height="16" fill="#263238" />
+        <rect x="48" y="55" width="28" height="16" rx="2" fill="#212121" />
+        <circle cx="48" cy="42" r="6" fill="none" stroke="#FFF" stroke-width="2" />
+        <circle cx="60" cy="42" r="6" fill="none" stroke="#FFF" stroke-width="2" />
+        <text x="48" y="44" font-weight="bold" font-size="8" fill="#FFF" text-anchor="middle">-</text>
+        <text x="60" y="44" font-weight="bold" font-size="8" fill="#FFF" text-anchor="middle">+</text>
+      </svg>
+          </div>
+          <div class="subject-title">Arduino</div>
+          <div class="text-xs text-slate-400 mt-1 capitalize">other • Sem 1 &amp; 2</div>
+        </a>
+      </div>
+
+        <!-- Empty State Message -->
+        <div id="subjectsEmptyNotice" class="hidden bg-[#0C2337] rounded-2xl p-12 text-center text-slate-400 border border-[#163E60]">
+          <div class="text-4xl mb-3">🔍</div>
+          <p class="text-base text-white font-bold">No subjects match your selected filters</p>
+          <p class="text-xs text-slate-400 mt-1">Try resetting the category filter or searching with a different keyword.</p>
+        </div>
+      </div>
+
+      <!-- Categories Filter Sidebar / Mobile Chips -->
+      <div class="lg:col-span-3 space-y-6 order-1 lg:order-2 w-full">
+        
+        <!-- Filter Card -->
+        <div class="categories-box">
+          <h3 class="text-lg font-bold text-white mb-4 text-center letter-spaced-title">C a t e g o r i e s</h3>
+          <div class="space-y-3">
+            <div class="category-row">
+              <span class="text-slate-200 font-medium text-sm">All Subjects</span>
+              <button class="filter-pill category-filter-btn active" data-category="all">All</button>
+            </div>
+            <div class="category-row">
+              <span class="text-slate-200 font-medium text-sm">Scientific</span>
+              <button class="filter-pill category-filter-btn" data-category="scientific">L.Os</button>
+            </div>
+            <div class="category-row">
+              <span class="text-slate-200 font-medium text-sm">Literary</span>
+              <button class="filter-pill category-filter-btn" data-category="literary">L.Os</button>
+            </div>
+            <div class="category-row">
+              <span class="text-slate-200 font-medium text-sm">Other Stuff</span>
+              <button class="filter-pill category-filter-btn" data-category="other">Guides</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="bg-[#0C2337] border border-[#163E60] rounded-2xl p-4">
+          <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Search Curriculum</label>
+          <div class="relative">
+            <input type="text" id="catalogSearchInput" placeholder="e.g. Physics, Chemistry, CS, Arabic..." class="w-full bg-[#071A26] border border-[#163E60] rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[#38B2AC]">
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#051520] border-t border-[#0F2F47] py-8 px-4 mt-auto">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+      
+      <!-- Left Copyright & School Info -->
+      <div class="flex items-center gap-2 text-slate-400 text-sm font-medium">
+        <svg class="w-5 h-5 text-[#F5BC6B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" stroke-width="2"></circle>
+          <path d="M14.5 9.5a3.5 3.5 0 100 5" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+        <span>Copyright © QSTEMora Club (QSC) • Senior '28 STEM Qena School</span>
+      </div>
+
+      <!-- Right Contact & Social Round Action Buttons -->
+      <div class="flex items-center gap-3 md:gap-4 text-white">
+        <!-- Location (STEM Qena School) -->
+        <a href="https://www.google.com/maps/@26.24426,32.7407129,16z?authuser=0&amp;entry=ttu&amp;g_ep=EgoyMDI2MDkyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" title="STEM Qena School Location" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#F5BC6B] hover:text-[#071A26] hover:border-[#F5BC6B] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+        </a>
+
+        <!-- Phone Contact -->
+        <a href="tel:01123389108" id="footerPhoneLink" title="Call QSC Mentors" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#38B2AC] hover:text-[#071A26] hover:border-[#38B2AC] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+        </a>
+
+        <!-- Email Contact -->
+        <a href="mailto:qenastudentclubs@gmail.com" id="footerEmailLink" title="Email QSC" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#F5BC6B] hover:text-[#071A26] hover:border-[#F5BC6B] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+        </a>
+
+        <!-- WhatsApp Community Trigger -->
+        <button class="btn-join-trigger w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-[#2ECC71] hover:bg-[#2ECC71] hover:text-[#071A26] hover:border-[#2ECC71] transition-all duration-300 cursor-pointer" title="Join WhatsApp Community">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+          </svg>
+        </button>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/qena_student_club?utm_source=qr" target="_blank" rel="noopener noreferrer" title="Follow us on Instagram" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#E1306C] hover:text-white hover:border-[#E1306C] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </a>
+
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/share/1B1s3pP32Y/" target="_blank" rel="noopener noreferrer" title="Follow us on Facebook" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#1877F2] hover:text-white hover:border-[#1877F2] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Container -->
+  <div id="modalBackdrop" class="fixed inset-0 z-50 modal-overlay hidden items-center justify-center p-4 overflow-y-auto">
+    <div id="modalContainer" class="modal-content rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto text-left relative transform transition-all"></div>
+  </div>
+
+  <!-- Static catalog filter: shows/hides the subject cards above (no data fetch) -->
+  <script>
+    (function () {
+      var cards = [].slice.call(document.querySelectorAll('#subjectsCatalogGrid .subject-card'));
+      var empty = document.getElementById('subjectsEmptyNotice');
+      var sem = document.getElementById('catalogSemesterSelect');
+      var search = document.getElementById('catalogSearchInput');
+      var cat = 'all';
+      function apply() {
+        var q = (search && search.value || '').trim().toLowerCase();
+        var s = sem ? sem.value : 'all';
+        var shown = 0;
+        cards.forEach(function (c) {
+          var okCat = cat === 'all' || c.dataset.category === cat;
+          var okSem = s === 'all' || (c.dataset.semesters || '').split(',').indexOf(s) > -1;
+          var okQ = !q || (c.dataset.name || '').indexOf(q) > -1 || (c.dataset.desc || '').indexOf(q) > -1;
+          var ok = okCat && okSem && okQ;
+          c.hidden = !ok; if (ok) shown++;
+        });
+        if (empty) empty.classList.toggle('hidden', shown > 0);
+      }
+      document.querySelectorAll('.category-filter-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          document.querySelectorAll('.category-filter-btn').forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active'); cat = btn.getAttribute('data-category'); apply();
+        });
+      });
+      if (sem) sem.addEventListener('change', apply);
+      if (search) search.addEventListener('input', apply);
+      apply();
+    })();
+  </script>
+
+  <!-- Application Scripts -->
+  <script src="assets/assets.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
+

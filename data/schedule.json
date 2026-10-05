@@ -1,0 +1,49 @@
+{
+  "notice": "This schedule is strictly for STEM Qena School students. All sessions take place in-person at the School Main Hall / Study Labs.",
+  "sessions": [
+    {
+      "id": "ses-1",
+      "day": "Tuesday",
+      "time": "15:30 - 17:00",
+      "location": "School Main Hall (STEM Qena)",
+      "subject": "Physics",
+      "topic": "Electric Flux & Gauss's Law Applications (PH.1.01)",
+      "host": "Ziad Ahmed (Senior '26 Physics Curator)",
+      "target": "Grade 1 STEM Qena Students",
+      "status": "upcoming"
+    },
+    {
+      "id": "ses-2",
+      "day": "Wednesday",
+      "time": "16:00 - 17:30",
+      "location": "School Study Hall / Lab 2",
+      "subject": "Chemistry",
+      "topic": "Reaction Kinetics & Rate Laws Problem Solving (CH.1.04)",
+      "host": "Mohanad Naeem (Academic Head)",
+      "target": "Grade 1 STEM Qena Students",
+      "status": "upcoming"
+    },
+    {
+      "id": "ses-3",
+      "day": "Thursday",
+      "time": "15:30 - 17:00",
+      "location": "School Main Hall (STEM Qena)",
+      "subject": "Math",
+      "topic": "Differential Calculus & Related Rates (MA.1.02)",
+      "host": "Senior '26 Math Leads",
+      "target": "Grade 1 STEM Qena Students",
+      "status": "upcoming"
+    },
+    {
+      "id": "ses-4",
+      "day": "Saturday",
+      "time": "14:00 - 15:30",
+      "location": "School Multi-Purpose Hall",
+      "subject": "CS & Arduino",
+      "topic": "Python OOP Logic & Sensor Interfacing (CS.1.01 & ARD.1.01)",
+      "host": "Mostafa Tarek (Tech Lead)",
+      "target": "Grade 1 STEM Qena Students",
+      "status": "upcoming"
+    }
+  ]
+}

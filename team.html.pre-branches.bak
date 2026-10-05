@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<!-- ============================ BEGINNER GUIDE ============================
+  This is the TEAM page. Each person is a static <div class="member-card"> inside #teamGrid.
+  A member's photo is the <img class="team-photo"> inside their card; the picture files live in
+  the team_images/ folder. To change someone's photo, drop their image into team_images/ and
+  update that member's <img src="..."> (each card has a comment naming the person).
+  Clicking a card opens a pop-up; the details shown come from the card's data-* attributes
+  (data-name, data-role, data-bio, data-governorate). The pop-up logic is in assets/app.js.
+======================================================================== -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Members — QSTEMora Club (QSC)</title>
+  
+  <!-- Google Fonts: Poppins & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandDark: '#0A1926',
+            brandDarker: '#07131F',
+            brandCard: '#0E2238',
+            brandGold: '#F5BC6B',
+            brandTeal: '#48A9A6',
+            brandCyan: '#38B2AC',
+          },
+          fontFamily: {
+            sans: ['Poppins', 'Outfit', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-[#071A26] text-white min-h-screen flex flex-col selection:bg-[#F5BC6B] selection:text-[#071A26]">
+
+  <!-- Top Navigation Bar -->
+  <header class="sticky top-0 z-40 bg-[#071A26]/95 backdrop-blur-md border-b border-[#0F2F47] transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo & Brand Title -->
+        <a href="index.html" class="flex items-center gap-3 group">
+          <img src="assets/images/logo.jpg" alt="QSTEMora Club Logo" class="w-11 h-11 rounded-full object-cover shadow-[0_0_12px_rgba(245,188,107,0.4)] border border-[#F5BC6B]/40 group-hover:scale-105 transition-transform duration-300" />
+          <div class="flex items-center font-bold text-xl md:text-2xl tracking-tight">
+            <span class="text-[#38B2AC]">QSTEM</span><span class="text-[#F5BC6B]">ora</span>
+            <span class="text-[#2ECC71] ml-1.5 font-medium text-lg">club</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="index.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B]" data-page="home">
+            Home
+          </a>
+          <a href="subjects.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B] flex items-center gap-1.5" data-page="subjects">
+            <svg class="w-4 h-4 text-[#38B2AC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+            Subjects
+          </a>
+          <a href="about.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B]" data-page="about">
+            About
+          </a>
+          <a href="team.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B]" data-page="team">
+            Team members
+          </a>
+          <a href="partners.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B]" data-page="partners">
+            Partners
+          </a>
+        </nav>
+
+        <!-- Right CTA Button -->
+        <div class="hidden md:flex items-center">
+          <button class="btn-gold btn-join-trigger text-sm uppercase font-bold tracking-wider px-7 py-2.5">
+            JOIN
+          </button>
+        </div>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <div class="flex md:hidden">
+          <button id="mobileMenuBtn" class="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-[#0E293E] focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobileMenu" class="hidden md:hidden bg-[#051520] border-b border-[#0F2F47] px-4 pt-2 pb-6 space-y-3">
+      <a href="index.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="home">Home</a>
+      <a href="subjects.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="subjects">Subjects</a>
+      <a href="about.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="about">About</a>
+      <a href="team.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="team">Team members</a>
+      <a href="partners.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="partners">Partners</a>
+      <div class="pt-2">
+        <button class="btn-gold btn-join-trigger w-full text-center py-2.5">JOIN</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main View Container -->
+  <main class="flex-grow py-12 px-4 max-w-7xl mx-auto w-full text-center">
+    
+    <div class="mb-12">
+      <div class="letter-spaced-title text-base mb-2">O u r &nbsp; T e a m</div>
+      <h1 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight">Meet Our Team Members</h1>
+      <p class="text-slate-400 max-w-2xl mx-auto mt-3 text-sm md:text-base">
+        Curated by Senior '26 founders, academic heads, and verified by expert teachers across Qena. Click any card to read their profile and mentor bio.
+      </p>
+    </div>
+
+    <!-- Team Roster Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-left" id="teamGrid">
+        <!-- Team member: Youssef Said — Founder &amp; Executive Director -->
+        <div class="member-card cursor-pointer group" onclick="App.openMemberStatic(this)" data-tag="Founder" data-name="Youssef Said" data-role="Founder &amp; Executive Director" data-bio="STEM Qena Senior '26. Visionary behind QSC and the QSTEMora digital learning platform." data-governorate="Qena">
+          <div class="image-wrapper">
+            <!-- 👤 TEAM PHOTO for Youssef Said: to change this person's picture, put their image file in the team_images/ folder and replace the src below. -->
+            <img src="team_images/5559199537596042.jpg" alt="Youssef Said" class="team-photo w-full h-44 object-cover rounded-lg" loading="lazy">
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Youssef Said</div>
+            <div class="member-info">Founder &amp; Executive Director</div>
+          </div>
+        </div>
+        <!-- Team member: Mohanad Naeem — Co-Founder &amp; Academic Head -->
+        <div class="member-card cursor-pointer group" onclick="App.openMemberStatic(this)" data-tag="Founder" data-name="Mohanad Naeem" data-role="Co-Founder &amp; Academic Head" data-bio="STEM Qena Senior '26. Architect of QSC curriculum maps, reference banks, and faculty liaison." data-governorate="Qena">
+          <div class="image-wrapper">
+            <!-- 👤 TEAM PHOTO for Mohanad Naeem: to change this person's picture, put their image file in the team_images/ folder and replace the src below. -->
+            <img src="team_images/5559199537596042.jpg" alt="Mohanad Naeem" class="team-photo w-full h-44 object-cover rounded-lg" loading="lazy">
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Mohanad Naeem</div>
+            <div class="member-info">Co-Founder &amp; Academic Head</div>
+          </div>
+        </div>
+        <!-- Team member: Ziad Ahmed — Lead Physics &amp; Mechanics Curator -->
+        <div class="member-card cursor-pointer group" onclick="App.openMemberStatic(this)" data-tag="Academic Lead" data-name="Ziad Ahmed" data-role="Lead Physics &amp; Mechanics Curator" data-bio="National Physics Olympiad finalist. Specializes in advanced Newtonian mechanics and kinematics." data-governorate="Cairo">
+          <div class="image-wrapper">
+            <!-- 👤 TEAM PHOTO for Ziad Ahmed: to change this person's picture, put their image file in the team_images/ folder and replace the src below. -->
+            <img src="team_images/5559199537596042.jpg" alt="Ziad Ahmed" class="team-photo w-full h-44 object-cover rounded-lg" loading="lazy">
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Ziad Ahmed</div>
+            <div class="member-info">Lead Physics &amp; Mechanics Curator</div>
+          </div>
+        </div>
+        <!-- Team member: Kareem Mahmoud — Chemistry &amp; Biology Specialist -->
+        <div class="member-card cursor-pointer group" onclick="App.openMemberStatic(this)" data-tag="Academic Lead" data-name="Kareem Mahmoud" data-role="Chemistry &amp; Biology Specialist" data-bio="Senior '26 researcher. Authored 30+ comprehensive STEM chemistry problem sheets." data-governorate="Alexandria">
+          <div class="image-wrapper">
+            <!-- 👤 TEAM PHOTO for Kareem Mahmoud: to change this person's picture, put their image file in the team_images/ folder and replace the src below. -->
+            <img src="team_images/5559199537596042.jpg" alt="Kareem Mahmoud" class="team-photo w-full h-44 object-cover rounded-lg" loading="lazy">
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Kareem Mahmoud</div>
+            <div class="member-info">Chemistry &amp; Biology Specialist</div>
+          </div>
+        </div>
+        <!-- Team member: Omar Hassan — Head of Presentation &amp; Design -->
+        <div class="member-card cursor-pointer group" onclick="App.openMemberStatic(this)" data-tag="Design Lead" data-name="Omar Hassan" data-role="Head of Presentation &amp; Design" data-bio="Master presentation designer crafting visual slides and diagrams for high-level comprehension." data-governorate="Assiut">
+          <div class="image-wrapper">
+            <!-- 👤 TEAM PHOTO for Omar Hassan: to change this person's picture, put their image file in the team_images/ folder and replace the src below. -->
+            <img src="team_images/5559199537596042.jpg" alt="Omar Hassan" class="team-photo w-full h-44 object-cover rounded-lg" loading="lazy">
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Omar Hassan</div>
+            <div class="member-info">Head of Presentation &amp; Design</div>
+          </div>
+        </div>
+        <!-- Team member: Mostafa Tarek — CS &amp; Arduino Hardware Lead -->
+        <div class="member-card cursor-pointer group" onclick="App.openMemberStatic(this)" data-tag="Tech Lead" data-name="Mostafa Tarek" data-role="CS &amp; Arduino Hardware Lead" data-bio="Robotics and IoT developer guiding STEM students through Capstone electronics." data-governorate="Giza">
+          <div class="image-wrapper">
+            <!-- 👤 TEAM PHOTO for Mostafa Tarek: to change this person's picture, put their image file in the team_images/ folder and replace the src below. -->
+            <img src="team_images/5559199537596042.jpg" alt="Mostafa Tarek" class="team-photo w-full h-44 object-cover rounded-lg" loading="lazy">
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Mostafa Tarek</div>
+            <div class="member-info">CS &amp; Arduino Hardware Lead</div>
+          </div>
+        </div>
+        <!-- Team member: Ahmed Khaled — Languages &amp; Humanities Lead -->
+        <div class="member-card cursor-pointer group" onclick="App.openMemberStatic(this)" data-tag="Humanities Lead" data-name="Ahmed Khaled" data-role="Languages &amp; Humanities Lead" data-bio="Trilingual scholar coordinating French, German, and classical Arabic modules." data-governorate="Mansoura">
+          <div class="image-wrapper">
+            <!-- 👤 TEAM PHOTO for Ahmed Khaled: to change this person's picture, put their image file in the team_images/ folder and replace the src below. -->
+            <img src="team_images/5559199537596042.jpg" alt="Ahmed Khaled" class="team-photo w-full h-44 object-cover rounded-lg" loading="lazy">
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Ahmed Khaled</div>
+            <div class="member-info">Languages &amp; Humanities Lead</div>
+          </div>
+        </div>
+        <!-- Team member: Mahmoud Samy — Capstone Mentor &amp; ISEF Advisor -->
+        <div class="member-card cursor-pointer group" onclick="App.openMemberStatic(this)" data-tag="Research Mentor" data-name="Mahmoud Samy" data-role="Capstone Mentor &amp; ISEF Advisor" data-bio="Guided 12+ student teams to ISEF regional awards and Capstone grand honors." data-governorate="Sohag">
+          <div class="image-wrapper">
+            <!-- 👤 TEAM PHOTO for Mahmoud Samy: to change this person's picture, put their image file in the team_images/ folder and replace the src below. -->
+            <img src="team_images/5559199537596042.jpg" alt="Mahmoud Samy" class="team-photo w-full h-44 object-cover rounded-lg" loading="lazy">
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Mahmoud Samy</div>
+            <div class="member-info">Capstone Mentor &amp; ISEF Advisor</div>
+          </div>
+        </div>
+        <!-- Team member: Dr. Adel Abdelrahman — Senior Academic Advisor &amp; Teacher -->
+        <div class="member-card cursor-pointer group" onclick="App.openMemberStatic(this)" data-tag="Faculty Advisor" data-name="Dr. Adel Abdelrahman" data-role="Senior Academic Advisor &amp; Teacher" data-bio="Veteran STEM Qena physics educator reviewing and approving all curriculum materials." data-governorate="Qena">
+          <div class="image-wrapper">
+            <!-- 👤 TEAM PHOTO for Dr. Adel Abdelrahman: to change this person's picture, put their image file in the team_images/ folder and replace the src below. -->
+            <img src="team_images/5559199537596042.jpg" alt="Dr. Adel Abdelrahman" class="team-photo w-full h-44 object-cover rounded-lg" loading="lazy">
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Dr. Adel Abdelrahman</div>
+            <div class="member-info">Senior Academic Advisor &amp; Teacher</div>
+          </div>
+        </div>
+      </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#051520] border-t border-[#0F2F47] py-8 px-4 mt-auto">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+      
+      <!-- Left Copyright & School Info -->
+      <div class="flex items-center gap-2 text-slate-400 text-sm font-medium">
+        <svg class="w-5 h-5 text-[#F5BC6B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" stroke-width="2"></circle>
+          <path d="M14.5 9.5a3.5 3.5 0 100 5" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+        <span>Copyright © QSTEMora Club (QSC) • Senior '26 STEM Qena School</span>
+      </div>
+
+      <!-- Right Contact & Social Round Action Buttons -->
+      <div class="flex items-center gap-3 md:gap-4 text-white">
+        <!-- Location (STEM Qena School) -->
+        <a href="https://maps.google.com/?q=STEM+Qena+School" target="_blank" rel="noopener noreferrer" title="STEM Qena School Location" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#F5BC6B] hover:text-[#071A26] hover:border-[#F5BC6B] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+        </a>
+
+        <!-- Phone Contact -->
+        <a href="tel:+201000000000" id="footerPhoneLink" title="Call QSC Mentors" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#38B2AC] hover:text-[#071A26] hover:border-[#38B2AC] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+        </a>
+
+        <!-- Email Contact -->
+        <a href="mailto:info@qstemora.club" id="footerEmailLink" title="Email QSC" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#F5BC6B] hover:text-[#071A26] hover:border-[#F5BC6B] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+        </a>
+
+        <!-- WhatsApp Community Trigger -->
+        <button class="btn-join-trigger w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-[#2ECC71] hover:bg-[#2ECC71] hover:text-[#071A26] hover:border-[#2ECC71] transition-all duration-300 cursor-pointer" title="Join WhatsApp Community">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+          </svg>
+        </button>
+
+        <!-- Instagram -->
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" title="Follow us on Instagram" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#E1306C] hover:text-white hover:border-[#E1306C] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </a>
+
+        <!-- Facebook -->
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" title="Follow us on Facebook" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#1877F2] hover:text-white hover:border-[#1877F2] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Container -->
+  <div id="modalBackdrop" class="fixed inset-0 z-50 modal-overlay hidden items-center justify-center p-4 overflow-y-auto">
+    <div id="modalContainer" class="modal-content rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto text-left relative transform transition-all"></div>
+  </div>
+
+  <!-- Application Scripts -->
+  <script src="assets/assets.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,245 @@
+================================================================================
+QSTEMORA CLUB (QSC) — WEBSITE OVERVIEW & EXPLANATION
+Qena Student Club • STEM Qena School, Upper Egypt
+Prepared: 2026-10-01
+================================================================================
+
+This document explains everything about the QSTEMora Club website: who we are,
+what we do, what each page contains, the subjects we cover, our team, the
+schedule, and how to contact us or partner with us.
+
+
+--------------------------------------------------------------------------------
+1. WHO WE ARE
+--------------------------------------------------------------------------------
+QSTEMora Club (also called Qena Student Club, "QSC") is a student-run learning
+platform built for STEM students across Egypt.
+
+The club started with the Senior '26 students of Qena STEM School. They came
+from different governorates and faced many problems and difficulties in
+studying, so they decided to help other students by collecting study material
+and explaining it in a clear, constructive way — both for schools of
+outstanding students in science, technology, engineering, and mathematics
+(STEM) and for general secondary schools.
+
+Today the club is led by the Senior '28 team at STEM Qena, carrying the mission
+forward from the deserts of Qena and connecting members and mentors across all
+Egyptian governorates.
+
+Our policy is simple: "The student always comes first. We always look for your
+excellence and comfort."
+
+
+--------------------------------------------------------------------------------
+2. WHAT WE DO
+--------------------------------------------------------------------------------
+We provide structured, centralized access to high-quality study resources:
+
+  • Learning Outcomes (LOs) — every subject is broken down into clear, numbered
+    learning outcomes, each on its own lesson page.
+  • Verified presentation slides (PowerPoint decks).
+  • Video lectures.
+  • Reference question banks.
+  • Capstone resources — design guides, calendars, rubrics, and poster guides.
+  • Competition guidance — ISEF, Science Olympiads, scholarships, and more.
+  • In-person School Hall sessions for STEM Qena students.
+
+All materials are curated by top Senior '28 students and revised by experienced
+STEM teachers across Qena, which keeps everything structured, reliable, and
+easy to use.
+
+The Senior '28 leaders run every part of the club — design, content writing,
+summarizing, public relations, and explaining.
+
+Reach: 27 STEM governorates • 45+ Senior '26 & '28 mentors.
+
+
+--------------------------------------------------------------------------------
+3. THE WEBSITE — PAGE BY PAGE
+--------------------------------------------------------------------------------
+The website is a static multi-page site (plain HTML, styled with Tailwind CSS
+and a small custom stylesheet; a single shared script, app.js, handles the
+menus and pop-up windows). The content lives directly in the pages, so it is
+easy to read and edit.
+
+  • Home (index.html)
+      Landing page with the club intro, the School Hall session schedule, a
+      preview of subjects, a preview of the team, and JOIN buttons.
+
+  • Subjects (subjects.html)
+      A catalog of all 16 subjects. You can filter by category, by semester,
+      or search by name.
+
+  • Subject (subject.html)
+      One page per subject showing its list of Learning Outcomes as cards,
+      plus a downloadable subject file (PDF) where available. Filterable by
+      semester.
+
+  • Lesson (lesson.html)
+      A detail page for a single Learning Outcome, with three sections:
+      Videos, Files, and Tests.
+
+  • About (about.html)
+      Our story, mission, and headline numbers.
+
+  • Team members (team.html)
+      Two branches (see section 6): Seniors '28 (current, with photos) and
+      Seniors '26 (alumni).
+
+  • Partners (partners.html)
+      Our success partners — currently a "coming soon" placeholder.
+
+Every page shares the same header (with a JOIN button) and footer (with contact
+and social links).
+
+
+--------------------------------------------------------------------------------
+4. SUBJECTS WE COVER (16)
+--------------------------------------------------------------------------------
+Science / Core:
+  • Geology      — earth systems, plate tectonics, mineralogy, stratigraphy,
+                   and geological processes.
+  • Math         — differential and integral calculus, linear algebra,
+                   analytical geometry, and probability.
+  • Chemistry    — thermodynamics, chemical kinetics, atomic theory,
+                   equilibrium, and electrochemistry.
+  • Biology      — cellular respiration, molecular genetics, biotechnology,
+                   and physiological systems.
+  • Mechanics    — Newtonian dynamics, 2D/3D statics, rotational equilibrium,
+                   and kinematics.
+  • Physics      — electromagnetism, wave optics, modern quantum physics, and
+                   electric circuits.
+  • Computer Science — algorithms, Python programming, data structures, and
+                   computational thinking.
+
+Languages:
+  • English      — academic writing, scientific reading comprehension, critical
+                   analysis, and vocabulary.
+  • French (Française) — French grammar rules, DELF practice, and reading
+                   comprehension.
+  • German (Deutsch)   — German grammar cases, vocabulary building, and
+                   Goethe A1–B1 preparation.
+  • Arabic       — classical Arabic grammar (nahw & sarf), rhetoric (balagha),
+                   and literature.
+
+Humanities / Other:
+  • Religion     — Islamic and Christian religious studies, spiritual values,
+                   and moral ethics.
+  • Social Studies — Egyptian modern history, geography of natural resources,
+                   and civics.
+  • Capstone     — Grand Challenges of Egypt design process, engineering design
+                   journal, and prototyping.
+  • Opportunities — ISEF, Science Olympiads, scholarships, quad charts, and
+                   competition guidelines.
+  • Arduino      — embedded C/C++, sensor interfacing, PWM control, circuit
+                   wiring, and robotics.
+
+Each subject is broken into numbered Learning Outcomes. Currently the Learning
+Outcomes are populated for Semester 1 (Semester 2 is intentionally left empty
+for now). Subjects that have a reference file also show a gold download banner.
+
+
+--------------------------------------------------------------------------------
+5. SCHOOL HALL SCHEDULE
+--------------------------------------------------------------------------------
+We run in-person study hall and academic review sessions in the School Main
+Hall & Study Labs, exclusively for STEM Qena students (Grade 1).
+
+Example session:
+  • Sunday • Fifth Session — Capstone
+    Focus: Capstone in general, with the most focus on journals.
+    Location: School Main Hall (STEM Qena)
+    Presenters: Capstone team
+    Access: Grade 1 STEM Qena students
+
+The schedule section on the Home page is updated with the week's sessions.
+
+
+--------------------------------------------------------------------------------
+6. OUR TEAM
+--------------------------------------------------------------------------------
+The Team page has two branches you can switch between with tabs.
+
+SENIORS '28 (CURRENT TEAM) — with photos:
+  1. Mahmoud Ramadan    — Founder & Head Design
+  2. Mai Mahmoud        — Founder & Capstone Advisor
+  3. Farha Ali          — Leader Capstone Advisor
+  4. Nora Tantawy       — Geology Leader
+  5. Omar Ibrahim       — Leader Capstone Advisor & Physics Member
+  6. Dawood Emad        — Capstone Advisor
+  7. Yara Yahya         — Capstone Advisor
+  8. Zeinab Mohammed    — Capstone Advisor
+  9. Ziad Ahmed         — Capstone Advisor
+  10. Abdullah Mohammed — Vice Designer & Chemistry Member
+
+SENIORS '26 (ALUMNI / FOUNDING TEAM) — names and roles:
+  • Mohaned Naeem      — Founder
+  • Yousef Said        — Founder
+  • Yassen Ahmed       — Co-Founder
+  • Yousef Mohammed    — Co-Founder
+  • Mazen Nasser       — Head Marketing
+  • Habiba Ahmed       — Vice Marketing
+  • Youssef Ashraf     — Head Design
+  • Yassen Mohamed     — Vice Designer
+  • Zeyad Wessam       — Head Content Writing
+  • Rokia Mohammed     — Vice Content Writing
+  • Bassem Darrag      — Head Summarizing
+  • Jana Mohammed      — Vice Summarizing
+  • Hossam Hassan      — Head PR
+  • Judy Saeed         — Vice PR
+  • Salma Yahya        — Head Explaining
+  • Maria Alber        — Vice Explaining
+
+
+--------------------------------------------------------------------------------
+7. PARTNERS
+--------------------------------------------------------------------------------
+We collaborate with organizations and schools to sponsor STEM competitions,
+provide kits, and host academic workshops. Partner announcements are coming
+soon on the Partners page. Partnership requests can be sent through the website
+(see section 8).
+
+
+--------------------------------------------------------------------------------
+8. CONTACT & LINKS
+--------------------------------------------------------------------------------
+  • WhatsApp community (JOIN):  https://chat.whatsapp.com/E1pwVvI5aiGCjrFiMs1yQ0
+  • Email:                      qenastudentclubs@gmail.com
+  • Phone:                      01123389108
+  • Instagram:                  https://www.instagram.com/qena_student_club
+  • Facebook:                   https://www.facebook.com/share/1B1s3pP32Y/
+  • Location (Google Maps):     STEM Qena School, Qena, Egypt
+                                https://www.google.com/maps/@26.24426,32.7407129,16z
+
+JOIN buttons across the site open the WhatsApp community link.
+
+PARTNERSHIP REQUESTS: The "Do a Partnership" form on the website sends the
+request directly to qenastudentclubs@gmail.com in the background (the visitor
+does not need to open their own email app). It asks for the organization/school
+name, contact person, official email, and proposed collaboration details.
+Note: the email relay requires a one-time activation the first time it is used.
+
+
+--------------------------------------------------------------------------------
+9. TECHNICAL NOTES (FOR MAINTAINERS)
+--------------------------------------------------------------------------------
+  • The site is fully static HTML — no database and no server-side code.
+  • Styling: Tailwind CSS (via CDN) + a custom stylesheet (css/styles.css).
+  • Shared behavior (mobile menu, navigation highlight, JOIN and partnership
+    pop-ups, member/partner detail pop-ups) lives in assets/app.js.
+  • Site settings (WhatsApp link, contact email, contact phone) are stored in
+    one place at the top of assets/app.js in "window.QSC_CONFIG" — change them
+    there and the footer and JOIN buttons update automatically.
+  • Content is edited directly in the HTML files; each card has a comment
+    label above it explaining what it is.
+  • Learning Outcome content is driven by query parameters
+    (subject.html?s=..., lesson.html?id=...), so for reliable local testing the
+    site should be served over HTTP (e.g. "python -m http.server") rather than
+    opened directly as files.
+  • Learning outcomes and lesson data were generated from a supplied hook-title
+    table; capstone download files live in the capstone_files/ folder and team
+    photos in the team_images/ folder.
+
+================================================================================
+END OF OVERVIEW
+================================================================================

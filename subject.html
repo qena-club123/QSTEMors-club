@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<!-- ============================ BEGINNER GUIDE ============================
+  This is the SINGLE-SUBJECT page: it lists one subject's Learning Outcomes (L.Os).
+  The URL decides which subject to show, e.g.  subject.html?s=math  (and ?s=religion&b=islam
+  for a subject that has branches). The <script> at the bottom reads ?s= / ?b= and reveals the
+  matching .subject-group below (all groups live in this one file; the others stay hidden).
+
+  How the L.O cards were made:
+    • Every card was generated from the matching PDF in the "los/" folder, in the same order.
+    • Subjects that have a PDF also get a gold "Official ... L.O Syllabus (PDF)" card that links
+      straight to that file in los/.
+    • Subjects WITHOUT a PDF (Arabic, Religion, Capstone, Opportunities, Arduino) are left empty,
+      so the page shows the "No learning outcomes" message.
+
+  To edit an L.O: find the comment line just above its card (it starts with "L.O CODE"), then
+  change the card under it.
+  To add an L.O: copy any card block that has class="lo-card", change the code/title/description,
+  and set its href to lesson.html?id=CODE (then add a matching block in lesson.html — see that file).
+======================================================================== -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subject Learning Outcomes — QSTEMora Club</title>
+  
+  <!-- Google Fonts: Poppins & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandDark: '#0A1926',
+            brandDarker: '#07131F',
+            brandCard: '#0E2238',
+            brandGold: '#F5BC6B',
+            brandTeal: '#48A9A6',
+            brandCyan: '#38B2AC',
+          },
+          fontFamily: {
+            sans: ['Poppins', 'Outfit', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-[#071A26] text-white min-h-screen flex flex-col selection:bg-[#F5BC6B] selection:text-[#071A26]">
+
+  <!-- Top Navigation Bar -->
+  <header class="sticky top-0 z-40 bg-[#071A26]/95 backdrop-blur-md border-b border-[#0F2F47] transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo & Brand Title -->
+        <a href="index.html" class="flex items-center gap-3 group">
+          <img src="assets/images/logo.jpg" alt="QSTEMora Club Logo" class="w-11 h-11 rounded-full object-cover shadow-[0_0_12px_rgba(245,188,107,0.4)] border border-[#F5BC6B]/40 group-hover:scale-105 transition-transform duration-300" />
+          <div class="flex items-center font-bold text-xl md:text-2xl tracking-tight">
+            <span class="text-[#38B2AC]">QSTEM</span><span class="text-[#F5BC6B]">ora</span>
+            <span class="text-[#2ECC71] ml-1.5 font-medium text-lg">club</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="index.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B]" data-page="home">
+            Home
+          </a>
+          <a href="subjects.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B] flex items-center gap-1.5" data-page="subjects">
+            <svg class="w-4 h-4 text-[#38B2AC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+            Subjects
+          </a>
+          <a href="about.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B]" data-page="about">
+            About
+          </a>
+          <a href="team.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B]" data-page="team">
+            Team members
+          </a>
+          <a href="partners.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B]" data-page="partners">
+            Partners
+          </a>
+        </nav>
+
+        <!-- Right CTA Button -->
+        <div class="hidden md:flex items-center">
+          <button class="btn-gold btn-join-trigger text-sm uppercase font-bold tracking-wider px-7 py-2.5">
+            JOIN
+          </button>
+        </div>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <div class="flex md:hidden">
+          <button id="mobileMenuBtn" class="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-[#0E293E] focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobileMenu" class="hidden md:hidden bg-[#051520] border-b border-[#0F2F47] px-4 pt-2 pb-6 space-y-3">
+      <a href="index.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="home">Home</a>
+      <a href="subjects.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="subjects">Subjects</a>
+      <a href="about.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="about">About</a>
+      <a href="team.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="team">Team members</a>
+      <a href="partners.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="partners">Partners</a>
+      <div class="pt-2">
+        <button class="btn-gold btn-join-trigger w-full text-center py-2.5">JOIN</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main View Container -->
+  <main class="flex-grow py-12 px-4 max-w-7xl mx-auto w-full">
+    
+    <!-- Top Subject Header & Controls -->
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+      <div>
+        <div class="flex items-center gap-3">
+          <span id="subjectCategoryBadge" class="text-[11px] font-bold tracking-widest text-[#38B2AC] uppercase bg-[#38B2AC]/10 border border-[#38B2AC]/30 px-3 py-0.5 rounded-full">
+            SCIENTIFIC
+          </span>
+          <span id="subjectBranchBreadcrumb" class="hidden text-xs font-bold text-[#F5BC6B] uppercase"></span>
+        </div>
+        <h1 id="subjectTitle" class="text-3xl md:text-5xl font-extrabold text-white tracking-tight letter-spaced-title mt-1.5">
+          S u b j e c t
+        </h1>
+        <p id="subjectDescription" class="text-xs md:text-sm text-slate-300 mt-1 max-w-2xl">
+          Loading curriculum syllabus and learning outcomes...
+        </p>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <!-- Semester Filter -->
+        <div id="subjectSemesterWrapper" class="relative">
+          <select id="subjectSemesterSelect" class="bg-[#F5BC6B] text-[#071A26] font-bold py-2 px-5 pr-9 rounded-full appearance-none cursor-pointer focus:outline-none shadow-md text-sm">
+            <option value="all">Semester (All) ▾</option>
+            <option value="1">Semester 1 ▾</option>
+            <option value="2">Semester 2 ▾</option>
+          </select>
+        </div>
+
+        <a href="subjects.html" class="btn-cyan-back text-sm">
+          ← Back
+        </a>
+      </div>
+    </div>
+
+    <!-- 1. Branch Picker (shown only for subjects that have branches, e.g. Religion) -->
+    <div id="branchPickerContainer" class="hidden pt-6">
+      <div class="mb-6">
+        <h2 class="text-xl font-bold text-white mb-1">Select Study Branch</h2>
+        <p class="text-xs text-slate-400">Please choose your curriculum track to view specific units and outcomes.</p>
+      </div>
+      <div class="flex flex-wrap items-center gap-8" id="branchGrid">
+          <a href="subject.html?s=religion&b=islam" class="figma-detail-card group">
+            <div class="card-title">Islam</div>
+            <div class="w-full flex items-center justify-center transform group-hover:scale-105 transition-transform duration-300"><svg class="w-16 h-16 text-[#48A9A6]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 19V7a2 2 0 012-2h12a2 2 0 012 2v12M4 19h16M8 5v6a4 4 0 008 0V5"/></svg></div>
+            <div class="text-xs text-[#F5BC6B] mt-3 font-semibold flex items-center gap-1">Explore Study Units →</div>
+          </a>
+          <a href="subject.html?s=religion&b=christian" class="figma-detail-card group">
+            <div class="card-title">Christian</div>
+            <div class="w-full flex items-center justify-center transform group-hover:scale-105 transition-transform duration-300"><svg class="w-16 h-16 text-[#F5BC6B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v18M6 8h12"/></svg></div>
+            <div class="text-xs text-[#F5BC6B] mt-3 font-semibold flex items-center gap-1">Explore Study Units →</div>
+          </a>
+      </div>
+    </div>
+
+    <!-- 2. Learning Outcomes (LOs): STATIC cards. Add a card by copy-pasting an <a class="lo-card"> block into the right subject-group. -->
+    <div id="losContainer" class="pt-4">
+      <div id="subjectLOsGrid">
+        <div class="subject-group grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-subject="geology" data-branch="" data-name="Geology" data-category="scientific" data-description="Earth systems, plate tectonics, mineralogy, stratigraphy, and geological processes." hidden>
+<!-- 📄 SUBJECT L.O FILE CARD: opens the official PDF syllabus in the los/ folder. Always visible (not filtered by semester). -->
+          <a href="los/Geology.pdf" target="_blank" rel="noopener" class="lo-card lo-file-card sm:col-span-2 lg:col-span-3 group" data-semester="all">
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <span class="text-3xl">📄</span>
+                <div>
+                  <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-1">Official Geology L.O Syllabus (PDF)</h3>
+                  <p class="text-xs text-slate-300 leading-relaxed">Every learning outcome, skill, concept, and essential question — straight from the source file.</p>
+                </div>
+              </div>
+              <span class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">⬇ Open PDF</span>
+            </div>
+          </a>
+          <!-- L.O ES.1.01 — Earth Science Synthesis: Geology's Connected World (Weeks: 01-01) -->
+          <a href="lesson.html?id=ES.1.01" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">ES.1.01</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Earth Science Synthesis: Geology's Connected World</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Deduce the interrelationships between the different branches of Earth science and the integration of geology within other sciences.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 01-01</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O ES.1.02 — Crystal Clues: Identifying Common Minerals (Weeks: 01-04) -->
+          <a href="lesson.html?id=ES.1.02" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">ES.1.02</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Crystal Clues: Identifying Common Minerals</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Examine common minerals, identify them, and differentiate them from other common minerals.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 01-04</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O ES.1.03 — From Earth to Infrastructure: Mineral Resources in Engineering (Weeks: 05-05) -->
+          <a href="lesson.html?id=ES.1.03" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">ES.1.03</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">From Earth to Infrastructure: Mineral Resources in Engineering</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Analyze and identify Earth materials used as resources for modern building and integrate design criteria for engineering design.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 05-05</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O ES.1.04 — Fiery Beginnings: Composition & Texture of Igneous Rocks (Weeks: 06-08) -->
+          <a href="lesson.html?id=ES.1.04" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">ES.1.04</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Fiery Beginnings: Composition &amp; Texture of Igneous Rocks</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Examine and interpret textural and compositional characteristics of igneous rocks, textures, and mineral composition.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 06-08</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O ES.1.05 — Layers of Time: Sedimentary Rocks & Environments (Weeks: 09-10) -->
+          <a href="lesson.html?id=ES.1.05" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">ES.1.05</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Layers of Time: Sedimentary Rocks &amp; Environments</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Examine and interpret textural and compositional characteristics of sedimentary rocks, textures, mineral composition, and depositional environments.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 09-10</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O ES.1.06 — Under Pressure: Metamorphic Rocks & Processes (Weeks: 11-12) -->
+          <a href="lesson.html?id=ES.1.06" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">ES.1.06</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Under Pressure: Metamorphic Rocks &amp; Processes</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Examine and interpret textural and compositional characteristics of metamorphic rocks, textures, and factors affecting metamorphic processes.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 11-12</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O ES.1.07 — The Eternal Loop: The Rock Cycle & Egypt's Geology (Weeks: 13-14) -->
+          <a href="lesson.html?id=ES.1.07" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">ES.1.07</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">The Eternal Loop: The Rock Cycle &amp; Egypt's Geology</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Interpret relationships among sedimentary, igneous, and metamorphic rocks via the rock cycle and explain the Egyptian cross section.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 13-14</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+        </div>
+        <div class="subject-group grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-subject="math" data-branch="" data-name="Math" data-category="scientific" data-description="Differential and integral calculus, linear algebra, analytical geometry, and probability." hidden>
+<!-- 📄 SUBJECT L.O FILE CARD: opens the official PDF syllabus in the los/ folder. Always visible (not filtered by semester). -->
+          <a href="los/Math.pdf" target="_blank" rel="noopener" class="lo-card lo-file-card sm:col-span-2 lg:col-span-3 group" data-semester="all">
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <span class="text-3xl">📄</span>
+                <div>
+                  <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-1">Official Math L.O Syllabus (PDF)</h3>
+                  <p class="text-xs text-slate-300 leading-relaxed">Every learning outcome, skill, concept, and essential question — straight from the source file.</p>
+                </div>
+              </div>
+              <span class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">⬇ Open PDF</span>
+            </div>
+          </a>
+          <!-- L.O MA.1.01 — Angles & Altitudes: Real-World Trigonometry (Weeks: 01-04) -->
+          <a href="lesson.html?id=MA.1.01" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">MA.1.01</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Angles &amp; Altitudes: Real-World Trigonometry</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Create, interpret, and analyze trigonometric ratios that model real-world situations.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 01-04</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O MA.1.02 — Decoding Data: Spread, Trends & Standard Deviation (Weeks: 05-06) -->
+          <a href="lesson.html?id=MA.1.02" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">MA.1.02</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Decoding Data: Spread, Trends &amp; Standard Deviation</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Analyze, display, and describe quantitative data with a focus on standard deviation.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 05-06</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O MA.1.03 — Dimension Shift: Bridging 2D and 3D Shapes (Weeks: 07) -->
+          <a href="lesson.html?id=MA.1.03" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">MA.1.03</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Dimension Shift: Bridging 2D and 3D Shapes</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Apply the relationships between 2-D and 3-D objects in modeling situations.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 07</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O MA.1.04 — The Scale Factor: Similarity in Problem Solving (Weeks: 08-09) -->
+          <a href="lesson.html?id=MA.1.04" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">MA.1.04</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">The Scale Factor: Similarity in Problem Solving</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Understand similarity and use the concept for scaling to solve problems.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 08-09</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O MA.1.05 — 3D Space & Capacity: Mastering Volume Formulas (Weeks: 10-11) -->
+          <a href="lesson.html?id=MA.1.05" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">MA.1.05</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">3D Space &amp; Capacity: Mastering Volume Formulas</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Apply volume formulas (pyramids, cones, spheres, prisms).</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 10-11</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O MA.1.06 — Step by Step: Modeling Real Life with Functions (Weeks: 12-14) -->
+          <a href="lesson.html?id=MA.1.06" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">MA.1.06</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Step by Step: Modeling Real Life with Functions</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Create, interpret, and analyze functions, particularly linear and step functions that model real-world situations.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 12-14</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+        </div>
+        <div class="subject-group grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-subject="chemistry" data-branch="" data-name="Chemistry" data-category="scientific" data-description="Thermodynamics, chemical kinetics, atomic theory, equilibrium, and electrochemistry." hidden>
+<!-- 📄 SUBJECT L.O FILE CARD: opens the official PDF syllabus in the los/ folder. Always visible (not filtered by semester). -->
+          <a href="los/chemistry.pdf" target="_blank" rel="noopener" class="lo-card lo-file-card sm:col-span-2 lg:col-span-3 group" data-semester="all">
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <span class="text-3xl">📄</span>
+                <div>
+                  <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-1">Official Chemistry L.O Syllabus (PDF)</h3>
+                  <p class="text-xs text-slate-300 leading-relaxed">Every learning outcome, skill, concept, and essential question — straight from the source file.</p>
+                </div>
+              </div>
+              <span class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">⬇ Open PDF</span>
+            </div>
+          </a>
+          <!-- L.O CH.1.01 — The Science Playbook: Measurements & Standard Units (Weeks: 01-02) -->
+          <a href="lesson.html?id=CH.1.01" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">CH.1.01</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">The Science Playbook: Measurements &amp; Standard Units</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Describe what characterizes science and its methods and use quantitative observation with SI unit measurements.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 01-02</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O CH.1.02 — Inside the Atom: Uncovering Subatomic Secrets (Weeks: 03-04) -->
+          <a href="lesson.html?id=CH.1.02" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">CH.1.02</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Inside the Atom: Uncovering Subatomic Secrets</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Demonstrate understanding of atomic structure, subatomic particles, arrangements, and experimental evidence for discovery.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 03-04</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O CH.1.03 — Catching Rainbows: Light Waves & Elemental Colors (Weeks: 05-06) -->
+          <a href="lesson.html?id=CH.1.03" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">CH.1.03</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Catching Rainbows: Light Waves &amp; Elemental Colors</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Demonstrate understanding of the electromagnetic spectrum and light's particle nature by explaining color production in different elements.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 05-06</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O CH.1.04 — Periodic Power Play: Mapping Metals & Nonmetals (Weeks: 07-08) -->
+          <a href="lesson.html?id=CH.1.04" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">CH.1.04</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Periodic Power Play: Mapping Metals &amp; Nonmetals</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Develop operational definitions of elements, differentiate metals/nonmetals and chemical/physical properties based on periodic table position and structure.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 07-08</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O CH.1.05 — Electrons in Action: How & Why Atoms Bond (Weeks: 09-10) -->
+          <a href="lesson.html?id=CH.1.05" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">CH.1.05</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Electrons in Action: How &amp; Why Atoms Bond</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Describe how to determine chemical behavior according to valence electrons and how and why atoms interact.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 09-10</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O CH.1.06 — Subatomic Glue: Unveiling the Strong Nuclear Force (Weeks: 11-12) -->
+          <a href="lesson.html?id=CH.1.06" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">CH.1.06</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Subatomic Glue: Unveiling the Strong Nuclear Force</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Select and use data to construct an argument for the existence of strong nuclear forces.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 11-12</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O CH.1.07 — Macro to Nano: Material Properties in High Tech (Weeks: 13-14) -->
+          <a href="lesson.html?id=CH.1.07" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">CH.1.07</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Macro to Nano: Material Properties in High Tech</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Explain how physical properties of elements, compounds, and groups (normal and nanosize) are used for identification and commercial applications.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 13-14</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+        </div>
+        <div class="subject-group grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-subject="biology" data-branch="" data-name="Biology" data-category="scientific" data-description="Cellular respiration, molecular genetics, biotechnology, and physiological systems." hidden>
+<!-- 📄 SUBJECT L.O FILE CARD: opens the official PDF syllabus in the los/ folder. Always visible (not filtered by semester). -->
+          <a href="los/Biology.pdf" target="_blank" rel="noopener" class="lo-card lo-file-card sm:col-span-2 lg:col-span-3 group" data-semester="all">
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <span class="text-3xl">📄</span>
+                <div>
+                  <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-1">Official Biology L.O Syllabus (PDF)</h3>
+                  <p class="text-xs text-slate-300 leading-relaxed">Every learning outcome, skill, concept, and essential question — straight from the source file.</p>
+                </div>
+              </div>
+              <span class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">⬇ Open PDF</span>
+            </div>
+          </a>
+          <!-- L.O BI.1.01 — Outsmarting the Outbreak: Eradicating Diseases & Cell Scars (Weeks: 01-01) -->
+          <a href="lesson.html?id=BI.1.01" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">BI.1.01</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Outsmarting the Outbreak: Eradicating Diseases &amp; Cell Scars</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Analyze the factors of diseases eradication: 1) Explain spreading, controlling, and transmitting factors; 2) Classify diseases as infectious or non-infectious; 3) Study Malaria and sickle cell anemia; 4) Explain cellular impact.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 01-01</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O BI.1.02 — The Architecture of Life: Plant, Animal, Protist & Bacteria Cells (Weeks: 02-04) -->
+          <a href="lesson.html?id=BI.1.02" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">BI.1.02</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">The Architecture of Life: Plant, Animal, Protist &amp; Bacteria Cells</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Compare and contrast the structures within the cells of plants, animals, Protista, and bacteria which function to enable the cell to live.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 02-04</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O BI.1.03 — Gatekeepers of the Cell: Membranes, Osmosis & Diffusion (Weeks: 05-06) -->
+          <a href="lesson.html?id=BI.1.03" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">BI.1.03</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Gatekeepers of the Cell: Membranes, Osmosis &amp; Diffusion</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Connect the structure of a healthy cell membrane to its functions: 1) Explain membrane structure in enabling diffusion and osmosis; 2) Describe the nature of phospholipids.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 05-06</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O BI.1.04 — Code of Life: Unlocking DNA & RNA Double Helices (Weeks: 07-07) -->
+          <a href="lesson.html?id=BI.1.04" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">BI.1.04</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Code of Life: Unlocking DNA &amp; RNA Double Helices</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Create a model showing the structure of DNA and RNA as genetic material: 1) Differences between DNA and RNA; 2) Complementary base pairing.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 07-07</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O BI.1.05 — Molecular Engines: Protein Power & Enzyme Magic (Weeks: 08-09) -->
+          <a href="lesson.html?id=BI.1.05" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">BI.1.05</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Molecular Engines: Protein Power &amp; Enzyme Magic</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Investigate functions of different classes of proteins and factors affecting performance: 1) Structure, classes, and functions; 2) Enzyme mechanisms as catalysts and affecting factors.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 08-09</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O BI.1.06 — Cellular Rhythm & Ruin: The Cell Cycle vs. Cancer (Weeks: 10-10) -->
+          <a href="lesson.html?id=BI.1.06" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">BI.1.06</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Cellular Rhythm &amp; Ruin: The Cell Cycle vs. Cancer</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Create a model outlining the cell cycle in controlled and uncontrolled cell divisions, including cancer.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 10-10</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O BI.1.07 — The Frontier of Healing: Stem Cells to the Rescue (Weeks: 11-12) -->
+          <a href="lesson.html?id=BI.1.07" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">BI.1.07</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">The Frontier of Healing: Stem Cells to the Rescue</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Evaluate stem cells as possible cures for diseases: 1) Cell differentiation; 2) Stem cells as disease cures.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 11-12</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O BI.1.08 — Microscopic Hijackers: Viral Invasion & Organelle Takeover (Weeks: 13-13) -->
+          <a href="lesson.html?id=BI.1.08" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">BI.1.08</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Microscopic Hijackers: Viral Invasion &amp; Organelle Takeover</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Create a simulation showing how viruses infect a cell: 1) Organelles of healthy cells; 2) Why viruses require host organelles; 3) Identify targeted organelles.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 13-13</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+        </div>
+        <div class="subject-group grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-subject="mechanics" data-branch="" data-name="Mechanics" data-category="scientific" data-description="Newtonian dynamics, 2D/3D statics, rotational equilibrium, and kinematics." hidden>
+<!-- 📄 SUBJECT L.O FILE CARD: opens the official PDF syllabus in the los/ folder. Always visible (not filtered by semester). -->
+          <a href="los/Mechanics.pdf" target="_blank" rel="noopener" class="lo-card lo-file-card sm:col-span-2 lg:col-span-3 group" data-semester="all">
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <span class="text-3xl">📄</span>
+                <div>
+                  <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-1">Official Mechanics L.O Syllabus (PDF)</h3>
+                  <p class="text-xs text-slate-300 leading-relaxed">Every learning outcome, skill, concept, and essential question — straight from the source file.</p>
+                </div>
+              </div>
+              <span class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">⬇ Open PDF</span>
+            </div>
+          </a>
+          <!-- L.O ME.1.01 — Motion Unfolded: Velocity & Acceleration in 1D (Weeks: 01-03) -->
+          <a href="lesson.html?id=ME.1.01" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">ME.1.01</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Motion Unfolded: Velocity &amp; Acceleration in 1D</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Use position, displacement, average and instantaneous velocity, and average and instantaneous acceleration to describe 1-dimensional motion.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 01-03</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O ME.1.02 — Free Fall & Predictions: 1D Kinematic Equations (Weeks: 04-08) -->
+          <a href="lesson.html?id=ME.1.02" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">ME.1.02</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Free Fall &amp; Predictions: 1D Kinematic Equations</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Use kinematic equations to predict 1-dimensional motion under constant acceleration, including free-fall.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 04-08</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O ME.1.03 — Relative Motion: Frames of Reference in Action (Weeks: 09-10) -->
+          <a href="lesson.html?id=ME.1.03" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">ME.1.03</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Relative Motion: Frames of Reference in Action</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Understand reference frames and use relative velocity to describe the motions of 2 objects with respect to each other in 1-D.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 09-10</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O ME.1.04 — Vectors Unlocked: Kinematics in Two Dimensions (Weeks: 11) -->
+          <a href="lesson.html?id=ME.1.04" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">ME.1.04</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Vectors Unlocked: Kinematics in Two Dimensions</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Use vector concepts to extend 1-D kinematics to motion in 2-D.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 11</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+        </div>
+        <div class="subject-group grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-subject="physics" data-branch="" data-name="Physics" data-category="scientific" data-description="Electromagnetism, wave optics, modern quantum physics, and electric circuits." hidden>
+<!-- 📄 SUBJECT L.O FILE CARD: opens the official PDF syllabus in the los/ folder. Always visible (not filtered by semester). -->
+          <a href="los/Physics.pdf" target="_blank" rel="noopener" class="lo-card lo-file-card sm:col-span-2 lg:col-span-3 group" data-semester="all">
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <span class="text-3xl">📄</span>
+                <div>
+                  <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-1">Official Physics L.O Syllabus (PDF)</h3>
+                  <p class="text-xs text-slate-300 leading-relaxed">Every learning outcome, skill, concept, and essential question — straight from the source file.</p>
+                </div>
+              </div>
+              <span class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">⬇ Open PDF</span>
+            </div>
+          </a>
+          <!-- L.O PH.1.01 — Precision & Accuracy: Mastering Measurement Tools (Weeks: 01-02) -->
+          <a href="lesson.html?id=PH.1.01" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">PH.1.01</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Precision &amp; Accuracy: Mastering Measurement Tools</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Make measurements precisely and accurately using a variety of measurement tools.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 01-02</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O PH.1.02 — Action & Reaction: Uncovering Newtonian Pairs (Weeks: 03-04) -->
+          <a href="lesson.html?id=PH.1.02" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">PH.1.02</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Action &amp; Reaction: Uncovering Newtonian Pairs</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Use Newton's 3rd Law to identify the interaction forces existing between pairs of objects (Newtonian pairs).</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 03-04</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O PH.1.03 — Force & Motion: Predicting Physical Trajectories (Weeks: 04-06) -->
+          <a href="lesson.html?id=PH.1.03" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">PH.1.03</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Force &amp; Motion: Predicting Physical Trajectories</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Predict an object's motion based on the forces acting on it.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 04-06</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O PH.1.04 — Gravity Unveiled: Weight, Mass & Proportionality (Weeks: 07-08) -->
+          <a href="lesson.html?id=PH.1.04" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">PH.1.04</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Gravity Unveiled: Weight, Mass &amp; Proportionality</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Model gravitational force near Earth as proportional to mass with proportionality constant g.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 07-08</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O PH.1.05 — In Perfect Balance: Equilibrium & Structural Stability (Weeks: 09-10) -->
+          <a href="lesson.html?id=PH.1.05" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">PH.1.05</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">In Perfect Balance: Equilibrium &amp; Structural Stability</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Determine conditions for stability of extended rigid bodies by considering translational and rotational equilibrium.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 09-10</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O PH.1.06 — Snap Back: Hooke's Law & Restoring Forces (Weeks: 11-12) -->
+          <a href="lesson.html?id=PH.1.06" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">PH.1.06</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Snap Back: Hooke's Law &amp; Restoring Forces</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Understand that certain material objects (e.g., springs following Hooke's Law) generate restoring forces to maintain an equilibrium shape.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 11-12</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+        </div>
+        <div class="subject-group grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-subject="cs" data-branch="" data-name="CS" data-category="scientific" data-description="Algorithms, Python programming, data structures, and computational thinking." hidden>
+<!-- 📄 SUBJECT L.O FILE CARD: opens the official PDF syllabus in the los/ folder. Always visible (not filtered by semester). -->
+          <a href="los/Computer%20Science.pdf" target="_blank" rel="noopener" class="lo-card lo-file-card sm:col-span-2 lg:col-span-3 group" data-semester="all">
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <span class="text-3xl">📄</span>
+                <div>
+                  <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-1">Official Computer Science L.O Syllabus (PDF)</h3>
+                  <p class="text-xs text-slate-300 leading-relaxed">Every learning outcome, skill, concept, and essential question — straight from the source file.</p>
+                </div>
+              </div>
+              <span class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">⬇ Open PDF</span>
+            </div>
+          </a>
+          <!-- L.O CS.1.01 — The Digital Advantage: Empowering Knowledge with ICT (Weeks: 01-01) -->
+          <a href="lesson.html?id=CS.1.01" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">CS.1.01</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">The Digital Advantage: Empowering Knowledge with ICT</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Demonstrate an understanding of the importance of ICT in knowledge generation and communication.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 01-01</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O CS.1.02 — Mastering the OS: Hardware, Software & File Control (Weeks: 02-02) -->
+          <a href="lesson.html?id=CS.1.02" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">CS.1.02</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Mastering the OS: Hardware, Software &amp; File Control</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Understand what an operating system is and how to use it for file management, application launching, and general hardware/software management.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 02-02</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O CS.1.03 — Crafting Clean Documents: Advanced Word Processing (Weeks: 03-03) -->
+          <a href="lesson.html?id=CS.1.03" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">CS.1.03</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Crafting Clean Documents: Advanced Word Processing</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Understand the role of word-processing applications to create an advanced, rich document.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 03-03</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O CS.1.04 — Slide Deck Mastery: Presenting Ideas with Impact (Weeks: 04-04) -->
+          <a href="lesson.html?id=CS.1.04" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">CS.1.04</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Slide Deck Mastery: Presenting Ideas with Impact</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Use PowerPoint for handling interrelated information and presenting it in an interesting format.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 04-04</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O CS.1.05 — Data Wizardry: Formulas & Stats in Spreadsheets (Weeks: 06-06) -->
+          <a href="lesson.html?id=CS.1.05" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">CS.1.05</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Data Wizardry: Formulas &amp; Stats in Spreadsheets</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Understand how to use spreadsheets for statistical tables and enhance data processing using functions and formulas.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 06-06</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O CS.1.06 — Visual Storytelling: Editing Digital Graphics (Weeks: 06-06) -->
+          <a href="lesson.html?id=CS.1.06" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">CS.1.06</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Visual Storytelling: Editing Digital Graphics</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Demonstrate understanding of how to select and edit digital images that illustrate a theme or event.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 06-06</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+        </div>
+        <div class="subject-group grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-subject="francaise" data-branch="" data-name="Française" data-category="literary" data-description="French grammar rules, DELF practice, and reading comprehension." hidden>
+<!-- 📄 SUBJECT L.O FILE CARD: opens the official PDF syllabus in the los/ folder. Always visible (not filtered by semester). -->
+          <a href="los/French.pdf" target="_blank" rel="noopener" class="lo-card lo-file-card sm:col-span-2 lg:col-span-3 group" data-semester="all">
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <span class="text-3xl">📄</span>
+                <div>
+                  <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-1">Official French L.O Syllabus (PDF)</h3>
+                  <p class="text-xs text-slate-300 leading-relaxed">Every learning outcome, skill, concept, and essential question — straight from the source file.</p>
+                </div>
+              </div>
+              <span class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">⬇ Open PDF</span>
+            </div>
+          </a>
+          <!-- L.O FR.1.01 — Premiers Contacts: Standard Personal Information (Weeks: 01-02) -->
+          <a href="lesson.html?id=FR.1.01" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">FR.1.01</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Premiers Contacts: Standard Personal Information</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">L'apprenant répond à des demandes de renseignements personnels de base et à des questions sur ses besoins immédiats dans des situations courantes.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 01-02</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O FR.1.02 — Plume et Papier: Writing Personal & Family Details (Weeks: 03-04) -->
+          <a href="lesson.html?id=FR.1.02" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">FR.1.02</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Plume et Papier: Writing Personal &amp; Family Details</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">L'apprenant sait écrire les données personnelles à son sujet et au sujet de sa famille.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 03-04</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+        </div>
+        <div class="subject-group grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-subject="deutsch" data-branch="" data-name="Deutsch" data-category="literary" data-description="German grammar cases, vocabulary building, and Goethe A1-B1 preparation." hidden>
+<!-- 📄 SUBJECT L.O FILE CARD: opens the official PDF syllabus in the los/ folder. Always visible (not filtered by semester). -->
+          <a href="los/Deutsch.pdf" target="_blank" rel="noopener" class="lo-card lo-file-card sm:col-span-2 lg:col-span-3 group" data-semester="all">
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <span class="text-3xl">📄</span>
+                <div>
+                  <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-1">Official Deutsch L.O Syllabus (PDF)</h3>
+                  <p class="text-xs text-slate-300 leading-relaxed">Every learning outcome, skill, concept, and essential question — straight from the source file.</p>
+                </div>
+              </div>
+              <span class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">⬇ Open PDF</span>
+            </div>
+          </a>
+          <!-- L.O DE.1.01 — Erste Schritte: Spelling, Business Cards & Forms (Weeks: 01-04) -->
+          <a href="lesson.html?id=DE.1.01" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">DE.1.01</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Erste Schritte: Spelling, Business Cards &amp; Forms</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Die Schüler können: 1) Etwas buchstabieren; 2) Eine Visitenkarte lesen; 3) Ein Anmeldeformular ausfüllen.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 01-04</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O DE.1.02 — Hallo Deutschland: Counting 0–20 & Self-Introductions (Weeks: 01-04) -->
+          <a href="lesson.html?id=DE.1.02" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">DE.1.02</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Hallo Deutschland: Counting 0–20 &amp; Self-Introductions</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Schüler können: 1) Zahlen von null bis 20 zählen; 2) Ein Formular ausfüllen; 3) Sich und andere vorstellen.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Weeks: 01-04</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+        </div>
+        <div class="subject-group grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-subject="arabic" data-branch="" data-name="Arabic" data-category="literary" data-description="Classical Arabic grammar (Nahw &amp; Sarf), Rhetoric (Balagha), and literature." hidden>
+          <!-- This subject has no L.O file in the los/ folder yet, so it stays empty. The page shows the "No learning outcomes" message. -->
+        </div>
+        <div class="subject-group grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-subject="religion" data-branch="islam" data-name="Religion" data-category="literary" data-description="Islamic and Christian religious studies, spiritual values, and moral ethics." hidden>
+          <!-- This subject has no L.O file in the los/ folder yet, so it stays empty. The page shows the "No learning outcomes" message. -->
+        </div>
+        <div class="subject-group grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-subject="religion" data-branch="christian" data-name="Religion" data-category="literary" data-description="Islamic and Christian religious studies, spiritual values, and moral ethics." hidden>
+          <!-- This subject has no L.O file in the los/ folder yet, so it stays empty. The page shows the "No learning outcomes" message. -->
+        </div>
+        <div class="subject-group grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-subject="socialstudies" data-branch="" data-name="Social Studies" data-category="literary" data-description="Egyptian modern history, geography of natural resources, and civics." hidden>
+          <!-- 📄 SUBJECT L.O FILE CARD: opens the official PDF syllabus in the los/ folder. Always visible (not filtered by semester). -->
+          <a href="los/Social%20studies.pdf" target="_blank" rel="noopener" class="lo-card lo-file-card sm:col-span-2 lg:col-span-3 group" data-semester="all">
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <span class="text-3xl">📄</span>
+                <div>
+                  <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-1">Official Social Studies L.O Syllabus (PDF)</h3>
+                  <p class="text-xs text-slate-300 leading-relaxed">Every learning outcome, skill, concept, and essential question — straight from the source file.</p>
+                </div>
+              </div>
+              <span class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">⬇ Open PDF</span>
+            </div>
+          </a>
+        </div>
+        <div class="subject-group grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-subject="english" data-branch="" data-name="English" data-category="literary" data-description="Academic writing, scientific reading comprehension, critical analysis, and vocabulary." hidden>
+<!-- 📄 SUBJECT L.O FILE CARD: opens the official PDF syllabus in the los/ folder. Always visible (not filtered by semester). -->
+          <a href="los/English.pdf" target="_blank" rel="noopener" class="lo-card lo-file-card sm:col-span-2 lg:col-span-3 group" data-semester="all">
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <span class="text-3xl">📄</span>
+                <div>
+                  <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-1">Official English L.O Syllabus (PDF)</h3>
+                  <p class="text-xs text-slate-300 leading-relaxed">Every learning outcome, skill, concept, and essential question — straight from the source file.</p>
+                </div>
+              </div>
+              <span class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">⬇ Open PDF</span>
+            </div>
+          </a>
+          <!-- L.O EN.MID — Foundations of Communication & Core Literacy (Scope: Midterm Revision) -->
+          <a href="lesson.html?id=EN.MID" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">EN.MID</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Foundations of Communication &amp; Core Literacy</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Core Communication &amp; Mechanics: 1) Interact spontaneously in oral conversations, describe personal/STEM experiences, and apply dictionary tools for context-based vocabulary; 2) Execute writing processes (plan, edit, revise) with standard grammar, spelling, and narrative structure; 3) Apply foundational listening and reading strategies (skimming/scanning) and practice ethical digital resource usage.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Scope: Midterm Revision</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+          <!-- L.O EN.FIN — Advanced Expression, Analysis & Research (Scope: Final Revision) -->
+          <a href="lesson.html?id=EN.FIN" class="lo-card group" data-branch="" data-semester="1" hidden>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#F5BC6B] bg-[#F5BC6B]/10 px-3 py-1 rounded-full border border-[#F5BC6B]/20">EN.FIN</span>
+                <span class="badge-uploaded">● Available</span>
+              </div>
+              <h3 class="text-base md:text-lg font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Advanced Expression, Analysis &amp; Research</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Critical Thinking &amp; Public Speaking: 1) Conduct focused research projects, evaluate source credibility, synthesize evidence, and cite materials correctly; 2) Analyze literary elements (theme, plot, character, tone), make textual predictions, extract key points, and distinguish facts from opinions; 3) Deliver formal presentations, engage in academic discussions/debates, and appreciate global cultural values.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Scope: Final Revision</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">View L.O →</span>
+            </div>
+          </a>
+        </div>
+        <div class="subject-group grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-subject="capstone" data-branch="" data-name="Capstone" data-category="other" data-description="Grand Challenges of Egypt design process, engineering design journal, and prototyping." hidden>
+          <!-- Capstone has no numbered L.Os; instead it links the downloadable files in the capstone_files/ folder. These cards use lo-file-card so they always show (not filtered by semester). To add another file, copy one block below and change the href + title. -->
+          <!-- Capstone file: Capstone Calendar -->
+          <a href="capstone_files/Capstone%20Calendar.pdf" target="_blank" rel="noopener" class="lo-card lo-file-card group" data-semester="all">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-2xl">📄</span>
+                <span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span>
+              </div>
+              <h3 class="text-base font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Capstone Calendar</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Official capstone timeline, deadlines, and milestones.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Capstone Files</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">Open PDF →</span>
+            </div>
+          </a>
+          <!-- Capstone file: Capstone Guide (Capstonee.pdf) -->
+          <a href="capstone_files/Capstonee.pdf" target="_blank" rel="noopener" class="lo-card lo-file-card group" data-semester="all">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-2xl">📘</span>
+                <span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span>
+              </div>
+              <h3 class="text-base font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Capstone Guide</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">The full capstone handbook and project overview.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Capstone Files</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">Open PDF →</span>
+            </div>
+          </a>
+          <!-- Capstone file: LogBook Rubric -->
+          <a href="capstone_files/LogBook%20Rubric.pdf" target="_blank" rel="noopener" class="lo-card lo-file-card group" data-semester="all">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-2xl">📝</span>
+                <span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span>
+              </div>
+              <h3 class="text-base font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">LogBook Rubric</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Grading rubric for the capstone engineering logbook.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Capstone Files</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">Open PDF →</span>
+            </div>
+          </a>
+          <!-- Capstone file: Portfolio Rubric -->
+          <a href="capstone_files/Portofolio%20Rubric.pdf" target="_blank" rel="noopener" class="lo-card lo-file-card group" data-semester="all">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-2xl">📁</span>
+                <span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span>
+              </div>
+              <h3 class="text-base font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Portfolio Rubric</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Grading rubric for the capstone portfolio.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Capstone Files</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">Open PDF →</span>
+            </div>
+          </a>
+          <!-- Capstone file: Portfolio Rubric (OCT) -->
+          <a href="capstone_files/protofolio%20rubric.%20OCT.pdf" target="_blank" rel="noopener" class="lo-card lo-file-card group" data-semester="all">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-2xl">📁</span>
+                <span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span>
+              </div>
+              <h3 class="text-base font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Portfolio Rubric (OCT)</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Updated October version of the portfolio rubric.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Capstone Files</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">Open PDF →</span>
+            </div>
+          </a>
+          <!-- Capstone file: Poster Guide -->
+          <a href="capstone_files/Poster%20Guide.pdf" target="_blank" rel="noopener" class="lo-card lo-file-card group" data-semester="all">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-2xl">🎨</span>
+                <span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span>
+              </div>
+              <h3 class="text-base font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Poster Guide</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">How to design and structure your capstone poster.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Capstone Files</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">Open PDF →</span>
+            </div>
+          </a>
+          <!-- Capstone file: Poster Rubric -->
+          <a href="capstone_files/Poster%20Rubric.pdf" target="_blank" rel="noopener" class="lo-card lo-file-card group" data-semester="all">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-2xl">📊</span>
+                <span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span>
+              </div>
+              <h3 class="text-base font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Poster Rubric</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">Grading rubric for the capstone poster.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Capstone Files</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">Open PDF →</span>
+            </div>
+          </a>
+          <!-- Capstone file: Poster Rubric (Simplified) -->
+          <a href="capstone_files/Poster%20rubric%20simplified.pdf" target="_blank" rel="noopener" class="lo-card lo-file-card group" data-semester="all">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-2xl">📊</span>
+                <span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span>
+              </div>
+              <h3 class="text-base font-bold text-white group-hover:text-[#F5BC6B] transition-colors mb-2">Poster Rubric (Simplified)</h3>
+              <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">A simplified, quick-reference poster rubric.</p>
+            </div>
+            <div class="pt-3 border-t border-[#163E60] flex items-center justify-between text-xs text-slate-400">
+              <span class="font-medium">Capstone Files</span>
+              <span class="text-[#38B2AC] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">Open PDF →</span>
+            </div>
+          </a>
+        </div>
+        <div class="subject-group grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-subject="opportunities" data-branch="" data-name="Opportunities" data-category="other" data-description="ISEF, Science Olympiads, scholarships, quad charts, and competition guidelines." hidden>
+          <!-- This subject has no L.O file in the los/ folder yet, so it stays empty. The page shows the "No learning outcomes" message. -->
+        </div>
+        <div class="subject-group grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-subject="arduino" data-branch="" data-name="Arduino" data-category="other" data-description="Embedded C/C++, sensor interfacing, PWM control, circuit wiring, and robotics." hidden>
+          <!-- This subject has no L.O file in the los/ folder yet, so it stays empty. The page shows the "No learning outcomes" message. -->
+        </div>
+      </div>
+
+      <!-- Empty State -->
+      <div id="subjectLOsEmpty" class="hidden bg-[#0C2337] rounded-2xl p-12 text-center text-slate-400 border border-[#163E60] mt-6">
+        <div class="text-4xl mb-3">📚</div>
+        <p class="text-base text-white font-bold">No learning outcomes found for this semester</p>
+        <p class="text-xs text-slate-400 mt-1">Select "Semester (All)" to view all units in this subject.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#051520] border-t border-[#0F2F47] py-8 px-4 mt-auto">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+      
+      <!-- Left Copyright & School Info -->
+      <div class="flex items-center gap-2 text-slate-400 text-sm font-medium">
+        <svg class="w-5 h-5 text-[#F5BC6B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" stroke-width="2"></circle>
+          <path d="M14.5 9.5a3.5 3.5 0 100 5" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+        <span>Copyright © QSTEMora Club (QSC) • Senior '28 STEM Qena School</span>
+      </div>
+
+      <!-- Right Contact & Social Round Action Buttons -->
+      <div class="flex items-center gap-3 md:gap-4 text-white">
+        <!-- Location (STEM Qena School) -->
+        <a href="https://www.google.com/maps/@26.24426,32.7407129,16z?authuser=0&amp;entry=ttu&amp;g_ep=EgoyMDI2MDkyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" title="STEM Qena School Location" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#F5BC6B] hover:text-[#071A26] hover:border-[#F5BC6B] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+        </a>
+
+        <!-- Phone Contact -->
+        <a href="tel:01123389108" id="footerPhoneLink" title="Call QSC Mentors" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#38B2AC] hover:text-[#071A26] hover:border-[#38B2AC] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+        </a>
+
+        <!-- Email Contact -->
+        <a href="mailto:qenastudentclubs@gmail.com" id="footerEmailLink" title="Email QSC" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#F5BC6B] hover:text-[#071A26] hover:border-[#F5BC6B] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+        </a>
+
+        <!-- WhatsApp Community Trigger -->
+        <button class="btn-join-trigger w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-[#2ECC71] hover:bg-[#2ECC71] hover:text-[#071A26] hover:border-[#2ECC71] transition-all duration-300 cursor-pointer" title="Join WhatsApp Community">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+          </svg>
+        </button>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/qena_student_club?utm_source=qr" target="_blank" rel="noopener noreferrer" title="Follow us on Instagram" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#E1306C] hover:text-white hover:border-[#E1306C] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </a>
+
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/share/1B1s3pP32Y/" target="_blank" rel="noopener noreferrer" title="Follow us on Facebook" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#1877F2] hover:text-white hover:border-[#1877F2] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Container -->
+  <div id="modalBackdrop" class="fixed inset-0 z-50 modal-overlay hidden items-center justify-center p-4 overflow-y-auto">
+    <div id="modalContainer" class="modal-content rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto text-left relative transform transition-all"></div>
+  </div>
+
+  <!-- Static subject page controller: shows the right cards from HTML (no data fetch needed) -->
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var s = (params.get('s') || '').toLowerCase();
+      var b = (params.get('b') || '').toLowerCase();
+
+      var groups = Array.prototype.slice.call(document.querySelectorAll('.subject-group'));
+      var losContainer = document.getElementById('losContainer');
+      var branchPicker = document.getElementById('branchPickerContainer');
+      var empty = document.getElementById('subjectLOsEmpty');
+      var semSelect = document.getElementById('subjectSemesterSelect');
+      var semWrapper = document.getElementById('subjectSemesterWrapper');
+      var titleEl = document.getElementById('subjectTitle');
+      var descEl = document.getElementById('subjectDescription');
+      var badgeEl = document.getElementById('subjectCategoryBadge');
+      var crumbEl = document.getElementById('subjectBranchBreadcrumb');
+
+      if (!s) { window.location.href = 'subjects.html'; return; }
+
+      var subjGroups = groups.filter(function (g) { return g.dataset.subject === s; });
+      if (!subjGroups.length) { window.location.href = 'subjects.html'; return; }
+
+      var hasBranches = subjGroups.some(function (g) { return g.dataset.branch; });
+      var meta = subjGroups[0].dataset;
+
+      if (titleEl) titleEl.textContent = (meta.name || s).split('').join(' ');
+      if (descEl) descEl.textContent = meta.description || '';
+      if (badgeEl) badgeEl.textContent = (meta.category || '').toUpperCase();
+
+      if (hasBranches && !b) {
+        branchPicker.classList.remove('hidden');
+        losContainer.classList.add('hidden');
+        if (semWrapper) semWrapper.classList.add('hidden');
+        return;
+      }
+
+      branchPicker.classList.add('hidden');
+      losContainer.classList.remove('hidden');
+      if (semWrapper) semWrapper.classList.remove('hidden');
+      if (b && crumbEl) { crumbEl.classList.remove('hidden'); crumbEl.textContent = '> ' + b.toUpperCase(); }
+
+      var active = hasBranches
+        ? subjGroups.filter(function (g) { return g.dataset.branch === b; })[0]
+        : subjGroups[0];
+
+      groups.forEach(function (g) { g.hidden = true; });
+
+      function applyFilter() {
+        var sem = semSelect ? semSelect.value : 'all';
+        if (!active) { if (empty) empty.classList.remove('hidden'); return; }
+        active.hidden = false;
+        var cards = Array.prototype.slice.call(active.querySelectorAll('.lo-card'));
+        var visible = 0;
+        cards.forEach(function (c) {
+          // The PDF "file card" (lo-file-card) is ALWAYS shown; normal L.O cards filter by semester.
+          var ok = c.classList.contains('lo-file-card') || (sem === 'all') || (c.dataset.semester === sem);
+          c.hidden = !ok;
+          if (ok) visible++;
+        });
+        if (empty) empty.classList.toggle('hidden', visible > 0);
+        active.hidden = (visible === 0);
+      }
+
+      if (semSelect) semSelect.addEventListener('change', applyFilter);
+      applyFilter();
+    })();
+  </script>
+
+  <!-- Application Scripts -->
+  <script src="assets/assets.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
+

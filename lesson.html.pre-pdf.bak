@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Outcome Lessons & Study Materials — QSTEMora Club</title>
+  
+  <!-- Google Fonts: Poppins & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandDark: '#0A1926',
+            brandDarker: '#07131F',
+            brandCard: '#0E2238',
+            brandGold: '#F5BC6B',
+            brandTeal: '#48A9A6',
+            brandCyan: '#38B2AC',
+          },
+          fontFamily: {
+            sans: ['Poppins', 'Outfit', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-[#071A26] text-white min-h-screen flex flex-col selection:bg-[#F5BC6B] selection:text-[#071A26]">
+
+  <!-- Top Navigation Bar -->
+  <header class="sticky top-0 z-40 bg-[#071A26]/95 backdrop-blur-md border-b border-[#0F2F47] transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo & Brand Title -->
+        <a href="index.html" class="flex items-center gap-3 group">
+          <img src="assets/images/logo.jpg" alt="QSTEMora Club Logo" class="w-11 h-11 rounded-full object-cover shadow-[0_0_12px_rgba(245,188,107,0.4)] border border-[#F5BC6B]/40 group-hover:scale-105 transition-transform duration-300" />
+          <div class="flex items-center font-bold text-xl md:text-2xl tracking-tight">
+            <span class="text-[#38B2AC]">QSTEM</span><span class="text-[#F5BC6B]">ora</span>
+            <span class="text-[#2ECC71] ml-1.5 font-medium text-lg">club</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="index.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B]" data-page="home">
+            Home
+          </a>
+          <a href="subjects.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B] flex items-center gap-1.5" data-page="subjects">
+            <svg class="w-4 h-4 text-[#38B2AC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+            Subjects
+          </a>
+          <a href="about.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B]" data-page="about">
+            About
+          </a>
+          <a href="team.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B]" data-page="team">
+            Team members
+          </a>
+          <a href="partners.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B]" data-page="partners">
+            Partners
+          </a>
+        </nav>
+
+        <!-- Right CTA Button -->
+        <div class="hidden md:flex items-center">
+          <button class="btn-gold btn-join-trigger text-sm uppercase font-bold tracking-wider px-7 py-2.5">
+            JOIN
+          </button>
+        </div>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <div class="flex md:hidden">
+          <button id="mobileMenuBtn" class="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-[#0E293E] focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobileMenu" class="hidden md:hidden bg-[#051520] border-b border-[#0F2F47] px-4 pt-2 pb-6 space-y-3">
+      <a href="index.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="home">Home</a>
+      <a href="subjects.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="subjects">Subjects</a>
+      <a href="about.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="about">About</a>
+      <a href="team.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="team">Team members</a>
+      <a href="partners.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="partners">Partners</a>
+      <div class="pt-2">
+        <button class="btn-gold btn-join-trigger w-full text-center py-2.5">JOIN</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main View Container -->
+  <main class="flex-grow py-12 px-4 max-w-7xl mx-auto w-full">
+    
+    <!-- Top Breadcrumb & LO Header -->
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-10 pb-6 border-b border-[#0F2F47]">
+      <div>
+        <!-- Breadcrumbs -->
+        <div class="flex items-center gap-2 text-xs text-slate-400 font-medium mb-2">
+          <a href="subjects.html" class="hover:text-[#F5BC6B]">Subjects</a>
+          <span>&gt;</span>
+          <a id="breadcrumbSubject" href="subjects.html" class="text-slate-300 hover:text-[#F5BC6B]">Subject</a>
+          <span>&gt;</span>
+          <span id="breadcrumbLO" class="text-[#F5BC6B] font-bold">L.O Code</span>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <h1 id="lessonCodeTitle" class="text-2xl md:text-4xl font-extrabold text-white tracking-tight letter-spaced-title">
+            The_Subject &gt; L.O NO.
+          </h1>
+          <span id="lessonMetaBadge" class="hidden sm:inline-block bg-[#163E60] text-[#38B2AC] text-xs font-bold px-3 py-1 rounded-full">
+            Grade 1 STEM
+          </span>
+        </div>
+
+        <h2 id="lessonMainTitle" class="text-lg md:text-xl font-bold text-[#38B2AC] mt-2">
+          Loading learning outcome...
+        </h2>
+        <p id="lessonDescription" class="text-xs md:text-sm text-slate-300 mt-1 max-w-3xl">
+          Loading description...
+        </p>
+      </div>
+
+      <div>
+        <a id="lessonBackBtn" href="subjects.html" class="btn-cyan-back text-sm">
+          ← Back to L.Os
+        </a>
+      </div>
+    </div>
+
+    <!-- ONE SINGLE PAGE IN ONE SCROLL: 3 SECTIONS -->
+    <div class="space-y-10">
+      
+      <!-- 1. VIDEOS SECTION -->
+      <section class="resource-section">
+        <div class="flex items-center justify-between gap-4 mb-6 pb-4 border-b border-[#143E62]">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl md:text-3xl">🎬</span>
+            <div>
+              <h3 class="text-xl md:text-2xl font-extrabold text-white">Video Lessons & Explanations</h3>
+              <p class="text-xs text-slate-400">Concept breakdowns and reference proof derivations recorded by mentors and teachers.</p>
+            </div>
+          </div>
+          <span id="videosCountBadge" class="bg-[#F5BC6B]/10 text-[#F5BC6B] border border-[#F5BC6B]/30 text-xs font-bold px-3 py-1 rounded-full">
+            0 Lectures
+          </span>
+        </div>
+
+        <div id="videosListContainer" class="space-y-4">
+          <!-- Populated dynamically via assets/app.js -->
+        </div>
+      </section>
+
+      <!-- 2. FILES & PPT PRESENTATIONS SECTION -->
+      <section class="resource-section">
+        <div class="flex items-center justify-between gap-4 mb-6 pb-4 border-b border-[#143E62]">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl md:text-3xl">📁</span>
+            <div>
+              <h3 class="text-xl md:text-2xl font-extrabold text-white">Study Files & Slide Decks</h3>
+              <p class="text-xs text-slate-400">PowerPoint presentations crafted by visual designers and summary review sheets.</p>
+            </div>
+          </div>
+          <span id="filesCountBadge" class="bg-[#38B2AC]/10 text-[#38B2AC] border border-[#38B2AC]/30 text-xs font-bold px-3 py-1 rounded-full">
+            0 Files
+          </span>
+        </div>
+
+        <div id="filesListContainer" class="space-y-4">
+          <!-- Populated dynamically via assets/app.js -->
+        </div>
+      </section>
+
+      <!-- 3. TEST BANKS & REFERENCE QUESTIONS SECTION -->
+      <section class="resource-section">
+        <div class="flex items-center justify-between gap-4 mb-6 pb-4 border-b border-[#143E62]">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl md:text-3xl">📝</span>
+            <div>
+              <h3 class="text-xl md:text-2xl font-extrabold text-white">Test Banks & Practice Sets</h3>
+              <p class="text-xs text-slate-400">Challenging university reference problems, multiple-choice questions, and answer keys.</p>
+            </div>
+          </div>
+          <span id="testBanksCountBadge" class="bg-[#2ECC71]/10 text-[#2ECC71] border border-[#2ECC71]/30 text-xs font-bold px-3 py-1 rounded-full">
+            0 Question Banks
+          </span>
+        </div>
+
+        <div id="testBanksListContainer" class="space-y-4">
+          <!-- Populated dynamically via assets/app.js -->
+        </div>
+      </section>
+
+    </div>
+
+    <!-- STATIC lesson content store: one block per L.O. All videos/files/tests live here as HTML. -->
+    <div id="lessonDataStore" hidden>
+      <!-- Lesson: CH.1.01 — Atomic Structure &amp; Periodic Trends (chemistry) -->
+      <div class="lesson-data" data-id="CH.1.01" data-subject="chemistry" data-subject-name="Chemistry" data-branch="" data-title="Atomic Structure &amp; Periodic Trends" data-desc="Electronic configurations, effective nuclear charge, ionization energy, and electronegativity." data-code="Chemistry &gt; CH.1.01" data-meta="Weeks 01-02 • Grade 1 STEM" data-videos="2" data-files="2" data-tests="2">
+        <div data-slot="videos">
+          <!-- Video: CH.1.01 Comprehensive Explanation &amp; Atomic Models -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">CH.1.01 Comprehensive Explanation &amp; Atomic Models</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>⏱ 28 mins</span><span>•</span><span>🎙 Presented by: <strong class="text-slate-200">Senior '26 Chemistry Lead</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ch101-vid1/view" target="_blank" class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">▶ Watch on Drive</a>
+          </div>
+          <!-- Video: Solving Periodic Trends Reference Proofs &amp; Exercises -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Solving Periodic Trends Reference Proofs &amp; Exercises</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>⏱ 22 mins</span><span>•</span><span>🎙 Presented by: <strong class="text-slate-200">Mohanad Naeem</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ch101-vid2/view" target="_blank" class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">▶ Watch on Drive</a>
+          </div>
+        </div>
+        <div data-slot="files">
+          <!-- File: CH.1.01 Master Presentation Slide Deck -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">CH.1.01 Master Presentation Slide Deck</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PPTX</span><span>•</span><span>File Size: 16 MB</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ch101-ppt/view" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View & Download</a>
+          </div>
+          <!-- File: Periodic Table Summary Sheet &amp; Trend Rules -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Periodic Table Summary Sheet &amp; Trend Rules</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>File Size: 3.5 MB</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ch101-pdf/view" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View & Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <!-- Test bank: CH.1.01 Standard Multiple Choice Test (35 Qs) -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">CH.1.01 Standard Multiple Choice Test (35 Qs)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>📊 35 Questions</span><span>•</span><span>Difficulty: <strong class="text-[#F5BC6B]">Medium</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ch101-tb1/view" target="_blank" class="btn-drive-action text-xs px-5 py-2.5 flex-shrink-0">📄 Open Test Bank</a>
+          </div>
+          <!-- Test bank: Advanced University Reference Problem Set with Model Answers -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Advanced University Reference Problem Set with Model Answers</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>📊 20 Questions</span><span>•</span><span>Difficulty: <strong class="text-[#F5BC6B]">Hard</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ch101-tb2/view" target="_blank" class="btn-drive-action text-xs px-5 py-2.5 flex-shrink-0">📄 Open Test Bank</a>
+          </div>
+        </div>
+      </div>
+      <!-- Lesson: CH.1.02 — Chemical Bonding &amp; Molecular Geometry (chemistry) -->
+      <div class="lesson-data" data-id="CH.1.02" data-subject="chemistry" data-subject-name="Chemistry" data-branch="" data-title="Chemical Bonding &amp; Molecular Geometry" data-desc="Ionic, covalent, and metallic bonds, Lewis structures, VSEPR theory, and hybridization." data-code="Chemistry &gt; CH.1.02" data-meta="Weeks 03-04 • Grade 1 STEM" data-videos="1" data-files="1" data-tests="1">
+        <div data-slot="videos">
+          <!-- Video: VSEPR Geometry &amp; Hybridization 3D Models Walkthrough -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">VSEPR Geometry &amp; Hybridization 3D Models Walkthrough</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>⏱ 32 mins</span><span>•</span><span>🎙 Presented by: <strong class="text-slate-200">Chemistry Academic Team</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ch102-vid/view" target="_blank" class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">▶ Watch on Drive</a>
+          </div>
+        </div>
+        <div data-slot="files">
+          <!-- File: CH.1.02 Molecular Geometry PPT Deck -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">CH.1.02 Molecular Geometry PPT Deck</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PPTX</span><span>•</span><span>File Size: 18 MB</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ch102-ppt/view" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View & Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <!-- Test bank: Molecular Shapes &amp; Bond Angles Question Bank -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Molecular Shapes &amp; Bond Angles Question Bank</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>📊 30 Questions</span><span>•</span><span>Difficulty: <strong class="text-[#F5BC6B]">Medium</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ch102-tb/view" target="_blank" class="btn-drive-action text-xs px-5 py-2.5 flex-shrink-0">📄 Open Test Bank</a>
+          </div>
+        </div>
+      </div>
+      <!-- Lesson: CH.1.03 — Stoichiometry &amp; Limiting Reactants (chemistry) -->
+      <div class="lesson-data" data-id="CH.1.03" data-subject="chemistry" data-subject-name="Chemistry" data-branch="" data-title="Stoichiometry &amp; Limiting Reactants" data-desc="Mole conversions, empirical and molecular formulas, percentage yield, and solution stoichiometry." data-code="Chemistry &gt; CH.1.03" data-meta="Weeks 05-06 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for CH.1.03.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for CH.1.03 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: CH.1.04 — Develop operational definitions of chemical elements (chemistry) -->
+      <div class="lesson-data" data-id="CH.1.04" data-subject="chemistry" data-subject-name="Chemistry" data-branch="" data-title="Develop operational definitions of chemical elements" data-desc="Investigating historical definitions, spectroscopic analysis, and classification schemes." data-code="Chemistry &gt; CH.1.04" data-meta="Weeks 07-08 • Grade 1 STEM" data-videos="1" data-files="2" data-tests="1">
+        <div data-slot="videos">
+          <!-- Video: CH.1.04 Operational Definitions of Elements — Core Lecture -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">CH.1.04 Operational Definitions of Elements — Core Lecture</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>⏱ 30 mins</span><span>•</span><span>🎙 Presented by: <strong class="text-slate-200">Senior '26 Chemistry Team</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ch104-vid1/view" target="_blank" class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">▶ Watch on Drive</a>
+          </div>
+        </div>
+        <div data-slot="files">
+          <!-- File: CH.1.04 Chemistry Master Presentation -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">CH.1.04 Chemistry Master Presentation</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PPTX</span><span>•</span><span>File Size: 14 MB</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ch104-ppt/view" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View & Download</a>
+          </div>
+          <!-- File: CH.1.04 Quick Review &amp; Study Guide -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">CH.1.04 Quick Review &amp; Study Guide</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>File Size: 4 MB</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ch104-pdf/view" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View & Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <!-- Test bank: CH.1.04 Model Practice Test Bank -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">CH.1.04 Model Practice Test Bank</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>📊 25 Questions</span><span>•</span><span>Difficulty: <strong class="text-[#F5BC6B]">Medium</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ch104-tb/view" target="_blank" class="btn-drive-action text-xs px-5 py-2.5 flex-shrink-0">📄 Open Test Bank</a>
+          </div>
+        </div>
+      </div>
+      <!-- Lesson: CH.1.05 — Thermochemistry &amp; Enthalpy of Reactions (chemistry) -->
+      <div class="lesson-data" data-id="CH.1.05" data-subject="chemistry" data-subject-name="Chemistry" data-branch="" data-title="Thermochemistry &amp; Enthalpy of Reactions" data-desc="Calorimetry, Hess's Law, standard enthalpies of formation, and bond energies." data-code="Chemistry &gt; CH.1.05" data-meta="Weeks 09-10 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for CH.1.05.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for CH.1.05 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: CH.1.06 — Chemical Kinetics &amp; Reaction Rates (chemistry) -->
+      <div class="lesson-data" data-id="CH.1.06" data-subject="chemistry" data-subject-name="Chemistry" data-branch="" data-title="Chemical Kinetics &amp; Reaction Rates" data-desc="Rate laws, orders of reaction, collision theory, and Arrhenius activation energy." data-code="Chemistry &gt; CH.1.06" data-meta="Weeks 01-03 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for CH.1.06.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for CH.1.06 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: CH.1.07 — Chemical Equilibrium &amp; Le Chatelier's Principle (chemistry) -->
+      <div class="lesson-data" data-id="CH.1.07" data-subject="chemistry" data-subject-name="Chemistry" data-branch="" data-title="Chemical Equilibrium &amp; Le Chatelier's Principle" data-desc="Equilibrium constant Kc/Kp, reaction quotient Q, and dynamic equilibrium shifts." data-code="Chemistry &gt; CH.1.07" data-meta="Weeks 04-06 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for CH.1.07.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for CH.1.07 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: CH.1.08 — Acids, Bases &amp; pH Calculations (chemistry) -->
+      <div class="lesson-data" data-id="CH.1.08" data-subject="chemistry" data-subject-name="Chemistry" data-branch="" data-title="Acids, Bases &amp; pH Calculations" data-desc="Brønsted-Lowry &amp; Lewis definitions, strong vs weak acids, Ka/Kb, and buffer solutions." data-code="Chemistry &gt; CH.1.08" data-meta="Weeks 07-09 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for CH.1.08.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for CH.1.08 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: PH.1.01 — Units, Physical Quantities &amp; Error Analysis (physics) -->
+      <div class="lesson-data" data-id="PH.1.01" data-subject="physics" data-subject-name="Physics" data-branch="" data-title="Units, Physical Quantities &amp; Error Analysis" data-desc="SI units, dimensional analysis, scalar vs vector quantities, and measurement uncertainties." data-code="Physics &gt; PH.1.01" data-meta="Weeks 01-02 • Grade 1 STEM" data-videos="1" data-files="1" data-tests="1">
+        <div data-slot="videos">
+          <!-- Video: Dimensional Analysis &amp; Significant Figures Tutorial -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Dimensional Analysis &amp; Significant Figures Tutorial</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>⏱ 24 mins</span><span>•</span><span>🎙 Presented by: <strong class="text-slate-200">Ziad Ahmed</strong></span></div>
+            </div>
+            <a href="ZZZZZ" target="_blank" class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">▶ Watch on Drive</a>
+          </div>
+        </div>
+        <div data-slot="files">
+          <!-- File: PH.1.01 Measurement &amp; Units Presentation -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">PH.1.01 Measurement &amp; Units Presentation</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PPTX</span><span>•</span><span>File Size: 15 MB</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ph101-ppt/view" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View & Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <!-- Test bank: Error Analysis &amp; Vectors Problem Set (40 Qs) -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Error Analysis &amp; Vectors Problem Set (40 Qs)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>📊 40 Questions</span><span>•</span><span>Difficulty: <strong class="text-[#F5BC6B]">Medium</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ph101-tb/view" target="_blank" class="btn-drive-action text-xs px-5 py-2.5 flex-shrink-0">📄 Open Test Bank</a>
+          </div>
+        </div>
+      </div>
+      <!-- Lesson: PH.1.02 — 1D &amp; 2D Kinematics &amp; Projectile Motion (physics) -->
+      <div class="lesson-data" data-id="PH.1.02" data-subject="physics" data-subject-name="Physics" data-branch="" data-title="1D &amp; 2D Kinematics &amp; Projectile Motion" data-desc="Uniform acceleration equations, free fall, projectile trajectories, and relative velocity." data-code="Physics &gt; PH.1.02" data-meta="Weeks 03-04 • Grade 1 STEM" data-videos="1" data-files="2" data-tests="1">
+        <div data-slot="videos">
+          <!-- Video: Projectile Motion Derivations &amp; Range Optimization -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Projectile Motion Derivations &amp; Range Optimization</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>⏱ 35 mins</span><span>•</span><span>🎙 Presented by: <strong class="text-slate-200">Dr. Adel Abdelrahman</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ph102-vid/view" target="_blank" class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">▶ Watch on Drive</a>
+          </div>
+        </div>
+        <div data-slot="files">
+          <!-- File: PH.1.02 Kinematics Master Slide Deck -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">PH.1.02 Kinematics Master Slide Deck</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PPTX</span><span>•</span><span>File Size: 20 MB</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ph102-ppt/view" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View & Download</a>
+          </div>
+          <!-- File: Kinematic Equations Formula Sheet -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Kinematic Equations Formula Sheet</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>File Size: 3 MB</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ph102-pdf/view" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View & Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <!-- Test bank: Projectile Motion Reference Problem Set -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Projectile Motion Reference Problem Set</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>📊 45 Questions</span><span>•</span><span>Difficulty: <strong class="text-[#F5BC6B]">Hard</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ph102-tb/view" target="_blank" class="btn-drive-action text-xs px-5 py-2.5 flex-shrink-0">📄 Open Test Bank</a>
+          </div>
+        </div>
+      </div>
+      <!-- Lesson: PH.1.03 — Newton's Laws of Motion &amp; Friction (physics) -->
+      <div class="lesson-data" data-id="PH.1.03" data-subject="physics" data-subject-name="Physics" data-branch="" data-title="Newton's Laws of Motion &amp; Friction" data-desc="Inertia, F=ma, action-reaction pairs, free-body diagrams, and inclined plane dynamics." data-code="Physics &gt; PH.1.03" data-meta="Weeks 05-06 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for PH.1.03.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for PH.1.03 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: PH.1.04 — Work, Energy &amp; Conservation Principles (physics) -->
+      <div class="lesson-data" data-id="PH.1.04" data-subject="physics" data-subject-name="Physics" data-branch="" data-title="Work, Energy &amp; Conservation Principles" data-desc="Work-energy theorem, kinetic vs potential energy, conservative forces, and mechanical power." data-code="Physics &gt; PH.1.04" data-meta="Weeks 07-08 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for PH.1.04.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for PH.1.04 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: PH.1.05 — Linear Momentum &amp; Collisions (physics) -->
+      <div class="lesson-data" data-id="PH.1.05" data-subject="physics" data-subject-name="Physics" data-branch="" data-title="Linear Momentum &amp; Collisions" data-desc="Impulse-momentum theorem, elastic vs inelastic collisions, and center of mass motion." data-code="Physics &gt; PH.1.05" data-meta="Weeks 09-10 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for PH.1.05.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for PH.1.05 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: PH.1.06 — Electric Field &amp; Coulomb's Law (physics) -->
+      <div class="lesson-data" data-id="PH.1.06" data-subject="physics" data-subject-name="Physics" data-branch="" data-title="Electric Field &amp; Coulomb's Law" data-desc="Point charges, continuous charge distributions, electric field lines, and Gauss's Law intro." data-code="Physics &gt; PH.1.06" data-meta="Weeks 01-03 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for PH.1.06.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for PH.1.06 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: PH.1.07 — Electric Potential &amp; Capacitance (physics) -->
+      <div class="lesson-data" data-id="PH.1.07" data-subject="physics" data-subject-name="Physics" data-branch="" data-title="Electric Potential &amp; Capacitance" data-desc="Potential difference, equipotential surfaces, parallel plate capacitors, and dielectric materials." data-code="Physics &gt; PH.1.07" data-meta="Weeks 04-06 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for PH.1.07.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for PH.1.07 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: PH.1.08 — DC Circuits &amp; Kirchhoff's Laws (physics) -->
+      <div class="lesson-data" data-id="PH.1.08" data-subject="physics" data-subject-name="Physics" data-branch="" data-title="DC Circuits &amp; Kirchhoff's Laws" data-desc="Ohm's law, series/parallel resistor combinations, Kirchhoff's current and voltage junction rules." data-code="Physics &gt; PH.1.08" data-meta="Weeks 07-09 • Grade 1 STEM" data-videos="1" data-files="1" data-tests="1">
+        <div data-slot="videos">
+          <!-- Video: Kirchhoff's Laws &amp; Node Voltage Analysis -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Kirchhoff's Laws &amp; Node Voltage Analysis</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>⏱ 30 mins</span><span>•</span><span>🎙 Presented by: <strong class="text-slate-200">Physics Academic Lead</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ph108-vid/view" target="_blank" class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">▶ Watch on Drive</a>
+          </div>
+        </div>
+        <div data-slot="files">
+          <!-- File: DC Circuits Master Presentation -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">DC Circuits Master Presentation</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PPTX</span><span>•</span><span>File Size: 17 MB</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ph108-ppt/view" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View & Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <!-- Test bank: Complex Circuits &amp; Loop Rule Question Bank -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Complex Circuits &amp; Loop Rule Question Bank</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>📊 35 Questions</span><span>•</span><span>Difficulty: <strong class="text-[#F5BC6B]">Hard</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ph108-tb/view" target="_blank" class="btn-drive-action text-xs px-5 py-2.5 flex-shrink-0">📄 Open Test Bank</a>
+          </div>
+        </div>
+      </div>
+      <!-- Lesson: BI.1.01 — Biological Macromolecules &amp; Chemical Basis of Life (biology) -->
+      <div class="lesson-data" data-id="BI.1.01" data-subject="biology" data-subject-name="Biology" data-branch="" data-title="Biological Macromolecules &amp; Chemical Basis of Life" data-desc="Carbohydrates, lipids, proteins, nucleic acids, enzyme catalysis, and dehydration synthesis." data-code="Biology &gt; BI.1.01" data-meta="Weeks 01-02 • Grade 1 STEM" data-videos="1" data-files="1" data-tests="1">
+        <div data-slot="videos">
+          <!-- Video: Enzymes &amp; Biochemical Pathways 3D Animation -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Enzymes &amp; Biochemical Pathways 3D Animation</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>⏱ 26 mins</span><span>•</span><span>🎙 Presented by: <strong class="text-slate-200">Kareem Mahmoud</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-bi101-vid/view" target="_blank" class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">▶ Watch on Drive</a>
+          </div>
+        </div>
+        <div data-slot="files">
+          <!-- File: BI.1.01 Macromolecules Presentation -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">BI.1.01 Macromolecules Presentation</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PPTX</span><span>•</span><span>File Size: 21 MB</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-bi101-ppt/view" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View & Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <!-- Test bank: Biochemistry &amp; Enzymes Practice Test -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Biochemistry &amp; Enzymes Practice Test</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>📊 30 Questions</span><span>•</span><span>Difficulty: <strong class="text-[#F5BC6B]">Medium</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-bi101-tb/view" target="_blank" class="btn-drive-action text-xs px-5 py-2.5 flex-shrink-0">📄 Open Test Bank</a>
+          </div>
+        </div>
+      </div>
+      <!-- Lesson: BI.1.02 — Cell Structure, Organelles &amp; Membrane Transport (biology) -->
+      <div class="lesson-data" data-id="BI.1.02" data-subject="biology" data-subject-name="Biology" data-branch="" data-title="Cell Structure, Organelles &amp; Membrane Transport" data-desc="Prokaryotic vs eukaryotic cells, organelle functions, phospholipid bilayer, and active/passive transport." data-code="Biology &gt; BI.1.02" data-meta="Weeks 03-04 • Grade 1 STEM" data-videos="1" data-files="1" data-tests="1">
+        <div data-slot="videos">
+          <!-- Video: Membrane Transport &amp; Osmosis Demonstration -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Membrane Transport &amp; Osmosis Demonstration</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>⏱ 25 mins</span><span>•</span><span>🎙 Presented by: <strong class="text-slate-200">Senior '26 Biology Lead</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-bi102-vid/view" target="_blank" class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">▶ Watch on Drive</a>
+          </div>
+        </div>
+        <div data-slot="files">
+          <!-- File: BI.1.02 Cell Biology Slide Deck -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">BI.1.02 Cell Biology Slide Deck</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PPTX</span><span>•</span><span>File Size: 24 MB</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-bi102-ppt/view" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View & Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <!-- Test bank: Cell Biology Multiple Choice Bank (40 Qs) -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Cell Biology Multiple Choice Bank (40 Qs)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>📊 40 Questions</span><span>•</span><span>Difficulty: <strong class="text-[#F5BC6B]">Medium</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-bi102-tb/view" target="_blank" class="btn-drive-action text-xs px-5 py-2.5 flex-shrink-0">📄 Open Test Bank</a>
+          </div>
+        </div>
+      </div>
+      <!-- Lesson: BI.1.03 — Cellular Respiration &amp; Glycolysis (biology) -->
+      <div class="lesson-data" data-id="BI.1.03" data-subject="biology" data-subject-name="Biology" data-branch="" data-title="Cellular Respiration &amp; Glycolysis" data-desc="Anaerobic vs aerobic pathways, Krebs citric acid cycle, electron transport chain, and ATP synthase." data-code="Biology &gt; BI.1.03" data-meta="Weeks 05-06 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for BI.1.03.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for BI.1.03 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: BI.1.04 — Photosynthesis &amp; Light Reactions (biology) -->
+      <div class="lesson-data" data-id="BI.1.04" data-subject="biology" data-subject-name="Biology" data-branch="" data-title="Photosynthesis &amp; Light Reactions" data-desc="Chloroplast anatomy, photosystems I &amp; II, photophosphorylation, and the Calvin cycle." data-code="Biology &gt; BI.1.04" data-meta="Weeks 07-08 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for BI.1.04.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for BI.1.04 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: BI.1.05 — Cell Division: Mitosis &amp; Meiosis (biology) -->
+      <div class="lesson-data" data-id="BI.1.05" data-subject="biology" data-subject-name="Biology" data-branch="" data-title="Cell Division: Mitosis &amp; Meiosis" data-desc="Cell cycle checkpoints, chromosome replication, crossing over, and genetic variation." data-code="Biology &gt; BI.1.05" data-meta="Weeks 01-03 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for BI.1.05.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for BI.1.05 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: BI.1.06 — Mendelian Genetics &amp; Inheritance Patterns (biology) -->
+      <div class="lesson-data" data-id="BI.1.06" data-subject="biology" data-subject-name="Biology" data-branch="" data-title="Mendelian Genetics &amp; Inheritance Patterns" data-desc="Monohybrid/dihybrid crosses, Punnett squares, sex-linked traits, and pedigree analysis." data-code="Biology &gt; BI.1.06" data-meta="Weeks 04-06 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for BI.1.06.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for BI.1.06 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: BI.1.07 — Molecular Genetics: DNA &amp; RNA (biology) -->
+      <div class="lesson-data" data-id="BI.1.07" data-subject="biology" data-subject-name="Biology" data-branch="" data-title="Molecular Genetics: DNA &amp; RNA" data-desc="DNA replication fork, transcription, translation, and point mutations." data-code="Biology &gt; BI.1.07" data-meta="Weeks 07-09 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for BI.1.07.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for BI.1.07 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: MA.1.01 — Functions, Domain &amp; Range, Transformations (math) -->
+      <div class="lesson-data" data-id="MA.1.01" data-subject="math" data-subject-name="Math" data-branch="" data-title="Functions, Domain &amp; Range, Transformations" data-desc="Polynomial, rational, radical functions, composite functions, and graph transformations." data-code="Math &gt; MA.1.01" data-meta="Weeks 01-02 • Grade 1 STEM" data-videos="1" data-files="1" data-tests="1">
+        <div data-slot="videos">
+          <!-- Video: Advanced Function Transformations &amp; Symmetry -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Advanced Function Transformations &amp; Symmetry</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>⏱ 28 mins</span><span>•</span><span>🎙 Presented by: <strong class="text-slate-200">Mohanad Naeem</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ma101-vid/view" target="_blank" class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">▶ Watch on Drive</a>
+          </div>
+        </div>
+        <div data-slot="files">
+          <!-- File: MA.1.01 Functions &amp; Graphs Presentation -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">MA.1.01 Functions &amp; Graphs Presentation</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PPTX</span><span>•</span><span>File Size: 14 MB</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ma101-ppt/view" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View & Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <!-- Test bank: Functions &amp; Domains Question Bank (30 Qs) -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Functions &amp; Domains Question Bank (30 Qs)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>📊 30 Questions</span><span>•</span><span>Difficulty: <strong class="text-[#F5BC6B]">Medium</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ma101-tb/view" target="_blank" class="btn-drive-action text-xs px-5 py-2.5 flex-shrink-0">📄 Open Test Bank</a>
+          </div>
+        </div>
+      </div>
+      <!-- Lesson: MA.1.02 — Limits &amp; Continuity (math) -->
+      <div class="lesson-data" data-id="MA.1.02" data-subject="math" data-subject-name="Math" data-branch="" data-title="Limits &amp; Continuity" data-desc="Algebraic limits, limits at infinity, squeeze theorem, and one-sided continuity." data-code="Math &gt; MA.1.02" data-meta="Weeks 03-04 • Grade 1 STEM" data-videos="1" data-files="1" data-tests="1">
+        <div data-slot="videos">
+          <!-- Video: Mastering Limits &amp; Indeterminate Forms -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Mastering Limits &amp; Indeterminate Forms</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>⏱ 32 mins</span><span>•</span><span>🎙 Presented by: <strong class="text-slate-200">Math Academic Team</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ma102-vid/view" target="_blank" class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">▶ Watch on Drive</a>
+          </div>
+        </div>
+        <div data-slot="files">
+          <!-- File: MA.1.02 Limits Master Notes &amp; PPT -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">MA.1.02 Limits Master Notes &amp; PPT</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PPTX</span><span>•</span><span>File Size: 15 MB</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ma102-ppt/view" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View & Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <!-- Test bank: Limits &amp; Continuity Reference Problem Set -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Limits &amp; Continuity Reference Problem Set</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>📊 45 Questions</span><span>•</span><span>Difficulty: <strong class="text-[#F5BC6B]">Hard</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ma102-tb/view" target="_blank" class="btn-drive-action text-xs px-5 py-2.5 flex-shrink-0">📄 Open Test Bank</a>
+          </div>
+        </div>
+      </div>
+      <!-- Lesson: MA.1.03 — Differential Calculus: Definition &amp; Rules (math) -->
+      <div class="lesson-data" data-id="MA.1.03" data-subject="math" data-subject-name="Math" data-branch="" data-title="Differential Calculus: Definition &amp; Rules" data-desc="Derivative as rate of change, power, product, quotient, and chain rules." data-code="Math &gt; MA.1.03" data-meta="Weeks 05-06 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for MA.1.03.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for MA.1.03 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: MA.1.04 — Related Rates &amp; Optimization Problems (math) -->
+      <div class="lesson-data" data-id="MA.1.04" data-subject="math" data-subject-name="Math" data-branch="" data-title="Related Rates &amp; Optimization Problems" data-desc="Implicit differentiation, related rates modeling, and global extrema optimization." data-code="Math &gt; MA.1.04" data-meta="Weeks 07-08 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for MA.1.04.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for MA.1.04 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: MA.1.05 — Matrices, Determinants &amp; Linear Systems (math) -->
+      <div class="lesson-data" data-id="MA.1.05" data-subject="math" data-subject-name="Math" data-branch="" data-title="Matrices, Determinants &amp; Linear Systems" data-desc="Matrix operations, determinants, Cramer's rule, inverse matrices, and Gaussian elimination." data-code="Math &gt; MA.1.05" data-meta="Weeks 01-03 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for MA.1.05.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for MA.1.05 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: MA.1.06 — Analytical Trigonometry &amp; Identities (math) -->
+      <div class="lesson-data" data-id="MA.1.06" data-subject="math" data-subject-name="Math" data-branch="" data-title="Analytical Trigonometry &amp; Identities" data-desc="Angle addition formulas, double angles, law of sines/cosines, and trigonometric equations." data-code="Math &gt; MA.1.06" data-meta="Weeks 04-06 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for MA.1.06.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for MA.1.06 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: MA.1.07 — Introduction to Integral Calculus (math) -->
+      <div class="lesson-data" data-id="MA.1.07" data-subject="math" data-subject-name="Math" data-branch="" data-title="Introduction to Integral Calculus" data-desc="Antiderivatives, Riemann sums, Fundamental Theorem of Calculus, and u-substitution." data-code="Math &gt; MA.1.07" data-meta="Weeks 07-09 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for MA.1.07.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for MA.1.07 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: ME.1.01 — Force Vectors &amp; Resolution in 2D (mechanics) -->
+      <div class="lesson-data" data-id="ME.1.01" data-subject="mechanics" data-subject-name="Mechanics" data-branch="" data-title="Force Vectors &amp; Resolution in 2D" data-desc="Vector components, resultant force, concurrent coplanar forces, and equilibrium conditions." data-code="Mechanics &gt; ME.1.01" data-meta="Weeks 01-03 • Grade 1 STEM" data-videos="1" data-files="1" data-tests="1">
+        <div data-slot="videos">
+          <!-- Video: 2D Force Vectors &amp; Free Body Diagrams -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">2D Force Vectors &amp; Free Body Diagrams</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>⏱ 29 mins</span><span>•</span><span>🎙 Presented by: <strong class="text-slate-200">Senior '26 Mechanics Lead</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-me101-vid/view" target="_blank" class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">▶ Watch on Drive</a>
+          </div>
+        </div>
+        <div data-slot="files">
+          <!-- File: ME.1.01 Statics Presentation -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">ME.1.01 Statics Presentation</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PPTX</span><span>•</span><span>File Size: 17 MB</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-me101-ppt/view" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View & Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <!-- Test bank: Coplanar Forces &amp; Equilibrium Question Bank -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Coplanar Forces &amp; Equilibrium Question Bank</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>📊 35 Questions</span><span>•</span><span>Difficulty: <strong class="text-[#F5BC6B]">Medium</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-me101-tb/view" target="_blank" class="btn-drive-action text-xs px-5 py-2.5 flex-shrink-0">📄 Open Test Bank</a>
+          </div>
+        </div>
+      </div>
+      <!-- Lesson: ME.1.02 — Moments, Couples &amp; Varignon's Theorem (mechanics) -->
+      <div class="lesson-data" data-id="ME.1.02" data-subject="mechanics" data-subject-name="Mechanics" data-branch="" data-title="Moments, Couples &amp; Varignon's Theorem" data-desc="Moment of a force about a point, couples, equivalent force-couple systems, and beam reactions." data-code="Mechanics &gt; ME.1.02" data-meta="Weeks 04-06 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for ME.1.02.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for ME.1.02 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: ME.1.03 — General Equilibrium of Rigid Bodies &amp; Trusses (mechanics) -->
+      <div class="lesson-data" data-id="ME.1.03" data-subject="mechanics" data-subject-name="Mechanics" data-branch="" data-title="General Equilibrium of Rigid Bodies &amp; Trusses" data-desc="Supports, reactions, equations of equilibrium, and method of joints for plane trusses." data-code="Mechanics &gt; ME.1.03" data-meta="Weeks 07-09 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for ME.1.03.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for ME.1.03 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: ME.1.04 — Center of Gravity &amp; Centroids (mechanics) -->
+      <div class="lesson-data" data-id="ME.1.04" data-subject="mechanics" data-subject-name="Mechanics" data-branch="" data-title="Center of Gravity &amp; Centroids" data-desc="Centroids of composite areas, center of mass derivations, and Pappus-Guldinus theorems." data-code="Mechanics &gt; ME.1.04" data-meta="Weeks 01-04 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for ME.1.04.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for ME.1.04 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: ME.1.05 — Friction on Rough Horizontal &amp; Inclined Planes (mechanics) -->
+      <div class="lesson-data" data-id="ME.1.05" data-subject="mechanics" data-subject-name="Mechanics" data-branch="" data-title="Friction on Rough Horizontal &amp; Inclined Planes" data-desc="Coefficients of static and kinetic friction, angle of friction, and impending motion analysis." data-code="Mechanics &gt; ME.1.05" data-meta="Weeks 05-09 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for ME.1.05.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for ME.1.05 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: ES.1.01 — Earth Systems &amp; Geosphere Spheres (geology) -->
+      <div class="lesson-data" data-id="ES.1.01" data-subject="geology" data-subject-name="Geology" data-branch="" data-title="Earth Systems &amp; Geosphere Spheres" data-desc="Atmosphere, hydrosphere, lithosphere, biosphere interactions, and Earth's layered internal structure." data-code="Geology &gt; ES.1.01" data-meta="Weeks 01-03 • Grade 1 STEM" data-videos="1" data-files="1" data-tests="1">
+        <div data-slot="videos">
+          <!-- Video: Earth's Internal Layers &amp; Seismic Discontinuities -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Earth's Internal Layers &amp; Seismic Discontinuities</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>⏱ 25 mins</span><span>•</span><span>🎙 Presented by: <strong class="text-slate-200">Geology Academic Team</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-es101-vid/view" target="_blank" class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">▶ Watch on Drive</a>
+          </div>
+        </div>
+        <div data-slot="files">
+          <!-- File: ES.1.01 Earth Systems Presentation -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">ES.1.01 Earth Systems Presentation</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PPTX</span><span>•</span><span>File Size: 19 MB</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-es101-ppt/view" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View & Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <!-- Test bank: Earth Systems &amp; Layers Question Bank (30 Qs) -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Earth Systems &amp; Layers Question Bank (30 Qs)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>📊 30 Questions</span><span>•</span><span>Difficulty: <strong class="text-[#F5BC6B]">Medium</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-es101-tb/view" target="_blank" class="btn-drive-action text-xs px-5 py-2.5 flex-shrink-0">📄 Open Test Bank</a>
+          </div>
+        </div>
+      </div>
+      <!-- Lesson: ES.1.02 — Plate Tectonics &amp; Continental Drift (geology) -->
+      <div class="lesson-data" data-id="ES.1.02" data-subject="geology" data-subject-name="Geology" data-branch="" data-title="Plate Tectonics &amp; Continental Drift" data-desc="Divergent, convergent, and transform boundaries, seafloor spreading, and Egyptian rift systems." data-code="Geology &gt; ES.1.02" data-meta="Weeks 04-06 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for ES.1.02.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for ES.1.02 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: ES.1.03 — Mineralogy &amp; Crystal Systems (geology) -->
+      <div class="lesson-data" data-id="ES.1.03" data-subject="geology" data-subject-name="Geology" data-branch="" data-title="Mineralogy &amp; Crystal Systems" data-desc="Physical properties of minerals, Mohs hardness, cleavage, silicates, and crystal lattice forms." data-code="Geology &gt; ES.1.03" data-meta="Weeks 07-09 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for ES.1.03.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for ES.1.03 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: ES.1.04 — Rock Cycle &amp; Igneous Petrology (geology) -->
+      <div class="lesson-data" data-id="ES.1.04" data-subject="geology" data-subject-name="Geology" data-branch="" data-title="Rock Cycle &amp; Igneous Petrology" data-desc="Magma crystallization, Bowen's reaction series, intrusive vs extrusive volcanic structures." data-code="Geology &gt; ES.1.04" data-meta="Weeks 01-04 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for ES.1.04.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for ES.1.04 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: ES.1.05 — Sedimentary &amp; Metamorphic Processes in Egypt (geology) -->
+      <div class="lesson-data" data-id="ES.1.05" data-subject="geology" data-subject-name="Geology" data-branch="" data-title="Sedimentary &amp; Metamorphic Processes in Egypt" data-desc="Weathering, erosion, lithification, metamorphic grades, and Nile Basin stratigraphy." data-code="Geology &gt; ES.1.05" data-meta="Weeks 05-09 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for ES.1.05.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for ES.1.05 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: CS.1.01 — Computational Thinking &amp; Algorithm Design (cs) -->
+      <div class="lesson-data" data-id="CS.1.01" data-subject="cs" data-subject-name="CS" data-branch="" data-title="Computational Thinking &amp; Algorithm Design" data-desc="Decomposition, pattern recognition, abstraction, flowcharts, and pseudocode logic." data-code="CS &gt; CS.1.01" data-meta="Weeks 01-03 • Grade 1 STEM" data-videos="1" data-files="1" data-tests="1">
+        <div data-slot="videos">
+          <!-- Video: Problem Solving &amp; Flowchart Design Crash Course -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Problem Solving &amp; Flowchart Design Crash Course</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>⏱ 27 mins</span><span>•</span><span>🎙 Presented by: <strong class="text-slate-200">Mostafa Tarek</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-cs101-vid/view" target="_blank" class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">▶ Watch on Drive</a>
+          </div>
+        </div>
+        <div data-slot="files">
+          <!-- File: CS.1.01 Algorithm Design Presentation -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">CS.1.01 Algorithm Design Presentation</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PPTX</span><span>•</span><span>File Size: 12 MB</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-cs101-ppt/view" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View & Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <!-- Test bank: Algorithms &amp; Logic Puzzles Bank (35 Qs) -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Algorithms &amp; Logic Puzzles Bank (35 Qs)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>📊 35 Questions</span><span>•</span><span>Difficulty: <strong class="text-[#F5BC6B]">Medium</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-cs101-tb/view" target="_blank" class="btn-drive-action text-xs px-5 py-2.5 flex-shrink-0">📄 Open Test Bank</a>
+          </div>
+        </div>
+      </div>
+      <!-- Lesson: CS.1.02 — Python Syntax, Data Types &amp; Control Structures (cs) -->
+      <div class="lesson-data" data-id="CS.1.02" data-subject="cs" data-subject-name="CS" data-branch="" data-title="Python Syntax, Data Types &amp; Control Structures" data-desc="Variables, strings, integers, floats, conditionals (if-else), and iteration (for, while loops)." data-code="CS &gt; CS.1.02" data-meta="Weeks 04-06 • Grade 1 STEM" data-videos="1" data-files="1" data-tests="1">
+        <div data-slot="videos">
+          <!-- Video: Python Fundamentals: Loops &amp; Conditionals in Action -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Python Fundamentals: Loops &amp; Conditionals in Action</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>⏱ 33 mins</span><span>•</span><span>🎙 Presented by: <strong class="text-slate-200">CS Lead</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-cs102-vid/view" target="_blank" class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">▶ Watch on Drive</a>
+          </div>
+        </div>
+        <div data-slot="files">
+          <!-- File: Python Quick Syntax Cheat Sheet -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Python Quick Syntax Cheat Sheet</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>File Size: 4 MB</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-cs102-pdf/view" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View & Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <!-- Test bank: Python Coding Exercises &amp; Output Tracing -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Python Coding Exercises &amp; Output Tracing</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>📊 30 Questions</span><span>•</span><span>Difficulty: <strong class="text-[#F5BC6B]">Medium</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-cs102-tb/view" target="_blank" class="btn-drive-action text-xs px-5 py-2.5 flex-shrink-0">📄 Open Test Bank</a>
+          </div>
+        </div>
+      </div>
+      <!-- Lesson: CS.1.03 — Functions, Modularity &amp; Scope in Python (cs) -->
+      <div class="lesson-data" data-id="CS.1.03" data-subject="cs" data-subject-name="CS" data-branch="" data-title="Functions, Modularity &amp; Scope in Python" data-desc="User-defined functions, parameters, return values, recursion, and built-in Python modules." data-code="CS &gt; CS.1.03" data-meta="Weeks 07-09 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for CS.1.03.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for CS.1.03 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: CS.1.04 — Data Structures: Lists, Tuples, Sets, Dictionaries (cs) -->
+      <div class="lesson-data" data-id="CS.1.04" data-subject="cs" data-subject-name="CS" data-branch="" data-title="Data Structures: Lists, Tuples, Sets, Dictionaries" data-desc="Indexing, slicing, nested data structures, list comprehensions, and dictionary key-value mapping." data-code="CS &gt; CS.1.04" data-meta="Weeks 01-04 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for CS.1.04.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for CS.1.04 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: CS.1.05 — File I/O &amp; Introduction to Object-Oriented Programming (OOP) (cs) -->
+      <div class="lesson-data" data-id="CS.1.05" data-subject="cs" data-subject-name="CS" data-branch="" data-title="File I/O &amp; Introduction to Object-Oriented Programming (OOP)" data-desc="Reading/writing text files, classes, objects, attributes, methods, and basic inheritance." data-code="CS &gt; CS.1.05" data-meta="Weeks 05-09 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for CS.1.05.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for CS.1.05 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: AR.1.01 — قواعد النحو: كان وأخواتها وكاد وأخواتها (arabic) -->
+      <div class="lesson-data" data-id="AR.1.01" data-subject="arabic" data-subject-name="Arabic" data-branch="" data-title="قواعد النحو: كان وأخواتها وكاد وأخواتها" data-desc="الأفعال الناسخة الناقصة والتامة، شروط عمل كاد وأخواتها، وتطبيقات إعرابية." data-code="Arabic &gt; AR.1.01" data-meta="Weeks 01-03 • Grade 1 STEM" data-videos="1" data-files="1" data-tests="1">
+        <div data-slot="videos">
+          <!-- Video: شرح كاد وأخواتها والأفعال الناسخة بالخرائط الذهنية -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">شرح كاد وأخواتها والأفعال الناسخة بالخرائط الذهنية</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>⏱ 25 mins</span><span>•</span><span>🎙 Presented by: <strong class="text-slate-200">Ahmed Khaled</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ar101-vid/view" target="_blank" class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">▶ Watch on Drive</a>
+          </div>
+        </div>
+        <div data-slot="files">
+          <!-- File: مذكرة النحو التطبيقي - الفصل الدراسي الأول -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">مذكرة النحو التطبيقي - الفصل الدراسي الأول</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>File Size: 6 MB</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ar101-pdf/view" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View & Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <!-- Test bank: قطع نحوية شاملة وبنك تدريبات (40 سؤال) -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">قطع نحوية شاملة وبنك تدريبات (40 سؤال)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>📊 40 Questions</span><span>•</span><span>Difficulty: <strong class="text-[#F5BC6B]">Medium</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ar101-tb/view" target="_blank" class="btn-drive-action text-xs px-5 py-2.5 flex-shrink-0">📄 Open Test Bank</a>
+          </div>
+        </div>
+      </div>
+      <!-- Lesson: AR.1.02 — علم البلاغة: التشبيه والاستعارة وأسرار الجمال (arabic) -->
+      <div class="lesson-data" data-id="AR.1.02" data-subject="arabic" data-subject-name="Arabic" data-branch="" data-title="علم البلاغة: التشبيه والاستعارة وأسرار الجمال" data-desc="أنواع التشبيه، الاستعارة التصريحية والمكنية، وسر جمال الصورة البيانية." data-code="Arabic &gt; AR.1.02" data-meta="Weeks 04-06 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for AR.1.02.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for AR.1.02 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: AR.1.03 — الأدب العربي في العصر الجاهلي وصدر الإسلام (arabic) -->
+      <div class="lesson-data" data-id="AR.1.03" data-subject="arabic" data-subject-name="Arabic" data-branch="" data-title="الأدب العربي في العصر الجاهلي وصدر الإسلام" data-desc="المعلقات، سمات الشعر والخطابة والوصايا في البيئة العربية." data-code="Arabic &gt; AR.1.03" data-meta="Weeks 07-09 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for AR.1.03.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for AR.1.03 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: AR.1.04 — المشتقات العاملة: اسم الفاعل واسم المفعول وصيغ المبالغة (arabic) -->
+      <div class="lesson-data" data-id="AR.1.04" data-subject="arabic" data-subject-name="Arabic" data-branch="" data-title="المشتقات العاملة: اسم الفاعل واسم المفعول وصيغ المبالغة" data-desc="صياغة المشتقات وعملها عمل الفعل وتطبيقات البكالوريا." data-code="Arabic &gt; AR.1.04" data-meta="Weeks 01-04 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for AR.1.04.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for AR.1.04 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: EN.1.01 — Scientific Reading Comprehension &amp; Context Clues (english) -->
+      <div class="lesson-data" data-id="EN.1.01" data-subject="english" data-subject-name="English" data-branch="" data-title="Scientific Reading Comprehension &amp; Context Clues" data-desc="Identifying main ideas, making inferences, analyzing scientific arguments, and vocabulary in context." data-code="English &gt; EN.1.01" data-meta="Weeks 01-03 • Grade 1 STEM" data-videos="1" data-files="1" data-tests="1">
+        <div data-slot="videos">
+          <!-- Video: Scientific Academic Reading &amp; Question Answering Strategies -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Scientific Academic Reading &amp; Question Answering Strategies</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>⏱ 26 mins</span><span>•</span><span>🎙 Presented by: <strong class="text-slate-200">English Academic Lead</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-en101-vid/view" target="_blank" class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">▶ Watch on Drive</a>
+          </div>
+        </div>
+        <div data-slot="files">
+          <!-- File: EN.1.01 Scientific Reading Skills PPT -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">EN.1.01 Scientific Reading Skills PPT</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PPTX</span><span>•</span><span>File Size: 10 MB</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-en101-ppt/view" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View & Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <!-- Test bank: Academic Reading Passages &amp; Vocabulary Test Bank -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Academic Reading Passages &amp; Vocabulary Test Bank</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>📊 35 Questions</span><span>•</span><span>Difficulty: <strong class="text-[#F5BC6B]">Medium</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-en101-tb/view" target="_blank" class="btn-drive-action text-xs px-5 py-2.5 flex-shrink-0">📄 Open Test Bank</a>
+          </div>
+        </div>
+      </div>
+      <!-- Lesson: EN.1.02 — Academic Writing &amp; Research Article Structure (english) -->
+      <div class="lesson-data" data-id="EN.1.02" data-subject="english" data-subject-name="English" data-branch="" data-title="Academic Writing &amp; Research Article Structure" data-desc="Writing thesis statements, paragraph coherence, transitions, and APA citations." data-code="English &gt; EN.1.02" data-meta="Weeks 04-06 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for EN.1.02.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for EN.1.02 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: EN.1.03 — Grammar: Conditionals, Modals &amp; Passive Voice (english) -->
+      <div class="lesson-data" data-id="EN.1.03" data-subject="english" data-subject-name="English" data-branch="" data-title="Grammar: Conditionals, Modals &amp; Passive Voice" data-desc="Scientific passive voice conventions, conditionals 0-3, and modal deductions." data-code="English &gt; EN.1.03" data-meta="Weeks 07-09 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for EN.1.03.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for EN.1.03 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: FR.1.01 — Salutations, Présentation &amp; Articles Définis/Indéfinis (francaise) -->
+      <div class="lesson-data" data-id="FR.1.01" data-subject="francaise" data-subject-name="Française" data-branch="" data-title="Salutations, Présentation &amp; Articles Définis/Indéfinis" data-desc="Se présenter, le genre des noms, les verbes du premier groupe (er), et être/avoir." data-code="Française &gt; FR.1.01" data-meta="Weeks 01-04 • Grade 1 STEM" data-videos="1" data-files="1" data-tests="1">
+        <div data-slot="videos">
+          <!-- Video: Cours de Français : Conjugaison &amp; Présentation -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Cours de Français : Conjugaison &amp; Présentation</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>⏱ 22 mins</span><span>•</span><span>🎙 Presented by: <strong class="text-slate-200">French Language Lead</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-fr101-vid/view" target="_blank" class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">▶ Watch on Drive</a>
+          </div>
+        </div>
+        <div data-slot="files">
+          <!-- File: Fiche de Révision Grammaire Française A1 -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Fiche de Révision Grammaire Française A1</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>File Size: 4.5 MB</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-fr101-pdf/view" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View & Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <!-- Test bank: Banque de Questions DELF A1/A2 (30 Questions) -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Banque de Questions DELF A1/A2 (30 Questions)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>📊 30 Questions</span><span>•</span><span>Difficulty: <strong class="text-[#F5BC6B]">Medium</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-fr101-tb/view" target="_blank" class="btn-drive-action text-xs px-5 py-2.5 flex-shrink-0">📄 Open Test Bank</a>
+          </div>
+        </div>
+      </div>
+      <!-- Lesson: FR.1.02 — Grammaire: Les Adjectifs Possessifs &amp; La Négation (francaise) -->
+      <div class="lesson-data" data-id="FR.1.02" data-subject="francaise" data-subject-name="Française" data-branch="" data-title="Grammaire: Les Adjectifs Possessifs &amp; La Négation" data-desc="Adjectifs possessifs, forme négative simple (ne... pas), et description physique." data-code="Française &gt; FR.1.02" data-meta="Weeks 05-09 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for FR.1.02.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for FR.1.02 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: DE.1.01 — Begrüßung, Alphabet &amp; Nominativ Artikel (der, die, das) (deutsch) -->
+      <div class="lesson-data" data-id="DE.1.01" data-subject="deutsch" data-subject-name="Deutsch" data-branch="" data-title="Begrüßung, Alphabet &amp; Nominativ Artikel (der, die, das)" data-desc="Sich vorstellen, regelmäßige Verben konjugieren, Zahlen, und Begrüßungen." data-code="Deutsch &gt; DE.1.01" data-meta="Weeks 01-04 • Grade 1 STEM" data-videos="1" data-files="1" data-tests="1">
+        <div data-slot="videos">
+          <!-- Video: Deutsche Grammatik: Artikel &amp; Verben Konjugation -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Deutsche Grammatik: Artikel &amp; Verben Konjugation</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>⏱ 24 mins</span><span>•</span><span>🎙 Presented by: <strong class="text-slate-200">German Language Lead</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-de101-vid/view" target="_blank" class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">▶ Watch on Drive</a>
+          </div>
+        </div>
+        <div data-slot="files">
+          <!-- File: Deutsch A1 Grammatik Übersicht &amp; Wortschatz -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Deutsch A1 Grammatik Übersicht &amp; Wortschatz</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>File Size: 4 MB</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-de101-pdf/view" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View & Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <!-- Test bank: Goethe A1 Übungsaufgaben &amp; Testfragen -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Goethe A1 Übungsaufgaben &amp; Testfragen</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>📊 30 Questions</span><span>•</span><span>Difficulty: <strong class="text-[#F5BC6B]">Medium</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-de101-tb/view" target="_blank" class="btn-drive-action text-xs px-5 py-2.5 flex-shrink-0">📄 Open Test Bank</a>
+          </div>
+        </div>
+      </div>
+      <!-- Lesson: DE.1.02 — Akkusativ Fall &amp; Unregelmäßige Verben (deutsch) -->
+      <div class="lesson-data" data-id="DE.1.02" data-subject="deutsch" data-subject-name="Deutsch" data-branch="" data-title="Akkusativ Fall &amp; Unregelmäßige Verben" data-desc="Bestimmte und unbestimmte Artikel im Akkusativ, haben und sein." data-code="Deutsch &gt; DE.1.02" data-meta="Weeks 05-09 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for DE.1.02.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for DE.1.02 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: IS.1.01 — سورة الحجرات وتدبر الآيات الكريمة (religion) -->
+      <div class="lesson-data" data-id="IS.1.01" data-subject="religion" data-subject-name="Religion" data-branch="islam" data-title="سورة الحجرات وتدبر الآيات الكريمة" data-desc="القيم الإيمانية والأخلاقية، أحكام التلاوة والتجويد، والنهي عن التنابز والغيبة." data-code="Religion &gt; IS.1.01" data-meta="Weeks 01-04 • Grade 1 STEM" data-videos="1" data-files="1" data-tests="1">
+        <div data-slot="videos">
+          <!-- Video: شرح وتفسير سورة الحجرات وتطبيقاتها التربوية -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">شرح وتفسير سورة الحجرات وتطبيقاتها التربوية</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>⏱ 25 mins</span><span>•</span><span>🎙 Presented by: <strong class="text-slate-200">معلمو التربية الإسلامية</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-is101-vid/view" target="_blank" class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">▶ Watch on Drive</a>
+          </div>
+        </div>
+        <div data-slot="files">
+          <!-- File: مذكرة التربية الإسلامية الشاملة - سورة الحجرات -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">مذكرة التربية الإسلامية الشاملة - سورة الحجرات</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>File Size: 5.5 MB</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-is101-pdf/view" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View & Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <!-- Test bank: بنك أسئلة التربية الإسلامية (40 سؤالاً) -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">بنك أسئلة التربية الإسلامية (40 سؤالاً)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>📊 40 Questions</span><span>•</span><span>Difficulty: <strong class="text-[#F5BC6B]">Medium</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-is101-tb/view" target="_blank" class="btn-drive-action text-xs px-5 py-2.5 flex-shrink-0">📄 Open Test Bank</a>
+          </div>
+        </div>
+      </div>
+      <!-- Lesson: IS.1.02 — السيرة النبوية وبناء مجتمع المدينة المنورة (religion) -->
+      <div class="lesson-data" data-id="IS.1.02" data-subject="religion" data-subject-name="Religion" data-branch="islam" data-title="السيرة النبوية وبناء مجتمع المدينة المنورة" data-desc="المؤاخاة بين المهاجرين والأنصار، وثيقة المدينة، وحرية الاعتقاد." data-code="Religion &gt; IS.1.02" data-meta="Weeks 05-09 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for IS.1.02.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for IS.1.02 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: CR.1.01 — القيم الروحية والفضائل الإنسانية في الإنجيل (religion) -->
+      <div class="lesson-data" data-id="CR.1.01" data-subject="religion" data-subject-name="Religion" data-branch="christian" data-title="القيم الروحية والفضائل الإنسانية في الإنجيل" data-desc="دراسة المحبة والتسامح وبناء الشخصية المتزنة في المجتمع." data-code="Religion &gt; CR.1.01" data-meta="Weeks 01-04 • Grade 1 STEM" data-videos="1" data-files="1" data-tests="1">
+        <div data-slot="videos">
+          <!-- Video: شرح دروس التربية الدينية المسيحية - الوحدة الأولى -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">شرح دروس التربية الدينية المسيحية - الوحدة الأولى</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>⏱ 24 mins</span><span>•</span><span>🎙 Presented by: <strong class="text-slate-200">معلمو التربية المسيحية</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-cr101-vid/view" target="_blank" class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">▶ Watch on Drive</a>
+          </div>
+        </div>
+        <div data-slot="files">
+          <!-- File: ملخص التربية الدينية المسيحية الشامل -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">ملخص التربية الدينية المسيحية الشامل</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>File Size: 5 MB</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-cr101-pdf/view" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View & Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <!-- Test bank: بنك أسئلة الامتحانات السابقة في التربية المسيحية -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">بنك أسئلة الامتحانات السابقة في التربية المسيحية</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>📊 35 Questions</span><span>•</span><span>Difficulty: <strong class="text-[#F5BC6B]">Medium</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-cr101-tb/view" target="_blank" class="btn-drive-action text-xs px-5 py-2.5 flex-shrink-0">📄 Open Test Bank</a>
+          </div>
+        </div>
+      </div>
+      <!-- Lesson: CR.1.02 — تاريخ الكنيسة والشخصيات البارزة في مصر (religion) -->
+      <div class="lesson-data" data-id="CR.1.02" data-subject="religion" data-subject-name="Religion" data-branch="christian" data-title="تاريخ الكنيسة والشخصيات البارزة في مصر" data-desc="تاريخ الآباء والقديسين والمجتمع القبطي ودورهم الوطني." data-code="Religion &gt; CR.1.02" data-meta="Weeks 05-09 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for CR.1.02.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for CR.1.02 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: SS.1.01 — جغرافية مصر الاقتصادية والموارد المائية (socialstudies) -->
+      <div class="lesson-data" data-id="SS.1.01" data-subject="socialstudies" data-subject-name="Social Studies" data-branch="" data-title="جغرافية مصر الاقتصادية والموارد المائية" data-desc="دراسة حوض نهر النيل، اتفاقيات المياه، ومصادر الطاقة المتجددة في مصر." data-code="Social Studies &gt; SS.1.01" data-meta="Weeks 01-04 • Grade 1 STEM" data-videos="1" data-files="1" data-tests="1">
+        <div data-slot="videos">
+          <!-- Video: شرح جغرافية مصر ومصادر الطاقة وحوض النيل -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">شرح جغرافية مصر ومصادر الطاقة وحوض النيل</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>⏱ 24 mins</span><span>•</span><span>🎙 Presented by: <strong class="text-slate-200">معلمو الدراسات الاجتماعية</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ss101-vid/view" target="_blank" class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">▶ Watch on Drive</a>
+          </div>
+        </div>
+        <div data-slot="files">
+          <!-- File: ملخص الجغرافيا الاقتصادية لمصر -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">ملخص الجغرافيا الاقتصادية لمصر</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>File Size: 5 MB</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ss101-pdf/view" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View & Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <!-- Test bank: بنك أسئلة الدراسات الاجتماعية (40 سؤالاً) -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">بنك أسئلة الدراسات الاجتماعية (40 سؤالاً)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>📊 40 Questions</span><span>•</span><span>Difficulty: <strong class="text-[#F5BC6B]">Medium</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ss101-tb/view" target="_blank" class="btn-drive-action text-xs px-5 py-2.5 flex-shrink-0">📄 Open Test Bank</a>
+          </div>
+        </div>
+      </div>
+      <!-- Lesson: SS.1.02 — تاريخ مصر الحديث وبناء الدولة الوطنية (socialstudies) -->
+      <div class="lesson-data" data-id="SS.1.02" data-subject="socialstudies" data-subject-name="Social Studies" data-branch="" data-title="تاريخ مصر الحديث وبناء الدولة الوطنية" data-desc="محمد علي وبناء الجيش والتعليم، والحركات الوطنية المصرية حتى العصر الحديث." data-code="Social Studies &gt; SS.1.02" data-meta="Weeks 05-09 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for SS.1.02.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for SS.1.02 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: CAP.1.01 — Grand Challenges of Egypt Problem Framing (capstone) -->
+      <div class="lesson-data" data-id="CAP.1.01" data-subject="capstone" data-subject-name="Capstone" data-branch="" data-title="Grand Challenges of Egypt Problem Framing" data-desc="Aligning research questions with national challenges (Water Scarcity, Energy, Pollution, Health)." data-code="Capstone &gt; CAP.1.01" data-meta="Weeks 01-04 • Grade 1 STEM" data-videos="1" data-files="1" data-tests="1">
+        <div data-slot="videos">
+          <!-- Video: How to Frame an Impactful STEM Capstone Project -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">How to Frame an Impactful STEM Capstone Project</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>⏱ 35 mins</span><span>•</span><span>🎙 Presented by: <strong class="text-slate-200">Mahmoud Samy</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-cap101-vid/view" target="_blank" class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">▶ Watch on Drive</a>
+          </div>
+        </div>
+        <div data-slot="files">
+          <!-- File: Capstone Engineering Design Journal Template &amp; Scoring Rubric -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Capstone Engineering Design Journal Template &amp; Scoring Rubric</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>File Size: 8 MB</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-cap101-pdf/view" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View & Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <!-- Test bank: Capstone Jury Defense Sample Questions &amp; Rubrics -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Capstone Jury Defense Sample Questions &amp; Rubrics</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>📊 25 Questions</span><span>•</span><span>Difficulty: <strong class="text-[#F5BC6B]">Medium</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-cap101-tb/view" target="_blank" class="btn-drive-action text-xs px-5 py-2.5 flex-shrink-0">📄 Open Test Bank</a>
+          </div>
+        </div>
+      </div>
+      <!-- Lesson: CAP.1.02 — Engineering Design Process (EDP) &amp; Prototyping (capstone) -->
+      <div class="lesson-data" data-id="CAP.1.02" data-subject="capstone" data-subject-name="Capstone" data-branch="" data-title="Engineering Design Process (EDP) &amp; Prototyping" data-desc="Iterative design steps, materials selection, prototyping tests, and error variance analysis." data-code="Capstone &gt; CAP.1.02" data-meta="Weeks 05-09 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for CAP.1.02.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for CAP.1.02 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: OPP.1.01 — ISEF Science Fair Guidelines &amp; SRC Approval (opportunities) -->
+      <div class="lesson-data" data-id="OPP.1.01" data-subject="opportunities" data-subject-name="Opportunities" data-branch="" data-title="ISEF Science Fair Guidelines &amp; SRC Approval" data-desc="Scientific abstract writing, SRC/IRB forms, Quad Chart design, and poster printing tips." data-code="Opportunities &gt; OPP.1.01" data-meta="Weeks All • Grade 1 STEM" data-videos="1" data-files="1" data-tests="1">
+        <div data-slot="videos">
+          <!-- Video: ISEF Application &amp; Presentation Masterclass -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">ISEF Application &amp; Presentation Masterclass</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>⏱ 40 mins</span><span>•</span><span>🎙 Presented by: <strong class="text-slate-200">Alumni &amp; Senior '26 Mentors</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-opp101-vid/view" target="_blank" class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">▶ Watch on Drive</a>
+          </div>
+        </div>
+        <div data-slot="files">
+          <!-- File: Official ISEF SRC Forms Guide &amp; Quad Chart Template -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Official ISEF SRC Forms Guide &amp; Quad Chart Template</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>File Size: 10 MB</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-opp101-pdf/view" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View & Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <!-- Test bank: Mock Interview Questions for International STEM Competitions -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Mock Interview Questions for International STEM Competitions</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>📊 30 Questions</span><span>•</span><span>Difficulty: <strong class="text-[#F5BC6B]">Medium</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-opp101-tb/view" target="_blank" class="btn-drive-action text-xs px-5 py-2.5 flex-shrink-0">📄 Open Test Bank</a>
+          </div>
+        </div>
+      </div>
+      <!-- Lesson: OPP.1.02 — International Science Olympiads (Physics, Chem, Math, IBO) (opportunities) -->
+      <div class="lesson-data" data-id="OPP.1.02" data-subject="opportunities" data-subject-name="Opportunities" data-branch="" data-title="International Science Olympiads (Physics, Chem, Math, IBO)" data-desc="National selection stages, preparation resources, syllabus breakdown, and past papers." data-code="Opportunities &gt; OPP.1.02" data-meta="Weeks All • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for OPP.1.02.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for OPP.1.02 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: ARD.1.01 — Digital/Analog I/O &amp; Sensor Interfacing (arduino) -->
+      <div class="lesson-data" data-id="ARD.1.01" data-subject="arduino" data-subject-name="Arduino" data-branch="" data-title="Digital/Analog I/O &amp; Sensor Interfacing" data-desc="Wiring ultrasonic, DHT11 temperature sensors, PIR motion detectors, and PWM motor drivers." data-code="Arduino &gt; ARD.1.01" data-meta="Weeks 01-04 • Grade 1 STEM" data-videos="1" data-files="1" data-tests="1">
+        <div data-slot="videos">
+          <!-- Video: Arduino Sensor Wiring &amp; Code Walkthrough Tutorial -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Arduino Sensor Wiring &amp; Code Walkthrough Tutorial</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>⏱ 28 mins</span><span>•</span><span>🎙 Presented by: <strong class="text-slate-200">Mostafa Tarek</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ard101-vid/view" target="_blank" class="btn-gold text-xs px-5 py-2.5 flex-shrink-0">▶ Watch on Drive</a>
+          </div>
+        </div>
+        <div data-slot="files">
+          <!-- File: Arduino Breadboard Circuit Diagrams &amp; .ino Code Pack -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Arduino Breadboard Circuit Diagrams &amp; .ino Code Pack</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>File Size: 9 MB</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ard101-pdf/view" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View & Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <!-- Test bank: Embedded C Logic &amp; Pin Diagram Quiz -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Embedded C Logic &amp; Pin Diagram Quiz</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span>📊 30 Questions</span><span>•</span><span>Difficulty: <strong class="text-[#F5BC6B]">Medium</strong></span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/sample-ard101-tb/view" target="_blank" class="btn-drive-action text-xs px-5 py-2.5 flex-shrink-0">📄 Open Test Bank</a>
+          </div>
+        </div>
+      </div>
+      <!-- Lesson: ARD.1.02 — Motors, Relays &amp; Wireless Telemetry (arduino) -->
+      <div class="lesson-data" data-id="ARD.1.02" data-subject="arduino" data-subject-name="Arduino" data-branch="" data-title="Motors, Relays &amp; Wireless Telemetry" data-desc="H-Bridges, servo motors, Bluetooth HC-05 communication, and IoT Capstone circuits." data-code="Arduino &gt; ARD.1.02" data-meta="Weeks 05-09 • Grade 1 STEM" data-videos="0" data-files="0" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for ARD.1.02.</p></div>
+        </div>
+        <div data-slot="files">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📁</div><h4 class="font-bold text-white text-sm mb-1">No slide decks uploaded yet</h4><p class="text-xs text-slate-400">PowerPoint presentations and summary PDFs will be added here once vetted.</p></div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for ARD.1.02 are being compiled.</p></div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#051520] border-t border-[#0F2F47] py-8 px-4 mt-auto">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+      
+      <!-- Left Copyright & School Info -->
+      <div class="flex items-center gap-2 text-slate-400 text-sm font-medium">
+        <svg class="w-5 h-5 text-[#F5BC6B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" stroke-width="2"></circle>
+          <path d="M14.5 9.5a3.5 3.5 0 100 5" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+        <span>Copyright © QSTEMora Club (QSC) • Senior '26 STEM Qena School</span>
+      </div>
+
+      <!-- Right Contact & Social Round Action Buttons -->
+      <div class="flex items-center gap-3 md:gap-4 text-white">
+        <!-- Location (STEM Qena School) -->
+        <a href="https://maps.google.com/?q=STEM+Qena+School" target="_blank" rel="noopener noreferrer" title="STEM Qena School Location" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#F5BC6B] hover:text-[#071A26] hover:border-[#F5BC6B] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+        </a>
+
+        <!-- Phone Contact -->
+        <a href="tel:+201000000000" id="footerPhoneLink" title="Call QSC Mentors" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#38B2AC] hover:text-[#071A26] hover:border-[#38B2AC] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+        </a>
+
+        <!-- Email Contact -->
+        <a href="mailto:info@qstemora.club" id="footerEmailLink" title="Email QSC" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#F5BC6B] hover:text-[#071A26] hover:border-[#F5BC6B] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+        </a>
+
+        <!-- WhatsApp Community Trigger -->
+        <button class="btn-join-trigger w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-[#2ECC71] hover:bg-[#2ECC71] hover:text-[#071A26] hover:border-[#2ECC71] transition-all duration-300 cursor-pointer" title="Join WhatsApp Community">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+          </svg>
+        </button>
+
+        <!-- Instagram -->
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" title="Follow us on Instagram" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#E1306C] hover:text-white hover:border-[#E1306C] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </a>
+
+        <!-- Facebook -->
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" title="Follow us on Facebook" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#1877F2] hover:text-white hover:border-[#1877F2] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Container -->
+  <div id="modalBackdrop" class="fixed inset-0 z-50 modal-overlay hidden items-center justify-center p-4 overflow-y-auto">
+    <div id="modalContainer" class="modal-content rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto text-left relative transform transition-all"></div>
+  </div>
+
+  <!-- Static lesson controller: fills the header + 3 sections from the matching block above -->
+  <script>
+    (function () {
+      var id = (new URLSearchParams(window.location.search).get('id') || '').toLowerCase();
+      var store = document.getElementById('lessonDataStore');
+      var blocks = store ? [].slice.call(store.querySelectorAll('.lesson-data')) : [];
+      var block = null;
+      for (var i = 0; i < blocks.length; i++) { if (blocks[i].dataset.id.toLowerCase() === id) { block = blocks[i]; break; } }
+      if (!block) { alert('Lesson outcome not found.'); window.location.href = 'subjects.html'; return; }
+      var d = block.dataset;
+      var subjHref = 'subject.html?s=' + d.subject + (d.branch ? '&b=' + d.branch : '');
+      function setTxt(elId, val) { var e = document.getElementById(elId); if (e) e.textContent = val; }
+      var bs = document.getElementById('breadcrumbSubject'); if (bs) { bs.textContent = d.subjectName; bs.href = subjHref; }
+      setTxt('breadcrumbLO', d.id);
+      var back = document.getElementById('lessonBackBtn'); if (back) back.href = subjHref;
+      setTxt('lessonCodeTitle', d.code);
+      setTxt('lessonMainTitle', d.title);
+      setTxt('lessonDescription', d.desc);
+      setTxt('lessonMetaBadge', d.meta);
+      function fill(containerId, slot, badgeId, badgeText) {
+        var c = document.getElementById(containerId);
+        var s = block.querySelector('[data-slot="' + slot + '"]');
+        if (c && s) c.innerHTML = s.innerHTML;
+        var b = document.getElementById(badgeId); if (b) b.textContent = badgeText;
+      }
+      fill('videosListContainer', 'videos', 'videosCountBadge', d.videos + ' Lectures');
+      fill('filesListContainer', 'files', 'filesCountBadge', d.files + ' Files');
+      fill('testBanksListContainer', 'tests', 'testBanksCountBadge', d.tests + ' Question Banks');
+    })();
+  </script>
+
+  <!-- Application Scripts -->
+  <script src="assets/assets.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
+

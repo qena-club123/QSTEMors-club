@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<!-- ============================ BEGINNER GUIDE ============================
+  This is the L.O DETAIL page (videos, study files, and test banks for one learning outcome).
+  The URL decides which L.O to show, e.g.  lesson.html?id=MA.1.03.
+
+  All the content lives in the hidden #lessonDataStore div near the bottom: one
+  <div class="lesson-data" data-id="CODE" ...> block per L.O. The <script> at the very bottom
+  reads ?id=, finds the matching block, and copies its title/description and its three slots
+  (data-slot="videos" / "files" / "tests") into the visible page sections.
+
+  To add resources to an L.O: open its lesson-data block and add .resource-item entries inside
+  the right data-slot. To create a brand-new L.O: add a new lesson-data block here AND a matching
+  <a class="lo-card"> in subject.html so the links line up.
+======================================================================== -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Outcome Lessons & Study Materials — QSTEMora Club</title>
+  
+  <!-- Google Fonts: Poppins & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandDark: '#0A1926',
+            brandDarker: '#07131F',
+            brandCard: '#0E2238',
+            brandGold: '#F5BC6B',
+            brandTeal: '#48A9A6',
+            brandCyan: '#38B2AC',
+          },
+          fontFamily: {
+            sans: ['Poppins', 'Outfit', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-[#071A26] text-white min-h-screen flex flex-col selection:bg-[#F5BC6B] selection:text-[#071A26]">
+
+  <!-- Top Navigation Bar -->
+  <header class="sticky top-0 z-40 bg-[#071A26]/95 backdrop-blur-md border-b border-[#0F2F47] transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo & Brand Title -->
+        <a href="index.html" class="flex items-center gap-3 group">
+          <img src="assets/images/logo.jpg" alt="QSTEMora Club Logo" class="w-11 h-11 rounded-full object-cover shadow-[0_0_12px_rgba(245,188,107,0.4)] border border-[#F5BC6B]/40 group-hover:scale-105 transition-transform duration-300" />
+          <div class="flex items-center font-bold text-xl md:text-2xl tracking-tight">
+            <span class="text-[#38B2AC]">QSTEM</span><span class="text-[#F5BC6B]">ora</span>
+            <span class="text-[#2ECC71] ml-1.5 font-medium text-lg">club</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="index.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B]" data-page="home">
+            Home
+          </a>
+          <a href="subjects.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B] flex items-center gap-1.5" data-page="subjects">
+            <svg class="w-4 h-4 text-[#38B2AC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+            Subjects
+          </a>
+          <a href="about.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B]" data-page="about">
+            About
+          </a>
+          <a href="team.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B]" data-page="team">
+            Team members
+          </a>
+          <a href="partners.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B]" data-page="partners">
+            Partners
+          </a>
+        </nav>
+
+        <!-- Right CTA Button -->
+        <div class="hidden md:flex items-center">
+          <button class="btn-gold btn-join-trigger text-sm uppercase font-bold tracking-wider px-7 py-2.5">
+            JOIN
+          </button>
+        </div>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <div class="flex md:hidden">
+          <button id="mobileMenuBtn" class="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-[#0E293E] focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobileMenu" class="hidden md:hidden bg-[#051520] border-b border-[#0F2F47] px-4 pt-2 pb-6 space-y-3">
+      <a href="index.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="home">Home</a>
+      <a href="subjects.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="subjects">Subjects</a>
+      <a href="about.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="about">About</a>
+      <a href="team.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="team">Team members</a>
+      <a href="partners.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="partners">Partners</a>
+      <div class="pt-2">
+        <button class="btn-gold btn-join-trigger w-full text-center py-2.5">JOIN</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main View Container -->
+  <main class="flex-grow py-12 px-4 max-w-7xl mx-auto w-full">
+    
+    <!-- Top Breadcrumb & LO Header -->
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-10 pb-6 border-b border-[#0F2F47]">
+      <div>
+        <!-- Breadcrumbs -->
+        <div class="flex items-center gap-2 text-xs text-slate-400 font-medium mb-2">
+          <a href="subjects.html" class="hover:text-[#F5BC6B]">Subjects</a>
+          <span>&gt;</span>
+          <a id="breadcrumbSubject" href="subjects.html" class="text-slate-300 hover:text-[#F5BC6B]">Subject</a>
+          <span>&gt;</span>
+          <span id="breadcrumbLO" class="text-[#F5BC6B] font-bold">L.O Code</span>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <h1 id="lessonCodeTitle" class="text-2xl md:text-4xl font-extrabold text-white tracking-tight letter-spaced-title">
+            The_Subject &gt; L.O NO.
+          </h1>
+          <span id="lessonMetaBadge" class="hidden sm:inline-block bg-[#163E60] text-[#38B2AC] text-xs font-bold px-3 py-1 rounded-full">
+            Grade 1 STEM
+          </span>
+        </div>
+
+        <h2 id="lessonMainTitle" class="text-lg md:text-xl font-bold text-[#38B2AC] mt-2">
+          Loading learning outcome...
+        </h2>
+        <p id="lessonDescription" class="text-xs md:text-sm text-slate-300 mt-1 max-w-3xl">
+          Loading description...
+        </p>
+      </div>
+
+      <div>
+        <a id="lessonBackBtn" href="subjects.html" class="btn-cyan-back text-sm">
+          ← Back to L.Os
+        </a>
+      </div>
+    </div>
+
+    <!-- ONE SINGLE PAGE IN ONE SCROLL: 3 SECTIONS -->
+    <div class="space-y-10">
+      
+      <!-- 1. VIDEOS SECTION -->
+      <section class="resource-section">
+        <div class="flex items-center justify-between gap-4 mb-6 pb-4 border-b border-[#143E62]">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl md:text-3xl">🎬</span>
+            <div>
+              <h3 class="text-xl md:text-2xl font-extrabold text-white">Video Lessons & Explanations</h3>
+              <p class="text-xs text-slate-400">Concept breakdowns and reference proof derivations recorded by mentors and teachers.</p>
+            </div>
+          </div>
+          <span id="videosCountBadge" class="bg-[#F5BC6B]/10 text-[#F5BC6B] border border-[#F5BC6B]/30 text-xs font-bold px-3 py-1 rounded-full">
+            0 Lectures
+          </span>
+        </div>
+
+        <div id="videosListContainer" class="space-y-4">
+          <!-- Populated dynamically via assets/app.js -->
+        </div>
+      </section>
+
+      <!-- 2. FILES & PPT PRESENTATIONS SECTION -->
+      <section class="resource-section">
+        <div class="flex items-center justify-between gap-4 mb-6 pb-4 border-b border-[#143E62]">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl md:text-3xl">📁</span>
+            <div>
+              <h3 class="text-xl md:text-2xl font-extrabold text-white">Study Files & Slide Decks</h3>
+              <p class="text-xs text-slate-400">PowerPoint presentations crafted by visual designers and summary review sheets.</p>
+            </div>
+          </div>
+          <span id="filesCountBadge" class="bg-[#38B2AC]/10 text-[#38B2AC] border border-[#38B2AC]/30 text-xs font-bold px-3 py-1 rounded-full">
+            0 Files
+          </span>
+        </div>
+
+        <div id="filesListContainer" class="space-y-4">
+          <!-- Populated dynamically via assets/app.js -->
+        </div>
+      </section>
+
+      <!-- 3. TEST BANKS & REFERENCE QUESTIONS SECTION -->
+      <section class="resource-section">
+        <div class="flex items-center justify-between gap-4 mb-6 pb-4 border-b border-[#143E62]">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl md:text-3xl">📝</span>
+            <div>
+              <h3 class="text-xl md:text-2xl font-extrabold text-white">Test Banks & Practice Sets</h3>
+              <p class="text-xs text-slate-400">Challenging university reference problems, multiple-choice questions, and answer keys.</p>
+            </div>
+          </div>
+          <span id="testBanksCountBadge" class="bg-[#2ECC71]/10 text-[#2ECC71] border border-[#2ECC71]/30 text-xs font-bold px-3 py-1 rounded-full">
+            0 Question Banks
+          </span>
+        </div>
+
+        <div id="testBanksListContainer" class="space-y-4">
+          <!-- Populated dynamically via assets/app.js -->
+        </div>
+      </section>
+
+    </div>
+
+    <!-- STATIC lesson content store: one block per L.O. All videos/files/tests live here as HTML. -->
+    <div id="lessonDataStore" hidden>
+      <!-- Lesson: ES.1.01 — Earth Science Synthesis: Geology's Connected World (Geology) -->
+      <div class="lesson-data" data-id="ES.1.01" data-subject="geology" data-subject-name="Geology" data-branch="" data-title="Earth Science Synthesis: Geology's Connected World" data-desc="Deduce the interrelationships between the different branches of Earth science and the integration of geology within other sciences." data-code="Geology &gt; ES.1.01" data-meta="Weeks 01-01 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for ES.1.01.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Geology L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Geology L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Geology.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for ES.1.01 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: ES.1.02 — Crystal Clues: Identifying Common Minerals (Geology) -->
+      <div class="lesson-data" data-id="ES.1.02" data-subject="geology" data-subject-name="Geology" data-branch="" data-title="Crystal Clues: Identifying Common Minerals" data-desc="Examine common minerals, identify them, and differentiate them from other common minerals." data-code="Geology &gt; ES.1.02" data-meta="Weeks 01-04 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for ES.1.02.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Geology L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Geology L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Geology.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for ES.1.02 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: ES.1.03 — From Earth to Infrastructure: Mineral Resources in Engineering (Geology) -->
+      <div class="lesson-data" data-id="ES.1.03" data-subject="geology" data-subject-name="Geology" data-branch="" data-title="From Earth to Infrastructure: Mineral Resources in Engineering" data-desc="Analyze and identify Earth materials used as resources for modern building and integrate design criteria for engineering design." data-code="Geology &gt; ES.1.03" data-meta="Weeks 05-05 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for ES.1.03.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Geology L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Geology L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Geology.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for ES.1.03 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: ES.1.04 — Fiery Beginnings: Composition & Texture of Igneous Rocks (Geology) -->
+      <div class="lesson-data" data-id="ES.1.04" data-subject="geology" data-subject-name="Geology" data-branch="" data-title="Fiery Beginnings: Composition &amp; Texture of Igneous Rocks" data-desc="Examine and interpret textural and compositional characteristics of igneous rocks, textures, and mineral composition." data-code="Geology &gt; ES.1.04" data-meta="Weeks 06-08 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for ES.1.04.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Geology L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Geology L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Geology.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for ES.1.04 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: ES.1.05 — Layers of Time: Sedimentary Rocks & Environments (Geology) -->
+      <div class="lesson-data" data-id="ES.1.05" data-subject="geology" data-subject-name="Geology" data-branch="" data-title="Layers of Time: Sedimentary Rocks &amp; Environments" data-desc="Examine and interpret textural and compositional characteristics of sedimentary rocks, textures, mineral composition, and depositional environments." data-code="Geology &gt; ES.1.05" data-meta="Weeks 09-10 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for ES.1.05.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Geology L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Geology L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Geology.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for ES.1.05 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: ES.1.06 — Under Pressure: Metamorphic Rocks & Processes (Geology) -->
+      <div class="lesson-data" data-id="ES.1.06" data-subject="geology" data-subject-name="Geology" data-branch="" data-title="Under Pressure: Metamorphic Rocks &amp; Processes" data-desc="Examine and interpret textural and compositional characteristics of metamorphic rocks, textures, and factors affecting metamorphic processes." data-code="Geology &gt; ES.1.06" data-meta="Weeks 11-12 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for ES.1.06.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Geology L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Geology L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Geology.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for ES.1.06 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: ES.1.07 — The Eternal Loop: The Rock Cycle & Egypt's Geology (Geology) -->
+      <div class="lesson-data" data-id="ES.1.07" data-subject="geology" data-subject-name="Geology" data-branch="" data-title="The Eternal Loop: The Rock Cycle &amp; Egypt's Geology" data-desc="Interpret relationships among sedimentary, igneous, and metamorphic rocks via the rock cycle and explain the Egyptian cross section." data-code="Geology &gt; ES.1.07" data-meta="Weeks 13-14 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for ES.1.07.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Geology L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Geology L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Geology.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for ES.1.07 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: MA.1.01 — Angles & Altitudes: Real-World Trigonometry (Math) -->
+      <div class="lesson-data" data-id="MA.1.01" data-subject="math" data-subject-name="Math" data-branch="" data-title="Angles &amp; Altitudes: Real-World Trigonometry" data-desc="Create, interpret, and analyze trigonometric ratios that model real-world situations." data-code="Math &gt; MA.1.01" data-meta="Weeks 01-04 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for MA.1.01.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Math L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Math L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Math.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for MA.1.01 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: MA.1.02 — Decoding Data: Spread, Trends & Standard Deviation (Math) -->
+      <div class="lesson-data" data-id="MA.1.02" data-subject="math" data-subject-name="Math" data-branch="" data-title="Decoding Data: Spread, Trends &amp; Standard Deviation" data-desc="Analyze, display, and describe quantitative data with a focus on standard deviation." data-code="Math &gt; MA.1.02" data-meta="Weeks 05-06 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for MA.1.02.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Math L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Math L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Math.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for MA.1.02 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: MA.1.03 — Dimension Shift: Bridging 2D and 3D Shapes (Math) -->
+      <div class="lesson-data" data-id="MA.1.03" data-subject="math" data-subject-name="Math" data-branch="" data-title="Dimension Shift: Bridging 2D and 3D Shapes" data-desc="Apply the relationships between 2-D and 3-D objects in modeling situations." data-code="Math &gt; MA.1.03" data-meta="Weeks 07 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for MA.1.03.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Math L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Math L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Math.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for MA.1.03 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: MA.1.04 — The Scale Factor: Similarity in Problem Solving (Math) -->
+      <div class="lesson-data" data-id="MA.1.04" data-subject="math" data-subject-name="Math" data-branch="" data-title="The Scale Factor: Similarity in Problem Solving" data-desc="Understand similarity and use the concept for scaling to solve problems." data-code="Math &gt; MA.1.04" data-meta="Weeks 08-09 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for MA.1.04.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Math L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Math L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Math.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for MA.1.04 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: MA.1.05 — 3D Space & Capacity: Mastering Volume Formulas (Math) -->
+      <div class="lesson-data" data-id="MA.1.05" data-subject="math" data-subject-name="Math" data-branch="" data-title="3D Space &amp; Capacity: Mastering Volume Formulas" data-desc="Apply volume formulas (pyramids, cones, spheres, prisms)." data-code="Math &gt; MA.1.05" data-meta="Weeks 10-11 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for MA.1.05.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Math L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Math L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Math.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for MA.1.05 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: MA.1.06 — Step by Step: Modeling Real Life with Functions (Math) -->
+      <div class="lesson-data" data-id="MA.1.06" data-subject="math" data-subject-name="Math" data-branch="" data-title="Step by Step: Modeling Real Life with Functions" data-desc="Create, interpret, and analyze functions, particularly linear and step functions that model real-world situations." data-code="Math &gt; MA.1.06" data-meta="Weeks 12-14 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for MA.1.06.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Math L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Math L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Math.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for MA.1.06 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: CH.1.01 — The Science Playbook: Measurements & Standard Units (Chemistry) -->
+      <div class="lesson-data" data-id="CH.1.01" data-subject="chemistry" data-subject-name="Chemistry" data-branch="" data-title="The Science Playbook: Measurements &amp; Standard Units" data-desc="Describe what characterizes science and its methods and use quantitative observation with SI unit measurements." data-code="Chemistry &gt; CH.1.01" data-meta="Weeks 01-02 • Grade 1 STEM" data-videos="0" data-files="2" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for CH.1.01.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Chemistry L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Chemistry L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/chemistry.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+          <!-- File: lo1 chem PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Chemistry L.O1 file </h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>lo1 is full Explaination &amp;</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/1BlxWbX2ZsQI7HnpSjkXuH-ZZeiUIyYzT/view?usp=sharing" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for CH.1.01 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: CH.1.02 — Inside the Atom: Uncovering Subatomic Secrets (Chemistry) -->
+      <div class="lesson-data" data-id="CH.1.02" data-subject="chemistry" data-subject-name="Chemistry" data-branch="" data-title="Inside the Atom: Uncovering Subatomic Secrets" data-desc="Demonstrate understanding of atomic structure, subatomic particles, arrangements, and experimental evidence for discovery." data-code="Chemistry &gt; CH.1.02" data-meta="Weeks 03-04 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for CH.1.02.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Chemistry L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Chemistry L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/chemistry.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for CH.1.02 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: CH.1.03 — Catching Rainbows: Light Waves & Elemental Colors (Chemistry) -->
+      <div class="lesson-data" data-id="CH.1.03" data-subject="chemistry" data-subject-name="Chemistry" data-branch="" data-title="Catching Rainbows: Light Waves &amp; Elemental Colors" data-desc="Demonstrate understanding of the electromagnetic spectrum and light's particle nature by explaining color production in different elements." data-code="Chemistry &gt; CH.1.03" data-meta="Weeks 05-06 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for CH.1.03.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Chemistry L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Chemistry L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/chemistry.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for CH.1.03 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: CH.1.04 — Periodic Power Play: Mapping Metals & Nonmetals (Chemistry) -->
+      <div class="lesson-data" data-id="CH.1.04" data-subject="chemistry" data-subject-name="Chemistry" data-branch="" data-title="Periodic Power Play: Mapping Metals &amp; Nonmetals" data-desc="Develop operational definitions of elements, differentiate metals/nonmetals and chemical/physical properties based on periodic table position and structure." data-code="Chemistry &gt; CH.1.04" data-meta="Weeks 07-08 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for CH.1.04.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Chemistry L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Chemistry L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/chemistry.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for CH.1.04 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: CH.1.05 — Electrons in Action: How & Why Atoms Bond (Chemistry) -->
+      <div class="lesson-data" data-id="CH.1.05" data-subject="chemistry" data-subject-name="Chemistry" data-branch="" data-title="Electrons in Action: How &amp; Why Atoms Bond" data-desc="Describe how to determine chemical behavior according to valence electrons and how and why atoms interact." data-code="Chemistry &gt; CH.1.05" data-meta="Weeks 09-10 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for CH.1.05.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Chemistry L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Chemistry L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/chemistry.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for CH.1.05 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: CH.1.06 — Subatomic Glue: Unveiling the Strong Nuclear Force (Chemistry) -->
+      <div class="lesson-data" data-id="CH.1.06" data-subject="chemistry" data-subject-name="Chemistry" data-branch="" data-title="Subatomic Glue: Unveiling the Strong Nuclear Force" data-desc="Select and use data to construct an argument for the existence of strong nuclear forces." data-code="Chemistry &gt; CH.1.06" data-meta="Weeks 11-12 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for CH.1.06.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Chemistry L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Chemistry L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/chemistry.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for CH.1.06 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: CH.1.07 — Macro to Nano: Material Properties in High Tech (Chemistry) -->
+      <div class="lesson-data" data-id="CH.1.07" data-subject="chemistry" data-subject-name="Chemistry" data-branch="" data-title="Macro to Nano: Material Properties in High Tech" data-desc="Explain how physical properties of elements, compounds, and groups (normal and nanosize) are used for identification and commercial applications." data-code="Chemistry &gt; CH.1.07" data-meta="Weeks 13-14 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for CH.1.07.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Chemistry L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Chemistry L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/chemistry.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for CH.1.07 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: BI.1.01 — Outsmarting the Outbreak: Eradicating Diseases & Cell Scars (Biology) -->
+      <div class="lesson-data" data-id="BI.1.01" data-subject="biology" data-subject-name="Biology" data-branch="" data-title="Outsmarting the Outbreak: Eradicating Diseases &amp; Cell Scars" data-desc="Analyze the factors of diseases eradication: 1) Explain spreading, controlling, and transmitting factors; 2) Classify diseases as infectious or non-infectious; 3) Study Malaria and sickle cell anemia; 4) Explain cellular impact." data-code="Biology &gt; BI.1.01" data-meta="Weeks 01-01 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for BI.1.01.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Biology L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Biology L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Biology.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for BI.1.01 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: BI.1.02 — The Architecture of Life: Plant, Animal, Protist & Bacteria Cells (Biology) -->
+      <div class="lesson-data" data-id="BI.1.02" data-subject="biology" data-subject-name="Biology" data-branch="" data-title="The Architecture of Life: Plant, Animal, Protist &amp; Bacteria Cells" data-desc="Compare and contrast the structures within the cells of plants, animals, Protista, and bacteria which function to enable the cell to live." data-code="Biology &gt; BI.1.02" data-meta="Weeks 02-04 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for BI.1.02.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Biology L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Biology L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Biology.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for BI.1.02 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: BI.1.03 — Gatekeepers of the Cell: Membranes, Osmosis & Diffusion (Biology) -->
+      <div class="lesson-data" data-id="BI.1.03" data-subject="biology" data-subject-name="Biology" data-branch="" data-title="Gatekeepers of the Cell: Membranes, Osmosis &amp; Diffusion" data-desc="Connect the structure of a healthy cell membrane to its functions: 1) Explain membrane structure in enabling diffusion and osmosis; 2) Describe the nature of phospholipids." data-code="Biology &gt; BI.1.03" data-meta="Weeks 05-06 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for BI.1.03.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Biology L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Biology L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Biology.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for BI.1.03 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: BI.1.04 — Code of Life: Unlocking DNA & RNA Double Helices (Biology) -->
+      <div class="lesson-data" data-id="BI.1.04" data-subject="biology" data-subject-name="Biology" data-branch="" data-title="Code of Life: Unlocking DNA &amp; RNA Double Helices" data-desc="Create a model showing the structure of DNA and RNA as genetic material: 1) Differences between DNA and RNA; 2) Complementary base pairing." data-code="Biology &gt; BI.1.04" data-meta="Weeks 07-07 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for BI.1.04.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Biology L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Biology L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Biology.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for BI.1.04 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: BI.1.05 — Molecular Engines: Protein Power & Enzyme Magic (Biology) -->
+      <div class="lesson-data" data-id="BI.1.05" data-subject="biology" data-subject-name="Biology" data-branch="" data-title="Molecular Engines: Protein Power &amp; Enzyme Magic" data-desc="Investigate functions of different classes of proteins and factors affecting performance: 1) Structure, classes, and functions; 2) Enzyme mechanisms as catalysts and affecting factors." data-code="Biology &gt; BI.1.05" data-meta="Weeks 08-09 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for BI.1.05.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Biology L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Biology L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Biology.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for BI.1.05 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: BI.1.06 — Cellular Rhythm & Ruin: The Cell Cycle vs. Cancer (Biology) -->
+      <div class="lesson-data" data-id="BI.1.06" data-subject="biology" data-subject-name="Biology" data-branch="" data-title="Cellular Rhythm &amp; Ruin: The Cell Cycle vs. Cancer" data-desc="Create a model outlining the cell cycle in controlled and uncontrolled cell divisions, including cancer." data-code="Biology &gt; BI.1.06" data-meta="Weeks 10-10 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for BI.1.06.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Biology L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Biology L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Biology.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for BI.1.06 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: BI.1.07 — The Frontier of Healing: Stem Cells to the Rescue (Biology) -->
+      <div class="lesson-data" data-id="BI.1.07" data-subject="biology" data-subject-name="Biology" data-branch="" data-title="The Frontier of Healing: Stem Cells to the Rescue" data-desc="Evaluate stem cells as possible cures for diseases: 1) Cell differentiation; 2) Stem cells as disease cures." data-code="Biology &gt; BI.1.07" data-meta="Weeks 11-12 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for BI.1.07.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Biology L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Biology L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Biology.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for BI.1.07 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: BI.1.08 — Microscopic Hijackers: Viral Invasion & Organelle Takeover (Biology) -->
+      <div class="lesson-data" data-id="BI.1.08" data-subject="biology" data-subject-name="Biology" data-branch="" data-title="Microscopic Hijackers: Viral Invasion &amp; Organelle Takeover" data-desc="Create a simulation showing how viruses infect a cell: 1) Organelles of healthy cells; 2) Why viruses require host organelles; 3) Identify targeted organelles." data-code="Biology &gt; BI.1.08" data-meta="Weeks 13-13 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for BI.1.08.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Biology L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Biology L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Biology.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for BI.1.08 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: ME.1.01 — Motion Unfolded: Velocity & Acceleration in 1D (Mechanics) -->
+      <div class="lesson-data" data-id="ME.1.01" data-subject="mechanics" data-subject-name="Mechanics" data-branch="" data-title="Motion Unfolded: Velocity &amp; Acceleration in 1D" data-desc="Use position, displacement, average and instantaneous velocity, and average and instantaneous acceleration to describe 1-dimensional motion." data-code="Mechanics &gt; ME.1.01" data-meta="Weeks 01-03 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for ME.1.01.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Mechanics L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Mechanics L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Mechanics.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for ME.1.01 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: ME.1.02 — Free Fall & Predictions: 1D Kinematic Equations (Mechanics) -->
+      <div class="lesson-data" data-id="ME.1.02" data-subject="mechanics" data-subject-name="Mechanics" data-branch="" data-title="Free Fall &amp; Predictions: 1D Kinematic Equations" data-desc="Use kinematic equations to predict 1-dimensional motion under constant acceleration, including free-fall." data-code="Mechanics &gt; ME.1.02" data-meta="Weeks 04-08 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for ME.1.02.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Mechanics L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Mechanics L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Mechanics.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for ME.1.02 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: ME.1.03 — Relative Motion: Frames of Reference in Action (Mechanics) -->
+      <div class="lesson-data" data-id="ME.1.03" data-subject="mechanics" data-subject-name="Mechanics" data-branch="" data-title="Relative Motion: Frames of Reference in Action" data-desc="Understand reference frames and use relative velocity to describe the motions of 2 objects with respect to each other in 1-D." data-code="Mechanics &gt; ME.1.03" data-meta="Weeks 09-10 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for ME.1.03.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Mechanics L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Mechanics L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Mechanics.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for ME.1.03 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: ME.1.04 — Vectors Unlocked: Kinematics in Two Dimensions (Mechanics) -->
+      <div class="lesson-data" data-id="ME.1.04" data-subject="mechanics" data-subject-name="Mechanics" data-branch="" data-title="Vectors Unlocked: Kinematics in Two Dimensions" data-desc="Use vector concepts to extend 1-D kinematics to motion in 2-D." data-code="Mechanics &gt; ME.1.04" data-meta="Weeks 11 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for ME.1.04.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Mechanics L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Mechanics L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Mechanics.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for ME.1.04 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: PH.1.01 — Precision & Accuracy: Mastering Measurement Tools (Physics) -->
+      <div class="lesson-data" data-id="PH.1.01" data-subject="physics" data-subject-name="Physics" data-branch="" data-title="Precision &amp; Accuracy: Mastering Measurement Tools" data-desc="Make measurements precisely and accurately using a variety of measurement tools." data-code="Physics &gt; PH.1.01" data-meta="Weeks 01-02 • Grade 1 STEM" data-videos="0" data-files="2" data-tests="1">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for PH.1.01.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Physics L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Physics L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Physics.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+          <!-- File: LO.1 PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Physics LO.1 File</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome Explaination &amp;</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/1mGKFySotNchwGpEKKi6C0YgxH3GsFn0g/view?usp=sharing" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Physics LO.1 refrences testbanks </h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Haliday testbank&amp;</span></div>
+            </div>
+            <a href="https://drive.google.com/file/d/15kQe1wmDvsy3PT1Dnc3G8sEKzgcKXDDv/view?usp=sharing" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+      </div>
+      <!-- Lesson: PH.1.02 — Action & Reaction: Uncovering Newtonian Pairs (Physics) -->
+      <div class="lesson-data" data-id="PH.1.02" data-subject="physics" data-subject-name="Physics" data-branch="" data-title="Action &amp; Reaction: Uncovering Newtonian Pairs" data-desc="Use Newton's 3rd Law to identify the interaction forces existing between pairs of objects (Newtonian pairs)." data-code="Physics &gt; PH.1.02" data-meta="Weeks 03-04 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for PH.1.02.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Physics L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Physics L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Physics.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for PH.1.02 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: PH.1.03 — Force & Motion: Predicting Physical Trajectories (Physics) -->
+      <div class="lesson-data" data-id="PH.1.03" data-subject="physics" data-subject-name="Physics" data-branch="" data-title="Force &amp; Motion: Predicting Physical Trajectories" data-desc="Predict an object's motion based on the forces acting on it." data-code="Physics &gt; PH.1.03" data-meta="Weeks 04-06 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for PH.1.03.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Physics L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Physics L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Physics.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for PH.1.03 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: PH.1.04 — Gravity Unveiled: Weight, Mass & Proportionality (Physics) -->
+      <div class="lesson-data" data-id="PH.1.04" data-subject="physics" data-subject-name="Physics" data-branch="" data-title="Gravity Unveiled: Weight, Mass &amp; Proportionality" data-desc="Model gravitational force near Earth as proportional to mass with proportionality constant g." data-code="Physics &gt; PH.1.04" data-meta="Weeks 07-08 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for PH.1.04.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Physics L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Physics L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Physics.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for PH.1.04 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: PH.1.05 — In Perfect Balance: Equilibrium & Structural Stability (Physics) -->
+      <div class="lesson-data" data-id="PH.1.05" data-subject="physics" data-subject-name="Physics" data-branch="" data-title="In Perfect Balance: Equilibrium &amp; Structural Stability" data-desc="Determine conditions for stability of extended rigid bodies by considering translational and rotational equilibrium." data-code="Physics &gt; PH.1.05" data-meta="Weeks 09-10 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for PH.1.05.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Physics L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Physics L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Physics.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for PH.1.05 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: PH.1.06 — Snap Back: Hooke's Law & Restoring Forces (Physics) -->
+      <div class="lesson-data" data-id="PH.1.06" data-subject="physics" data-subject-name="Physics" data-branch="" data-title="Snap Back: Hooke's Law &amp; Restoring Forces" data-desc="Understand that certain material objects (e.g., springs following Hooke's Law) generate restoring forces to maintain an equilibrium shape." data-code="Physics &gt; PH.1.06" data-meta="Weeks 11-12 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for PH.1.06.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Physics L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Physics L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Physics.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for PH.1.06 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: CS.1.01 — The Digital Advantage: Empowering Knowledge with ICT (CS) -->
+      <div class="lesson-data" data-id="CS.1.01" data-subject="cs" data-subject-name="CS" data-branch="" data-title="The Digital Advantage: Empowering Knowledge with ICT" data-desc="Demonstrate an understanding of the importance of ICT in knowledge generation and communication." data-code="CS &gt; CS.1.01" data-meta="Weeks 01-01 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for CS.1.01.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official CS L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">CS L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Computer%20Science.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for CS.1.01 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: CS.1.02 — Mastering the OS: Hardware, Software & File Control (CS) -->
+      <div class="lesson-data" data-id="CS.1.02" data-subject="cs" data-subject-name="CS" data-branch="" data-title="Mastering the OS: Hardware, Software &amp; File Control" data-desc="Understand what an operating system is and how to use it for file management, application launching, and general hardware/software management." data-code="CS &gt; CS.1.02" data-meta="Weeks 02-02 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for CS.1.02.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official CS L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">CS L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Computer%20Science.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for CS.1.02 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: CS.1.03 — Crafting Clean Documents: Advanced Word Processing (CS) -->
+      <div class="lesson-data" data-id="CS.1.03" data-subject="cs" data-subject-name="CS" data-branch="" data-title="Crafting Clean Documents: Advanced Word Processing" data-desc="Understand the role of word-processing applications to create an advanced, rich document." data-code="CS &gt; CS.1.03" data-meta="Weeks 03-03 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for CS.1.03.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official CS L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">CS L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Computer%20Science.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for CS.1.03 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: CS.1.04 — Slide Deck Mastery: Presenting Ideas with Impact (CS) -->
+      <div class="lesson-data" data-id="CS.1.04" data-subject="cs" data-subject-name="CS" data-branch="" data-title="Slide Deck Mastery: Presenting Ideas with Impact" data-desc="Use PowerPoint for handling interrelated information and presenting it in an interesting format." data-code="CS &gt; CS.1.04" data-meta="Weeks 04-04 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for CS.1.04.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official CS L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">CS L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Computer%20Science.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for CS.1.04 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: CS.1.05 — Data Wizardry: Formulas & Stats in Spreadsheets (CS) -->
+      <div class="lesson-data" data-id="CS.1.05" data-subject="cs" data-subject-name="CS" data-branch="" data-title="Data Wizardry: Formulas &amp; Stats in Spreadsheets" data-desc="Understand how to use spreadsheets for statistical tables and enhance data processing using functions and formulas." data-code="CS &gt; CS.1.05" data-meta="Weeks 06-06 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for CS.1.05.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official CS L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">CS L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Computer%20Science.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for CS.1.05 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: CS.1.06 — Visual Storytelling: Editing Digital Graphics (CS) -->
+      <div class="lesson-data" data-id="CS.1.06" data-subject="cs" data-subject-name="CS" data-branch="" data-title="Visual Storytelling: Editing Digital Graphics" data-desc="Demonstrate understanding of how to select and edit digital images that illustrate a theme or event." data-code="CS &gt; CS.1.06" data-meta="Weeks 06-06 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for CS.1.06.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official CS L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">CS L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Computer%20Science.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for CS.1.06 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: FR.1.01 — Premiers Contacts: Standard Personal Information (Française) -->
+      <div class="lesson-data" data-id="FR.1.01" data-subject="francaise" data-subject-name="Française" data-branch="" data-title="Premiers Contacts: Standard Personal Information" data-desc="L'apprenant répond à des demandes de renseignements personnels de base et à des questions sur ses besoins immédiats dans des situations courantes." data-code="Française &gt; FR.1.01" data-meta="Weeks 01-02 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for FR.1.01.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Française L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Française L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/French.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for FR.1.01 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: FR.1.02 — Plume et Papier: Writing Personal & Family Details (Française) -->
+      <div class="lesson-data" data-id="FR.1.02" data-subject="francaise" data-subject-name="Française" data-branch="" data-title="Plume et Papier: Writing Personal &amp; Family Details" data-desc="L'apprenant sait écrire les données personnelles à son sujet et au sujet de sa famille." data-code="Française &gt; FR.1.02" data-meta="Weeks 03-04 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for FR.1.02.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Française L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Française L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/French.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for FR.1.02 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: DE.1.01 — Erste Schritte: Spelling, Business Cards & Forms (Deutsch) -->
+      <div class="lesson-data" data-id="DE.1.01" data-subject="deutsch" data-subject-name="Deutsch" data-branch="" data-title="Erste Schritte: Spelling, Business Cards &amp; Forms" data-desc="Die Schüler können: 1) Etwas buchstabieren; 2) Eine Visitenkarte lesen; 3) Ein Anmeldeformular ausfüllen." data-code="Deutsch &gt; DE.1.01" data-meta="Weeks 01-04 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for DE.1.01.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Deutsch L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Deutsch L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Deutsch.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for DE.1.01 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: DE.1.02 — Hallo Deutschland: Counting 0–20 & Self-Introductions (Deutsch) -->
+      <div class="lesson-data" data-id="DE.1.02" data-subject="deutsch" data-subject-name="Deutsch" data-branch="" data-title="Hallo Deutschland: Counting 0–20 &amp; Self-Introductions" data-desc="Schüler können: 1) Zahlen von null bis 20 zählen; 2) Ein Formular ausfüllen; 3) Sich und andere vorstellen." data-code="Deutsch &gt; DE.1.02" data-meta="Weeks 01-04 • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for DE.1.02.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official Deutsch L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">Deutsch L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/Deutsch.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for DE.1.02 are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: EN.MID — Foundations of Communication & Core Literacy (English) -->
+      <div class="lesson-data" data-id="EN.MID" data-subject="english" data-subject-name="English" data-branch="" data-title="Foundations of Communication &amp; Core Literacy" data-desc="Core Communication &amp; Mechanics: 1) Interact spontaneously in oral conversations, describe personal/STEM experiences, and apply dictionary tools for context-based vocabulary; 2) Execute writing processes (plan, edit, revise) with standard grammar, spelling, and narrative structure; 3) Apply foundational listening and reading strategies (skimming/scanning) and practice ethical digital resource usage." data-code="English &gt; EN.MID" data-meta="Midterm Revision • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for EN.MID.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official English L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">English L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/English.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for EN.MID are being compiled.</p></div>
+        </div>
+      </div>
+      <!-- Lesson: EN.FIN — Advanced Expression, Analysis & Research (English) -->
+      <div class="lesson-data" data-id="EN.FIN" data-subject="english" data-subject-name="English" data-branch="" data-title="Advanced Expression, Analysis &amp; Research" data-desc="Critical Thinking &amp; Public Speaking: 1) Conduct focused research projects, evaluate source credibility, synthesize evidence, and cite materials correctly; 2) Analyze literary elements (theme, plot, character, tone), make textual predictions, extract key points, and distinguish facts from opinions; 3) Deliver formal presentations, engage in academic discussions/debates, and appreciate global cultural values." data-code="English &gt; EN.FIN" data-meta="Final Revision • Grade 1 STEM" data-videos="0" data-files="1" data-tests="0">
+        <div data-slot="videos">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">🎬</div><h4 class="font-bold text-white text-sm mb-1">No video lectures uploaded yet</h4><p class="text-xs text-slate-400">Our Senior '26 team and teachers are currently recording and editing lessons for EN.FIN.</p></div>
+        </div>
+        <div data-slot="files">
+          <!-- File: official English L.O syllabus PDF -->
+          <div class="resource-item">
+            <div>
+              <h4 class="font-bold text-white text-base md:text-lg mb-1">English L.O Syllabus (Official PDF)</h4>
+              <div class="text-xs text-slate-400 flex items-center gap-3"><span class="bg-[#163E60] text-slate-200 font-bold px-2 py-0.5 rounded text-[11px]">PDF</span><span>•</span><span>Full learning-outcome list, skills &amp; concepts</span></div>
+            </div>
+            <a href="los/English.pdf" target="_blank" class="btn-cyan-back text-xs px-5 py-2.5 flex-shrink-0">📥 View &amp; Download</a>
+          </div>
+        </div>
+        <div data-slot="tests">
+          <div class="empty-resource-box"><div class="text-3xl mb-2">📝</div><h4 class="font-bold text-white text-sm mb-1">No question banks uploaded yet</h4><p class="text-xs text-slate-400">University reference problems and MCQs for EN.FIN are being compiled.</p></div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#051520] border-t border-[#0F2F47] py-8 px-4 mt-auto">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+      
+      <!-- Left Copyright & School Info -->
+      <div class="flex items-center gap-2 text-slate-400 text-sm font-medium">
+        <svg class="w-5 h-5 text-[#F5BC6B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" stroke-width="2"></circle>
+          <path d="M14.5 9.5a3.5 3.5 0 100 5" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+        <span>Copyright © QSTEMora Club (QSC) • Senior '28 STEM Qena School</span>
+      </div>
+
+      <!-- Right Contact & Social Round Action Buttons -->
+      <div class="flex items-center gap-3 md:gap-4 text-white">
+        <!-- Location (STEM Qena School) -->
+        <a href="https://maps.google.com/?q=STEM+Qena+School" target="_blank" rel="noopener noreferrer" title="STEM Qena School Location" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#F5BC6B] hover:text-[#071A26] hover:border-[#F5BC6B] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+        </a>
+
+        <!-- Phone Contact -->
+        <a href="tel:+201000000000" id="footerPhoneLink" title="Call QSC Mentors" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#38B2AC] hover:text-[#071A26] hover:border-[#38B2AC] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+        </a>
+
+        <!-- Email Contact -->
+        <a href="mailto:info@qstemora.club" id="footerEmailLink" title="Email QSC" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#F5BC6B] hover:text-[#071A26] hover:border-[#F5BC6B] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+        </a>
+
+        <!-- WhatsApp Community Trigger -->
+        <button class="btn-join-trigger w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-[#2ECC71] hover:bg-[#2ECC71] hover:text-[#071A26] hover:border-[#2ECC71] transition-all duration-300 cursor-pointer" title="Join WhatsApp Community">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+          </svg>
+        </button>
+
+        <!-- Instagram -->
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" title="Follow us on Instagram" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#E1306C] hover:text-white hover:border-[#E1306C] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </a>
+
+        <!-- Facebook -->
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" title="Follow us on Facebook" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#1877F2] hover:text-white hover:border-[#1877F2] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Container -->
+  <div id="modalBackdrop" class="fixed inset-0 z-50 modal-overlay hidden items-center justify-center p-4 overflow-y-auto">
+    <div id="modalContainer" class="modal-content rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto text-left relative transform transition-all"></div>
+  </div>
+
+  <!-- Static lesson controller: fills the header + 3 sections from the matching block above -->
+  <script>
+    (function () {
+      var id = (new URLSearchParams(window.location.search).get('id') || '').toLowerCase();
+      var store = document.getElementById('lessonDataStore');
+      var blocks = store ? [].slice.call(store.querySelectorAll('.lesson-data')) : [];
+      var block = null;
+      for (var i = 0; i < blocks.length; i++) { if (blocks[i].dataset.id.toLowerCase() === id) { block = blocks[i]; break; } }
+      if (!block) { alert('Lesson outcome not found.'); window.location.href = 'subjects.html'; return; }
+      var d = block.dataset;
+      var subjHref = 'subject.html?s=' + d.subject + (d.branch ? '&b=' + d.branch : '');
+      function setTxt(elId, val) { var e = document.getElementById(elId); if (e) e.textContent = val; }
+      var bs = document.getElementById('breadcrumbSubject'); if (bs) { bs.textContent = d.subjectName; bs.href = subjHref; }
+      setTxt('breadcrumbLO', d.id);
+      var back = document.getElementById('lessonBackBtn'); if (back) back.href = subjHref;
+      setTxt('lessonCodeTitle', d.code);
+      setTxt('lessonMainTitle', d.title);
+      setTxt('lessonDescription', d.desc);
+      setTxt('lessonMetaBadge', d.meta);
+      function fill(containerId, slot, badgeId, badgeText) {
+        var c = document.getElementById(containerId);
+        var s = block.querySelector('[data-slot="' + slot + '"]');
+        if (c && s) c.innerHTML = s.innerHTML;
+        var b = document.getElementById(badgeId); if (b) b.textContent = badgeText;
+      }
+      fill('videosListContainer', 'videos', 'videosCountBadge', d.videos + ' Lectures');
+      fill('filesListContainer', 'files', 'filesCountBadge', d.files + ' Files');
+      fill('testBanksListContainer', 'tests', 'testBanksCountBadge', d.tests + ' Question Banks');
+    })();
+  </script>
+
+  <!-- Application Scripts -->
+  <script src="assets/assets.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
+

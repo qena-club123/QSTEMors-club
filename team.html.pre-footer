@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<!-- ============================ BEGINNER GUIDE ============================
+  This is the TEAM page. It has TWO branches you switch between with the tabs at the top:
+    • Seniors '28 (Current) — the grid with id="teamGrid". Each person is a "member-card" that
+      shows a real PHOTO. The picture files live in the team_images/ folder; the card's img src
+      points at the exact file name. To change a photo, drop the new image into team_images/ and
+      update that person's img src (each card has a comment naming the person).
+    • Seniors '26 (Alumni) — the second "team-branch" grid. These cards have NO photo; they show
+      a circle with the person's initials instead. To edit, just change the name/role text.
+  To add a person: copy any member-card block, paste it inside the right branch grid, and edit the
+  name, role, and (for '28) the img src. The tab switching script is at the bottom of this file.
+======================================================================== -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Members — QSTEMora Club (QSC)</title>
+  
+  <!-- Google Fonts: Poppins & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandDark: '#0A1926',
+            brandDarker: '#07131F',
+            brandCard: '#0E2238',
+            brandGold: '#F5BC6B',
+            brandTeal: '#48A9A6',
+            brandCyan: '#38B2AC',
+          },
+          fontFamily: {
+            sans: ['Poppins', 'Outfit', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-[#071A26] text-white min-h-screen flex flex-col selection:bg-[#F5BC6B] selection:text-[#071A26]">
+
+  <!-- Top Navigation Bar -->
+  <header class="sticky top-0 z-40 bg-[#071A26]/95 backdrop-blur-md border-b border-[#0F2F47] transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo & Brand Title -->
+        <a href="index.html" class="flex items-center gap-3 group">
+          <img src="assets/images/logo.jpg" alt="QSTEMora Club Logo" class="w-11 h-11 rounded-full object-cover shadow-[0_0_12px_rgba(245,188,107,0.4)] border border-[#F5BC6B]/40 group-hover:scale-105 transition-transform duration-300" />
+          <div class="flex items-center font-bold text-xl md:text-2xl tracking-tight">
+            <span class="text-[#38B2AC]">QSTEM</span><span class="text-[#F5BC6B]">ora</span>
+            <span class="text-[#2ECC71] ml-1.5 font-medium text-lg">club</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="index.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B]" data-page="home">
+            Home
+          </a>
+          <a href="subjects.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B] flex items-center gap-1.5" data-page="subjects">
+            <svg class="w-4 h-4 text-[#38B2AC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+            Subjects
+          </a>
+          <a href="about.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B]" data-page="about">
+            About
+          </a>
+          <a href="team.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B]" data-page="team">
+            Team members
+          </a>
+          <a href="partners.html" class="nav-link text-sm font-medium transition-colors hover:text-[#F5BC6B]" data-page="partners">
+            Partners
+          </a>
+        </nav>
+
+        <!-- Right CTA Button -->
+        <div class="hidden md:flex items-center">
+          <button class="btn-gold btn-join-trigger text-sm uppercase font-bold tracking-wider px-7 py-2.5">
+            JOIN
+          </button>
+        </div>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <div class="flex md:hidden">
+          <button id="mobileMenuBtn" class="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-[#0E293E] focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobileMenu" class="hidden md:hidden bg-[#051520] border-b border-[#0F2F47] px-4 pt-2 pb-6 space-y-3">
+      <a href="index.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="home">Home</a>
+      <a href="subjects.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="subjects">Subjects</a>
+      <a href="about.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="about">About</a>
+      <a href="team.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="team">Team members</a>
+      <a href="partners.html" class="nav-link block py-2 text-base font-medium text-slate-300 hover:text-[#F5BC6B]" data-page="partners">Partners</a>
+      <div class="pt-2">
+        <button class="btn-gold btn-join-trigger w-full text-center py-2.5">JOIN</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main View Container -->
+  <main class="flex-grow py-12 px-4 max-w-7xl mx-auto w-full text-center">
+    
+    <div class="mb-12">
+      <div class="letter-spaced-title text-base mb-2">O u r &nbsp; T e a m</div>
+      <h1 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight">Meet Our Team Members</h1>
+      <p class="text-slate-400 max-w-2xl mx-auto mt-3 text-sm md:text-base">
+        Two teams, one mission. Meet the current Senior '28 leaders running QSC today, and the Senior '26 founders who started it. Click a tab above to switch between them.</p>
+    </div>
+
+    <!-- Branch tabs: switch between the current (Seniors '28) and alumni (Seniors '26) teams -->
+    <div class="flex justify-center gap-3 mb-10 flex-wrap" id="teamBranchTabs">
+      <button type="button" class="team-tab btn-gold px-6 py-2.5 text-sm font-bold" data-branch="s28">Seniors '28 (Current)</button>
+      <button type="button" class="team-tab btn-gold-outline px-6 py-2.5 text-sm font-bold" data-branch="s26">Seniors '26 (Alumni)</button>
+    </div>
+
+    <!-- ===== Seniors '28 leaders (current version) — with photos from team_images/ ===== -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-left team-branch" data-branch="s28" id="teamGrid">
+        <!-- 👤 Mahmoud Ramadan — Founder &amp; Head Design (Seniors '28). To change the photo, replace the file in team_images/ and update the src below. -->
+        <div class="member-card group">
+          <div class="image-wrapper">
+            <img src="team_images/Mahmoud%20Ramadan%20_%20founder%20%26%20head%20designe%20_%20sinior%2028.jpeg" alt="Mahmoud Ramadan" class="team-photo w-full aspect-square object-contain rounded-lg" loading="lazy">
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Mahmoud Ramadan</div>
+            <div class="member-info">Founder &amp; Head Design</div>
+          </div>
+        </div>
+        <!-- 👤 Mai Mahmoud — Founder &amp; Capstone Advisor (Seniors '28). To change the photo, replace the file in team_images/ and update the src below. -->
+        <div class="member-card group">
+          <div class="image-wrapper">
+            <img src="team_images/Mai%20Mahmoud%20_%20Founder%20%26%20capstone%20advisor%20_%20sinior%2028.jpeg" alt="Mai Mahmoud" class="team-photo w-full aspect-square object-contain rounded-lg" loading="lazy">
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Mai Mahmoud</div>
+            <div class="member-info">Founder &amp; Capstone Advisor</div>
+          </div>
+        </div>
+        <!-- 👤 Farha Ali — Leader Capstone Advisor (Seniors '28). To change the photo, replace the file in team_images/ and update the src below. -->
+        <div class="member-card group">
+          <div class="image-wrapper">
+            <img src="team_images/Farha%20Ali%20_%20Leader%20Capstone%20advisor%20_%20%20sinior%2028%20.jpeg" alt="Farha Ali" class="team-photo w-full aspect-square object-contain rounded-lg" loading="lazy">
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Farha Ali</div>
+            <div class="member-info">Leader Capstone Advisor</div>
+          </div>
+        </div>
+        <!-- 👤 Nora Tantawy — Geology Leader (Seniors '28). To change the photo, replace the file in team_images/ and update the src below. -->
+        <div class="member-card group">
+          <div class="image-wrapper">
+            <img src="team_images/Nora%20Tantawy%20_%20geology%20leader%20_%20senior%2028%20.jpeg" alt="Nora Tantawy" class="team-photo w-full aspect-square object-contain rounded-lg" loading="lazy">
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Nora Tantawy</div>
+            <div class="member-info">Geology Leader</div>
+          </div>
+        </div>
+        <!-- 👤 Omar Ibrahim — Leader Capstone Advisor &amp; Physics Member (Seniors '28). To change the photo, replace the file in team_images/ and update the src below. -->
+        <div class="member-card group">
+          <div class="image-wrapper">
+            <img src="team_images/Omar%20ibrahim%20_%20senior%2028%20_%20leader%20capstone%20advisor%20%26%20physics%20member%20.jpeg" alt="Omar Ibrahim" class="team-photo w-full aspect-square object-contain rounded-lg" loading="lazy">
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Omar Ibrahim</div>
+            <div class="member-info">Leader Capstone Advisor &amp; Physics Member</div>
+          </div>
+        </div>
+        <!-- 👤 Dawood Emad — Capstone Advisor (Seniors '28). To change the photo, replace the file in team_images/ and update the src below. -->
+        <div class="member-card group">
+          <div class="image-wrapper">
+            <img src="team_images/Dawood%20Emad%20_%20capstone%20advisor%20_%20senior%2028.jpeg" alt="Dawood Emad" class="team-photo w-full aspect-square object-contain rounded-lg" loading="lazy">
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Dawood Emad</div>
+            <div class="member-info">Capstone Advisor</div>
+          </div>
+        </div>
+        <!-- 👤 Yara Yahya — Capstone Advisor (Seniors '28). To change the photo, replace the file in team_images/ and update the src below. -->
+        <div class="member-card group">
+          <div class="image-wrapper">
+            <img src="team_images/Yara%20Yahya%20_%20Capstone%20advisor%20_%20senior%2028.jpeg" alt="Yara Yahya" class="team-photo w-full aspect-square object-contain rounded-lg" loading="lazy">
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Yara Yahya</div>
+            <div class="member-info">Capstone Advisor</div>
+          </div>
+        </div>
+        <!-- 👤 Zeinab Mohammed — Capstone Advisor (Seniors '28). To change the photo, replace the file in team_images/ and update the src below. -->
+        <div class="member-card group">
+          <div class="image-wrapper">
+            <img src="team_images/Zeinab%20Mohammed%20_%20Capstone%20advisor%20_%20sinior%2028.jpeg" alt="Zeinab Mohammed" class="team-photo w-full aspect-square object-contain rounded-lg" loading="lazy">
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Zeinab Mohammed</div>
+            <div class="member-info">Capstone Advisor</div>
+          </div>
+        </div>
+        <!-- 👤 Ziad Ahmed — Capstone Advisor (Seniors '28). To change the photo, replace the file in team_images/ and update the src below. -->
+        <div class="member-card group">
+          <div class="image-wrapper">
+            <img src="team_images/Ziad%20Ahmed%20_%20capstone%20advisor%20_%20senior%2028.jpeg" alt="Ziad Ahmed" class="team-photo w-full aspect-square object-contain rounded-lg" loading="lazy">
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Ziad Ahmed</div>
+            <div class="member-info">Capstone Advisor</div>
+          </div>
+        </div>
+        <!-- 👤 Abdullah Mohammed — Vice Designer &amp; Chemistry Member (Seniors '28). To change the photo, replace the file in team_images/ and update the src below. -->
+        <div class="member-card group">
+          <div class="image-wrapper">
+            <img src="team_images/Abdullah%20mohammed%20_%20vice%20designer%20%26%20chemistry%20member%20_%20senior%2028%20.jpeg" alt="Abdullah Mohammed" class="team-photo w-full aspect-square object-contain rounded-lg" loading="lazy">
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Abdullah Mohammed</div>
+            <div class="member-info">Vice Designer &amp; Chemistry Member</div>
+          </div>
+        </div>
+    </div>
+
+    <!-- ===== Seniors '26 (last version of the team) — names & roles only, no photos ===== -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-left team-branch hidden" data-branch="s26">
+        <!-- 👤 Mohaned Naeem — Founder (Seniors '26, no photo). -->
+        <div class="member-card group">
+          <div class="image-wrapper">
+            <div class="w-28 h-28 rounded-full bg-gradient-to-br from-[#1E4E8C] to-[#2A6F97] flex items-center justify-center text-3xl font-extrabold text-white border border-[#F5BC6B]/30 shadow-lg">MN</div>
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Mohaned Naeem</div>
+            <div class="member-info">Founder</div>
+          </div>
+        </div>
+        <!-- 👤 Yousef Said — Founder (Seniors '26, no photo). -->
+        <div class="member-card group">
+          <div class="image-wrapper">
+            <div class="w-28 h-28 rounded-full bg-gradient-to-br from-[#1E4E8C] to-[#2A6F97] flex items-center justify-center text-3xl font-extrabold text-white border border-[#F5BC6B]/30 shadow-lg">YS</div>
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Yousef Said</div>
+            <div class="member-info">Founder</div>
+          </div>
+        </div>
+        <!-- 👤 Yassen Ahmed — Co-Founder (Seniors '26, no photo). -->
+        <div class="member-card group">
+          <div class="image-wrapper">
+            <div class="w-28 h-28 rounded-full bg-gradient-to-br from-[#1E4E8C] to-[#2A6F97] flex items-center justify-center text-3xl font-extrabold text-white border border-[#F5BC6B]/30 shadow-lg">YA</div>
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Yassen Ahmed</div>
+            <div class="member-info">Co-Founder</div>
+          </div>
+        </div>
+        <!-- 👤 Yousef Mohammed — Co-Founder (Seniors '26, no photo). -->
+        <div class="member-card group">
+          <div class="image-wrapper">
+            <div class="w-28 h-28 rounded-full bg-gradient-to-br from-[#1E4E8C] to-[#2A6F97] flex items-center justify-center text-3xl font-extrabold text-white border border-[#F5BC6B]/30 shadow-lg">YM</div>
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Yousef Mohammed</div>
+            <div class="member-info">Co-Founder</div>
+          </div>
+        </div>
+        <!-- 👤 Mazen Nasser — Head Marketing (Seniors '26, no photo). -->
+        <div class="member-card group">
+          <div class="image-wrapper">
+            <div class="w-28 h-28 rounded-full bg-gradient-to-br from-[#1E4E8C] to-[#2A6F97] flex items-center justify-center text-3xl font-extrabold text-white border border-[#F5BC6B]/30 shadow-lg">MN</div>
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Mazen Nasser</div>
+            <div class="member-info">Head Marketing</div>
+          </div>
+        </div>
+        <!-- 👤 Habiba Ahmed — Vice Marketing (Seniors '26, no photo). -->
+        <div class="member-card group">
+          <div class="image-wrapper">
+            <div class="w-28 h-28 rounded-full bg-gradient-to-br from-[#1E4E8C] to-[#2A6F97] flex items-center justify-center text-3xl font-extrabold text-white border border-[#F5BC6B]/30 shadow-lg">HA</div>
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Habiba Ahmed</div>
+            <div class="member-info">Vice Marketing</div>
+          </div>
+        </div>
+        <!-- 👤 Youssef Ashraf — Head Design (Seniors '26, no photo). -->
+        <div class="member-card group">
+          <div class="image-wrapper">
+            <div class="w-28 h-28 rounded-full bg-gradient-to-br from-[#1E4E8C] to-[#2A6F97] flex items-center justify-center text-3xl font-extrabold text-white border border-[#F5BC6B]/30 shadow-lg">YA</div>
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Youssef Ashraf</div>
+            <div class="member-info">Head Design</div>
+          </div>
+        </div>
+        <!-- 👤 Yassen Mohamed — Vice Designer (Seniors '26, no photo). -->
+        <div class="member-card group">
+          <div class="image-wrapper">
+            <div class="w-28 h-28 rounded-full bg-gradient-to-br from-[#1E4E8C] to-[#2A6F97] flex items-center justify-center text-3xl font-extrabold text-white border border-[#F5BC6B]/30 shadow-lg">YM</div>
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Yassen Mohamed</div>
+            <div class="member-info">Vice Designer</div>
+          </div>
+        </div>
+        <!-- 👤 Zeyad Wessam — Head Content Writing (Seniors '26, no photo). -->
+        <div class="member-card group">
+          <div class="image-wrapper">
+            <div class="w-28 h-28 rounded-full bg-gradient-to-br from-[#1E4E8C] to-[#2A6F97] flex items-center justify-center text-3xl font-extrabold text-white border border-[#F5BC6B]/30 shadow-lg">ZW</div>
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Zeyad Wessam</div>
+            <div class="member-info">Head Content Writing</div>
+          </div>
+        </div>
+        <!-- 👤 Rokia Mohammed — Vice Content Writing (Seniors '26, no photo). -->
+        <div class="member-card group">
+          <div class="image-wrapper">
+            <div class="w-28 h-28 rounded-full bg-gradient-to-br from-[#1E4E8C] to-[#2A6F97] flex items-center justify-center text-3xl font-extrabold text-white border border-[#F5BC6B]/30 shadow-lg">RM</div>
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Rokia Mohammed</div>
+            <div class="member-info">Vice Content Writing</div>
+          </div>
+        </div>
+        <!-- 👤 Bassem Darrag — Head Summarizing (Seniors '26, no photo). -->
+        <div class="member-card group">
+          <div class="image-wrapper">
+            <div class="w-28 h-28 rounded-full bg-gradient-to-br from-[#1E4E8C] to-[#2A6F97] flex items-center justify-center text-3xl font-extrabold text-white border border-[#F5BC6B]/30 shadow-lg">BD</div>
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Bassem Darrag</div>
+            <div class="member-info">Head Summarizing</div>
+          </div>
+        </div>
+        <!-- 👤 Jana Mohammed — Vice Summarizing (Seniors '26, no photo). -->
+        <div class="member-card group">
+          <div class="image-wrapper">
+            <div class="w-28 h-28 rounded-full bg-gradient-to-br from-[#1E4E8C] to-[#2A6F97] flex items-center justify-center text-3xl font-extrabold text-white border border-[#F5BC6B]/30 shadow-lg">JM</div>
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Jana Mohammed</div>
+            <div class="member-info">Vice Summarizing</div>
+          </div>
+        </div>
+        <!-- 👤 Hossam Hassan — Head PR (Seniors '26, no photo). -->
+        <div class="member-card group">
+          <div class="image-wrapper">
+            <div class="w-28 h-28 rounded-full bg-gradient-to-br from-[#1E4E8C] to-[#2A6F97] flex items-center justify-center text-3xl font-extrabold text-white border border-[#F5BC6B]/30 shadow-lg">HH</div>
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Hossam Hassan</div>
+            <div class="member-info">Head PR</div>
+          </div>
+        </div>
+        <!-- 👤 Judy Saeed — Vice PR (Seniors '26, no photo). -->
+        <div class="member-card group">
+          <div class="image-wrapper">
+            <div class="w-28 h-28 rounded-full bg-gradient-to-br from-[#1E4E8C] to-[#2A6F97] flex items-center justify-center text-3xl font-extrabold text-white border border-[#F5BC6B]/30 shadow-lg">JS</div>
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Judy Saeed</div>
+            <div class="member-info">Vice PR</div>
+          </div>
+        </div>
+        <!-- 👤 Salma Yahya — Head Explaining (Seniors '26, no photo). -->
+        <div class="member-card group">
+          <div class="image-wrapper">
+            <div class="w-28 h-28 rounded-full bg-gradient-to-br from-[#1E4E8C] to-[#2A6F97] flex items-center justify-center text-3xl font-extrabold text-white border border-[#F5BC6B]/30 shadow-lg">SY</div>
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Salma Yahya</div>
+            <div class="member-info">Head Explaining</div>
+          </div>
+        </div>
+        <!-- 👤 Maria Alber — Vice Explaining (Seniors '26, no photo). -->
+        <div class="member-card group">
+          <div class="image-wrapper">
+            <div class="w-28 h-28 rounded-full bg-gradient-to-br from-[#1E4E8C] to-[#2A6F97] flex items-center justify-center text-3xl font-extrabold text-white border border-[#F5BC6B]/30 shadow-lg">MA</div>
+          </div>
+          <div class="card-badge-footer">
+            <div class="member-name">Maria Alber</div>
+            <div class="member-info">Vice Explaining</div>
+          </div>
+        </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#051520] border-t border-[#0F2F47] py-8 px-4 mt-auto">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+      
+      <!-- Left Copyright & School Info -->
+      <div class="flex items-center gap-2 text-slate-400 text-sm font-medium">
+        <svg class="w-5 h-5 text-[#F5BC6B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" stroke-width="2"></circle>
+          <path d="M14.5 9.5a3.5 3.5 0 100 5" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+        <span>Copyright © QSTEMora Club (QSC) • Senior '28 STEM Qena School</span>
+      </div>
+
+      <!-- Right Contact & Social Round Action Buttons -->
+      <div class="flex items-center gap-3 md:gap-4 text-white">
+        <!-- Location (STEM Qena School) -->
+        <a href="https://maps.google.com/?q=STEM+Qena+School" target="_blank" rel="noopener noreferrer" title="STEM Qena School Location" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#F5BC6B] hover:text-[#071A26] hover:border-[#F5BC6B] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+        </a>
+
+        <!-- Phone Contact -->
+        <a href="tel:+201000000000" id="footerPhoneLink" title="Call QSC Mentors" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#38B2AC] hover:text-[#071A26] hover:border-[#38B2AC] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+        </a>
+
+        <!-- Email Contact -->
+        <a href="mailto:info@qstemora.club" id="footerEmailLink" title="Email QSC" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#F5BC6B] hover:text-[#071A26] hover:border-[#F5BC6B] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+        </a>
+
+        <!-- WhatsApp Community Trigger -->
+        <button class="btn-join-trigger w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-[#2ECC71] hover:bg-[#2ECC71] hover:text-[#071A26] hover:border-[#2ECC71] transition-all duration-300 cursor-pointer" title="Join WhatsApp Community">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+          </svg>
+        </button>
+
+        <!-- Instagram -->
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" title="Follow us on Instagram" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#E1306C] hover:text-white hover:border-[#E1306C] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </a>
+
+        <!-- Facebook -->
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" title="Follow us on Facebook" class="w-9 h-9 rounded-full bg-[#0E293E] border border-[#184568] flex items-center justify-center text-slate-300 hover:bg-[#1877F2] hover:text-white hover:border-[#1877F2] transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Container -->
+  <div id="modalBackdrop" class="fixed inset-0 z-50 modal-overlay hidden items-center justify-center p-4 overflow-y-auto">
+    <div id="modalContainer" class="modal-content rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto text-left relative transform transition-all"></div>
+  </div>
+
+  <!-- Team branch tabs: show one team grid at a time (Seniors '28 current / Seniors '26 alumni) -->
+  <script>
+    (function () {
+      var tabs = [].slice.call(document.querySelectorAll('#teamBranchTabs .team-tab'));
+      var branches = [].slice.call(document.querySelectorAll('.team-branch'));
+      function select(branch) {
+        branches.forEach(function (g) { g.classList.toggle('hidden', g.dataset.branch !== branch); });
+        tabs.forEach(function (t) {
+          var on = t.dataset.branch === branch;
+          t.classList.toggle('btn-gold', on);
+          t.classList.toggle('btn-gold-outline', !on);
+        });
+      }
+      tabs.forEach(function (t) { t.addEventListener('click', function () { select(t.dataset.branch); }); });
+      select('s28'); // default: current team
+    })();
+  </script>
+
+  <!-- Application Scripts -->
+  <script src="assets/assets.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
+

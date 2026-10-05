@@ -1,0 +1,547 @@
+/* ==========================================================================
+   QSTEMora Club - Complete Stylesheet (PRD & Figma Spec Compliant)
+   ========================================================================== */
+
+:root {
+  --bg-primary: #071A26;
+  --bg-darker: #051520;
+  --bg-card: #0C2337;
+  --bg-card-alt: #0E293E;
+  --bg-card-hover: #133A57;
+  --border-color: #163E60;
+  --border-light: rgba(56, 178, 172, 0.25);
+  --text-main: #FFFFFF;
+  --text-muted: #94A3B8;
+  --text-dim: #64748B;
+  --accent-gold: #F5BC6B;
+  --accent-gold-hover: #F3AA4A;
+  --accent-gold-glow: rgba(245, 188, 107, 0.35);
+  --accent-teal: #38B2AC;
+  --accent-cyan: #209DBF;
+  --accent-green: #2ECC71;
+  --card-blue-teal: #125B81;
+  --card-blue-teal-hover: #18719F;
+}
+
+/* Base resets & typography */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-family: 'Poppins', 'Outfit', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #04121B;
+}
+::-webkit-scrollbar-thumb {
+  background: #14354F;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-gold);
+}
+
+/* ----------------------------------------------------
+   BUTTONS
+   ---------------------------------------------------- */
+.btn-gold {
+  background-color: var(--accent-gold);
+  color: #071A26;
+  font-weight: 700;
+  border-radius: 9999px;
+  padding: 0.6rem 2rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px var(--accent-gold-glow);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  letter-spacing: 0.5px;
+}
+
+.btn-gold:hover {
+  background-color: var(--accent-gold-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 188, 107, 0.55);
+}
+
+.btn-gold:active {
+  transform: translateY(0);
+}
+
+.btn-cyan-back {
+  background-color: var(--accent-cyan);
+  color: #FFFFFF;
+  font-weight: 600;
+  border-radius: 9999px;
+  padding: 0.5rem 1.75rem;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  letter-spacing: 0.3px;
+  box-shadow: 0 4px 12px rgba(32, 157, 191, 0.3);
+}
+
+.btn-cyan-back:hover {
+  background-color: #27B4DA;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(32, 157, 191, 0.5);
+}
+
+.btn-gold-outline {
+  border: 1.5px solid var(--accent-gold);
+  color: var(--accent-gold);
+  background: transparent;
+  font-weight: 600;
+  border-radius: 9999px;
+  padding: 0.5rem 1.5rem;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-gold-outline:hover {
+  background: rgba(245, 188, 107, 0.15);
+  transform: translateY(-2px);
+}
+
+.btn-drive-action {
+  background: #10334C;
+  border: 1px solid #1D557F;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 0.85rem;
+  border-radius: 9999px;
+  padding: 0.45rem 1.25rem;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-drive-action:hover {
+  background: var(--accent-gold);
+  color: #071A26;
+  border-color: var(--accent-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(245, 188, 107, 0.4);
+}
+
+/* ----------------------------------------------------
+   NAVBAR & TITLES
+   ---------------------------------------------------- */
+.nav-link {
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: var(--accent-gold);
+  border-radius: 2px;
+}
+
+.letter-spaced-title {
+  letter-spacing: 0.22em;
+  color: var(--accent-gold);
+  font-weight: 700;
+}
+
+/* ----------------------------------------------------
+   SCHEDULE WIDGET (HOME PAGE)
+   ---------------------------------------------------- */
+.schedule-card {
+  background: #0B2438;
+  border: 1px solid #164368;
+  border-radius: 20px;
+  padding: 1.25rem 1.5rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.schedule-card.active-session {
+  border-color: var(--accent-gold);
+  background: linear-gradient(135deg, #0D2D46 0%, #113654 100%);
+  box-shadow: 0 8px 25px rgba(245, 188, 107, 0.18);
+}
+
+.schedule-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-teal);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
+.pulse-live {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2ECC71;
+  box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
+  animation: pulseGreen 1.8s infinite;
+}
+
+@keyframes pulseGreen {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(46, 204, 113, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+  }
+}
+
+/* ----------------------------------------------------
+   SUBJECT CARDS
+   ---------------------------------------------------- */
+.subject-card {
+  background: #0C2337;
+  border: 1px solid rgba(56, 178, 172, 0.2);
+  border-radius: 20px;
+  padding: 1.5rem 1rem 1.25rem;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.subject-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.subject-card:hover {
+  transform: translateY(-6px);
+  background: #11324E;
+  border-color: rgba(245, 188, 107, 0.5);
+  box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.6), 0 0 20px rgba(56, 178, 172, 0.2);
+}
+
+.subject-card:hover::before {
+  opacity: 1;
+}
+
+.subject-card .subject-title {
+  color: #FFFFFF;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-top: 0.75rem;
+}
+
+/* ----------------------------------------------------
+   BRANCH & DETAIL CARDS (RELIGION & SUB-BRANCHES)
+   ---------------------------------------------------- */
+.figma-detail-card {
+  background: #125B81;
+  border: 2px solid #0D4461;
+  border-radius: 28px;
+  padding: 1.5rem 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  width: 220px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+  position: relative;
+  text-decoration: none;
+}
+
+.figma-detail-card:hover {
+  transform: translateY(-8px);
+  background: #18719F;
+  border-color: var(--accent-gold);
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(32, 157, 191, 0.4);
+}
+
+.figma-detail-card .card-title {
+  color: #FFFFFF;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+/* ----------------------------------------------------
+   LEARNING OUTCOME (LO) CARDS
+   ---------------------------------------------------- */
+.lo-card {
+  background: #0B2438;
+  border: 1.5px solid #164266;
+  border-radius: 22px;
+  padding: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+}
+
+.lo-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent-gold);
+  background: #0F304B;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(245, 188, 107, 0.2);
+}
+
+/* Not uploaded yet / Dimmed State */
+.lo-card.unuploaded {
+  background: #071B29;
+  border: 1.5px dashed #143753;
+  opacity: 0.85;
+}
+
+.lo-card.unuploaded:hover {
+  opacity: 1;
+  border-color: #38B2AC;
+  background: #0B2438;
+}
+
+/* The "official L.O syllabus (PDF)" banner card shown at the top of every subject
+   that has a file in the los/ folder. It spans the full grid width and is never
+   hidden by the semester filter. */
+.lo-file-card {
+  border-color: rgba(245, 188, 107, 0.45);
+  background: #0F2C44;
+}
+
+.lo-file-card:hover {
+  border-color: var(--accent-gold);
+  background: #13344F;
+}
+
+.badge-uploaded {
+  background: rgba(46, 204, 113, 0.15);
+  color: #2ECC71;
+  border: 1px solid rgba(46, 204, 113, 0.35);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.badge-pending {
+  background: rgba(148, 163, 184, 0.1);
+  color: #94A3B8;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+/* ----------------------------------------------------
+   RESOURCE SECTIONS ON LESSON.HTML (ONE SCROLL)
+   ---------------------------------------------------- */
+.resource-section {
+  background: #081F30;
+  border: 1px solid #143E62;
+  border-radius: 22px;
+  padding: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.resource-item {
+  background: #0B273D;
+  border: 1px solid #174A72;
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  sm:flex-row;
+  justify-content: space-between;
+  align-items: flex-start;
+  sm:items-center;
+  gap: 1rem;
+  transition: all 0.2s ease;
+}
+
+.resource-item:hover {
+  background: #0E324E;
+  border-color: var(--accent-gold);
+}
+
+.empty-resource-box {
+  background: #061927;
+  border: 1.5px dashed #143B5C;
+  border-radius: 16px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+/* ----------------------------------------------------
+   TEAM & PARTNERS CARDS
+   ---------------------------------------------------- */
+.member-card {
+  background: #FFFFFF;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.member-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5);
+}
+
+.member-card .image-wrapper {
+  background: #F8FAFC;
+  padding: 1.25rem 1rem 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+}
+
+.member-card .card-badge-footer {
+  background: linear-gradient(135deg, #1E4E8C 0%, #2A6F97 100%);
+  color: #FFFFFF;
+  padding: 0.85rem 1rem;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: auto;
+}
+
+.member-card .card-badge-footer .member-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  margin-bottom: 2px;
+}
+
+.member-card .card-badge-footer .member-info {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  letter-spacing: 0.2px;
+}
+
+/* ----------------------------------------------------
+   CATEGORIES FILTER BOX
+   ---------------------------------------------------- */
+.categories-box {
+  background: #0C2337;
+  border: 1px solid #163E60;
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+}
+
+.category-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.category-row:last-child {
+  border-bottom: none;
+}
+
+.filter-pill {
+  background: #163E60;
+  color: #FFFFFF;
+  padding: 0.3rem 1.15rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  font-weight: 500;
+}
+
+.filter-pill.active, .filter-pill:hover {
+  background: var(--accent-teal);
+  color: #071A26;
+  font-weight: 700;
+}
+
+/* ----------------------------------------------------
+   ANIMATIONS & MODALS
+   ---------------------------------------------------- */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.modal-overlay {
+  background: rgba(4, 14, 22, 0.88);
+  backdrop-filter: blur(8px);
+}
+
+.modal-content {
+  background: #0A2033;
+  border: 1px solid #1D4B75;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+}
+
+/* Static pages hide/show cards with the native [hidden] attribute. Many card
+   classes set display:flex/grid, which would override it, so force it globally. */
+[hidden] {
+  display: none !important;
+}
+
